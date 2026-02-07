@@ -1,0 +1,22 @@
+# 狩猟免許試験 完全攻略 - robots.txt
+# すべての検索エンジンクローラーを許可
+
+User-agent: *
+Allow: /
+
+# サイトマップの場所
+Sitemap: https://example.com/sitemap.xml
+
+# クロール速度の調整（サーバー負荷軽減）
+Crawl-delay: 1
+
+# クロール不要なファイル
+Disallow: /test-*.html
+Disallow: /accessibility-test.html
+Disallow: /mobile-demo.html
+Disallow: /performance-test.html
+Disallow: /sound-demo.html
+Disallow: /sound-settings-ui.html
+Disallow: /test-integration.html
+Disallow: /test-ui.html
+Disallow: /test-progress.html

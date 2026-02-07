@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>音響効果システム - デモ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .sound-btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .sound-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .sound-btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-correct {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .btn-incorrect {
+            background: linear-gradient(135deg, #f44336, #da190b);
+            color: white;
+        }
+
+        .btn-complete {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+        }
+
+        .btn-click {
+            background: linear-gradient(135deg, #2196F3, #0b7dda);
+            color: white;
+        }
+
+        .btn-notification {
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #FF5722, #E64A19);
+            color: white;
+        }
+
+        .btn-levelup {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+        }
+
+        .btn-transition {
+            background: linear-gradient(135deg, #00BCD4, #0097A7);
+            color: white;
+        }
+
+        .btn-error {
+            background: linear-gradient(135deg, #795548, #5D4037);
+            color: white;
+        }
+
+        .sound-settings-panel {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .sound-settings-panel h3 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .setting-item {
+            margin-bottom: 20px;
+        }
+
+        .setting-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .setting-name {
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* トグルスイッチ */
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #4CAF50;
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        /* 音量コントロール */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 150px;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            border: none;
+        }
+
+        .volume-display {
+            min-width: 40px;
+            text-align: right;
+            font-weight: 500;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .streak-display {
+            text-align: center;
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f1f8e9;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔊 音響効果システム</h1>
+        <p class="subtitle">各ボタンをクリックして効果音を試してください</p>
+
+        <!-- 連続正解カウンター -->
+        <div class="streak-display" id="streak-display">
+            連続正解: 0回
+        </div>
+
+        <!-- 効果音テスト -->
+        <div class="section">
+            <h2>📢 効果音一覧</h2>
+            <div class="button-grid">
+                <button class="sound-btn btn-correct" onclick="testCorrect()">
+                    ✅ 正解音
+                </button>
+                <button class="sound-btn btn-incorrect" onclick="testIncorrect()">
+                    ❌ 不正解音
+                </button>
+                <button class="sound-btn btn-complete" onclick="testComplete()">
+                    🎉 完了音
+                </button>
+                <button class="sound-btn btn-click" onclick="testClick()">
+                    🔘 クリック音
+                </button>
+                <button class="sound-btn btn-notification" onclick="testNotification()">
+                    🔔 通知音
+                </button>
+                <button class="sound-btn btn-warning" onclick="testWarning()">
+                    ⚠️ 警告音
+                </button>
+                <button class="sound-btn btn-levelup" onclick="testLevelUp()">
+                    ⭐ レベルアップ
+                </button>
+                <button class="sound-btn btn-transition" onclick="testTransition()">
+                    🎵 画面遷移音
+                </button>
+                <button class="sound-btn btn-error" onclick="testError()">
+                    🚨 エラー音
+                </button>
+            </div>
+        </div>
+
+        <!-- 設定 -->
+        <div class="section">
+            <h2>⚙️ 設定</h2>
+            <div class="sound-settings-panel">
+                <!-- 音響ON/OFF -->
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <span class="setting-name">音響効果</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="sound-toggle" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- 音量調整 -->
+                <div class="setting-item">
+                    <label class="setting-label">
+                        <span class="setting-name">音量</span>
+                        <div class="volume-control">
+                            <input type="range" id="volume-slider" min="0" max="100" value="30" class="volume-slider">
+                            <span id="volume-display" class="volume-display">30%</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- 振動フィードバック -->
+                <div class="setting-item" id="vibration-setting">
+                    <label class="setting-label">
+                        <span class="setting-name">振動フィードバック</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="vibration-toggle" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 情報 -->
+        <div class="info-box">
+            <p><strong>💡 ヒント</strong></p>
+            <p>✅ 正解音を連続でクリックすると、ピッチが上がっていきます</p>
+            <p>📱 モバイルデバイスでは振動フィードバックも動作します</p>
+            <p>🔊 音が聞こえない場合は、音響効果がONになっているか確認してください</p>
+        </div>
+    </div>
+
+    <!-- sound.jsを読み込み -->
+    <script src="sound.js"></script>
+
+    <script>
+        // 連続正解カウンター表示を更新
+        function updateStreakDisplay() {
+            const display = document.getElementById('streak-display');
+            display.textContent = `連続正解: ${soundSystem.correctStreak}回`;
+
+            // 5連続以上で色を変更
+            if (soundSystem.correctStreak >= 5) {
+                display.style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+                display.style.color = 'white';
+            } else if (soundSystem.correctStreak >= 3) {
+                display.style.background = '#fff9c4';
+                display.style.color = '#F57F17';
+            } else {
+                display.style.background = '#f1f8e9';
+                display.style.color = '#4CAF50';
+            }
+        }
+
+        // 効果音テスト関数
+        function testCorrect() {
+            soundSystem.playCorrect();
+            updateStreakDisplay();
+        }
+
+        function testIncorrect() {
+            soundSystem.playIncorrect();
+            updateStreakDisplay();
+        }
+
+        function testComplete() {
+            soundSystem.playComplete();
+            updateStreakDisplay();
+        }
+
+        function testClick() {
+            soundSystem.playClick();
+        }
+
+        function testNotification() {
+            soundSystem.playNotification();
+        }
+
+        function testWarning() {
+            soundSystem.playWarning();
+        }
+
+        function testLevelUp() {
+            soundSystem.playLevelUp();
+        }
+
+        function testTransition() {
+            soundSystem.playTransition();
+        }
+
+        function testError() {
+            soundSystem.playError();
+        }
+
+        // 振動API非対応の場合は振動設定を非表示
+        if (!('vibrate' in navigator)) {
+            const vibrationSetting = document.getElementById('vibration-setting');
+            if (vibrationSetting) {
+                vibrationSetting.style.display = 'none';
+            }
+        }
+
+        // 初期表示
+        updateStreakDisplay();
+    </script>
+</body>
+</html>

@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="狩猟免許実技試験の完全対策ガイド。銃器・わな・安全確認の手順を動画・図解で徹底解説。">
+    <meta name="keywords" content="実技試験,狩猟免許,銃器,わな,安全確認,試験対策">
+    <meta name="theme-color" content="#2d5016">
+
+    <!-- OGP -->
+    <meta property="og:title" content="狩猟免許実技試験 完全対策ガイド">
+    <meta property="og:description" content="実技試験の手順を動画・図解で徹底解説。銃器・わな・安全確認を完全マスター。">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="狩猟免許実技試験 完全対策ガイド">
+    <meta name="twitter:description" content="実技試験の手順を動画・図解で徹底解説。">
+
+    <title>狩猟免許実技試験 完全対策ガイド</title>
+    
+    <!-- 共通UIスタイル -->
+    <link rel="stylesheet" href="common-ui.css">
+    <style>
+        :root {
+            --primary: #2d5016;
+            --secondary: #8b4513;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --success: #28a745;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3009 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -30px auto 0;
+            padding: 0 1rem;
+        }
+
+        nav {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            background: #1a3009;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+            position: relative;
+        }
+
+        h2::before {
+            content: '🎯';
+            margin-right: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .step-container {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-detail {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* 銃のアニメーション */
+        .gun-demo {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gun {
+            width: 400px;
+            height: 100px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .gun-barrel {
+            width: 250px;
+            height: 20px;
+            background: linear-gradient(180deg, #555 0%, #222 100%);
+            border-radius: 10px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            animation: checkGun 3s infinite;
+        }
+
+        .gun-stock {
+            width: 150px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #654321 100%);
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 40px;
+            right: 0;
+        }
+
+        .gun-trigger {
+            width: 30px;
+            height: 40px;
+            background: #333;
+            border-radius: 5px;
+            position: absolute;
+            top: 60px;
+            right: 120px;
+        }
+
+        @keyframes checkGun {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-10px) rotate(-2deg); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        /* 禁止事項 */
+        .danger-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 3px solid var(--danger);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box h4 {
+            color: var(--danger);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .danger-box h4::before {
+            content: '⚠️';
+            margin-right: 0.5rem;
+        }
+
+        .danger-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .danger-list li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid var(--danger);
+            font-weight: 600;
+        }
+
+        .danger-list li::before {
+            content: '✖';
+            color: var(--danger);
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* フラッシュカード */
+        .flashcard-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .flashcard {
+            perspective: 1000px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard:hover .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .bird-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .bird-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .bird-detail {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* クイズボタン */
+        .quiz-container {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .quiz-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .quiz-button:hover {
+            background: #1a3009;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-image {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: white;
+            border-radius: 10px;
+            margin: 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .quiz-option:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.correct {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .quiz-option.wrong {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        /* 距離目測 */
+        .distance-demo {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .distance-line {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: #333;
+        }
+
+        .distance-marker {
+            position: absolute;
+            bottom: 30px;
+            width: 2px;
+            height: 40px;
+            background: #333;
+        }
+
+        .distance-label {
+            position: absolute;
+            bottom: 5px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .distance-object {
+            position: absolute;
+            bottom: 90px;
+            animation: moveObject 4s infinite;
+        }
+
+        @keyframes moveObject {
+            0%, 100% { left: 50px; transform: scale(1); }
+            50% { left: calc(100% - 100px); transform: scale(0.5); }
+        }
+
+        .deer-icon {
+            font-size: 3rem;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checklist-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .checklist-item input[type="checkbox"]:checked + .checklist-checkbox::after {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ヒントボックス */
+        .tip-box {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            border-left: 5px solid var(--warning);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: #f57c00;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .tip-box h4::before {
+            content: '💡';
+            margin-right: 0.5rem;
+        }
+
+        /* 表 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        .comparison-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        /* スコアボード */
+        .scoreboard {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+            margin: 1rem 0;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .flashcard-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gun {
+                transform: scale(0.7);
+            }
+        }
+
+        /* アクセント要素 */
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+            margin: 2rem 0;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: bold;
+            padding: 0 0.2rem;
+        }
+
+        /* ページトップボタン */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            background: #1a3009;
+            transform: translateY(-5px);
+        }
+    </style>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+</head>
+<body>
+    <!-- ローディングスクリーン -->
+    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+        <div style="text-align: center; color: white;">
+            <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 1.5s infinite;">🎯</div>
+            <div style="font-size: 1.5rem; margin-bottom: 10px;">実技試験ガイド読み込み中...</div>
+            <div style="font-size: 1rem; opacity: 0.8;">お待ちください</div>
+        </div>
+    </div>
+
+    <!-- 戻るボタン（Quality Guardian統一） -->
+    <div class="back-to-home-wrapper">
+        <button class="btn-back-home" onclick="window.location.href='index.html'" aria-label="トップページに戻る" tabindex="1">
+            トップページ
+        </button>
+    </div>
+
+    <header>
+        <h1>狩猟免許実技試験 完全対策ガイド</h1>
+        <p>一発合格のための徹底解説 | 銃の取り扱い・鳥獣判別・距離目測・事故対策</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#gun-handling">銃の取り扱い</a></li>
+                <li><a href="#bird-identification">鳥獣判別</a></li>
+                <li><a href="#distance">距離目測</a></li>
+                <li><a href="#accident">事故対策</a></li>
+                <li><a href="#tips">減点回避のコツ</a></li>
+            </ul>
+        </nav>
+
+        <!-- 銃の取り扱い -->
+        <section id="gun-handling">
+            <h2>銃の取り扱い</h2>
+
+            <div class="gun-demo">
+                <h3 style="text-align: center; color: var(--primary);">銃の構造を理解しよう</h3>
+                <div class="gun">
+                    <div class="gun-barrel"></div>
+                    <div class="gun-stock"></div>
+                    <div class="gun-trigger"></div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: #555;">
+                    ※アニメーションは銃の点検動作を示しています
+                </p>
+            </div>
+
+            <h3>1. 点検の手順（ステップバイステップ）</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">銃を受け取る</div>
+                        <div class="step-detail">
+                            試験官から銃を受け取る際は、<span class="highlight">銃口を安全な方向（上空または地面）</span>に向けます。絶対に人に向けないこと。受け取ったら「ありがとうございます」と一言添えましょう。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">機関部を開く</div>
+                        <div class="step-detail">
+                            銃の中折れレバーまたはボルトを操作して機関部を開きます。この時、<span class="highlight">銃口は依然として安全な方向</span>を向けたまま。開いたら「機関部を開きます」と声に出して宣言します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">薬室を目視確認</div>
+                        <div class="step-detail">
+                            薬室（弾が入る部分）の中を<span class="highlight">目でしっかり確認</span>します。「薬室良し」と声に出して報告。暗い場合は顔を近づけてしっかり見ること。空であることを確実に確認します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">銃身内を確認</div>
+                        <div class="step-detail">
+                            銃口を明るい方向に向け、銃身の中を覗きます。<span class="highlight">異物や詰まりがないか</span>を確認。ライフリング（銃身内の溝）がはっきり見えればOK。「銃身良し」と報告。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <div>
+                        <div class="step-title">機関部を閉じる</div>
+                        <div class="step-detail">
+                            点検が終わったら機関部を元に戻します。「機関部を閉じます」と宣言してから操作。<span class="highlight">カチッと確実に閉まった音を確認</span>します。中途半端に閉じると危険です。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">6</span>
+                    <div>
+                        <div class="step-title">完了報告</div>
+                        <div class="step-detail">
+                            全ての点検が終わったら試験官に向かって「点検完了しました」と報告します。銃口は<span class="highlight">絶対に試験官に向けない</span>よう、上空または地面に向けたまま報告すること。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>試験官が見ているポイント</h4>
+                <p>銃口管理（常に安全な方向を向いているか）、声出し確認（各ステップで報告しているか）、確実な動作（中途半端な操作をしていないか）の3点が特に重視されます。落ち着いて一つ一つ確実に行いましょう。</p>
+            </div>
+
+            <div style="background: #fff3e0; border-left: 4px solid var(--warning); padding: 1.5rem; margin: 2rem 0; border-radius: 5px;">
+                <h4 style="color: var(--warning); margin-bottom: 1rem;">⚠️ よくある間違い・減点ポイント</h4>
+                <div style="line-height: 2;">
+                    <strong>❌ 銃口が一瞬でも人の方向を向く</strong><br>
+                    → 方向転換時に銃口が人を横切らないよう、上空経由で回す<br><br>
+
+                    <strong>❌ 機関部を開く前に「開きます」と言わない</strong><br>
+                    → 操作する「前に」宣言する習慣をつける<br><br>
+
+                    <strong>❌ 薬室確認が目視ではなく「のぞき込んだふり」</strong><br>
+                    → 試験官は見ています。しっかり中を見て確認すること<br><br>
+
+                    <strong>❌ 「薬室良し」の声が小さい・早口</strong><br>
+                    → はっきりと、試験官に聞こえる音量で。焦らず落ち着いて<br><br>
+
+                    <strong>❌ 機関部を閉じるときに「カチッ」の音を確認しない</strong><br>
+                    → 音がするまで確実に閉じる。中途半端は危険<br><br>
+
+                    <strong>❌ 銃を机に置くときに乱暴に置く</strong><br>
+                    → 銃を道具として丁寧に扱う姿勢も評価されます
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff 100%); border-radius: 10px; padding: 1.5rem; margin: 2rem 0;">
+                <h4 style="color: var(--success); margin-bottom: 1rem;">✅ こうすれば満点！</h4>
+                <div style="line-height: 2;">
+                    <strong>1. 銃を受け取る瞬間</strong><br>
+                    「ありがとうございます」→ 銃口を上空に向ける → 「点検を開始します」<br><br>
+
+                    <strong>2. 機関部を開く</strong><br>
+                    「機関部を開きます」→ 開く → 銃口はそのまま上空<br><br>
+
+                    <strong>3. 薬室確認</strong><br>
+                    顔を近づけて中をしっかり見る → 「薬室良し」（はっきりと）<br><br>
+
+                    <strong>4. 銃身確認</strong><br>
+                    明るい方向に銃口を向けて覗く → 「銃身良し」<br><br>
+
+                    <strong>5. 機関部を閉じる</strong><br>
+                    「機関部を閉じます」→ カチッという音を確認 → 銃口は依然として上空<br><br>
+
+                    <strong>6. 完了報告</strong><br>
+                    試験官の方に体を向ける（銃口は上空）→ 「点検完了しました」
+                </div>
+            </div>
+
+            <h3>2. 分解・組立の手順</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">分解前の確認</div>
+                        <div class="step-detail">
+                            分解前に必ず点検手順で<span class="highlight">薬室が空であることを確認</span>します。これを怠ると重大事故につながります。「薬室良し、分解を開始します」と宣言。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">先台を外す</div>
+                        <div class="step-detail">
+                            先台（フォアエンド）のレバーまたはボタンを操作して取り外します。<span class="highlight">部品を落とさないよう両手で</span>しっかり持ちます。外した部品は決められた場所に丁寧に置きます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">銃身を外す</div>
+                        <div class="step-detail">
+                            機関部から銃身を取り外します。重いので<span class="highlight">両手でしっかり支え</span>、ゆっくり引き抜きます。銃身の銃口と薬室側の両方を持って安定させましょう。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">組立（逆順）</div>
+                        <div class="step-detail">
+                            組立は分解の逆順で行います。銃身を差し込み→先台を取り付け→<span class="highlight">カチッと音がするまで確実に</span>組み付けます。最後にもう一度点検を行い、「組立完了しました」と報告。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #e3f2fd; border-left: 4px solid var(--primary); padding: 1.5rem; margin: 2rem 0; border-radius: 5px;">
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">📋 分解・組立の注意事項</h4>
+                <div style="line-height: 2;">
+                    <strong>分解時のポイント：</strong><br>
+                    • 部品を落とすと減点 → 両手でしっかり保持<br>
+                    • 分解した部品は決められた場所に整然と並べる<br>
+                    • 銃身は重いので、片手で持たない<br>
+                    • 無理に力を加えない（壊れる恐れ）<br><br>
+
+                    <strong>組立時のポイント：</strong><br>
+                    • 銃身を差し込むとき、銃口を人に向けないよう注意<br>
+                    • 部品が正しくはまっているか、軽く揺すって確認<br>
+                    • 「カチッ」という音が重要 → 音がしない＝不完全<br>
+                    • 組立後は必ず点検（機関部を開けて薬室確認）<br><br>
+
+                    <strong>試験でよく使われる銃の種類：</strong><br>
+                    • <strong>上下二連式散弾銃</strong>（最も一般的）<br>
+                    • <strong>水平二連式散弾銃</strong><br>
+                    • <strong>ボルトアクション式ライフル銃</strong><br>
+                    ※銃の種類により分解方法が異なるため、試験官の指示に従う
+                </div>
+            </div>
+
+            <h3>3. 装填の手順</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">装填の宣言</div>
+                        <div class="step-detail">
+                            「装填します」と明確に宣言してから開始。<span class="highlight">銃口は必ず安全な方向</span>（上空または地面）を向けたまま操作します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">機関部を開く</div>
+                        <div class="step-detail">
+                            中折れ式なら中折れレバーを、ボルトアクション式ならボルトを操作して薬室を露出させます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">実包を装填</div>
+                        <div class="step-detail">
+                            実包（弾）を<span class="highlight">薬室に確実に挿入</span>します。途中で止まらないよう、奥までしっかり押し込みます。複数装填する場合は一発ずつ確実に。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">機関部を閉じる</div>
+                        <div class="step-detail">
+                            「機関部を閉じます」と宣言してから操作。<span class="highlight">カチッと音を確認</span>。この瞬間から銃は「装填状態」です。より一層の注意が必要。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <div>
+                        <div class="step-title">安全装置の確認</div>
+                        <div class="step-detail">
+                            装填後は<span class="highlight">安全装置（セーフティ）をON</span>にします。「安全装置良し」と確認報告。射撃直前まで安全装置は常にON状態を保ちます。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #ffebee; border-left: 4px solid var(--danger); padding: 1.5rem; margin: 2rem 0; border-radius: 5px;">
+                <h4 style="color: var(--danger); margin-bottom: 1rem;">🚨 装填時の絶対ルール</h4>
+                <div style="line-height: 2;">
+                    <strong>装填＝銃が最も危険な状態になる</strong><br><br>
+
+                    <strong>1. 装填中は銃口管理を最優先</strong><br>
+                    装填操作に集中するあまり、銃口が人の方向に向くのは最悪のミス。常に上空または地面を向けること。<br><br>
+
+                    <strong>2. 安全装置を忘れると一発不合格の可能性</strong><br>
+                    装填後に安全装置をONにしないのは重大な違反。「装填しました」→「安全装置良し」の流れを体に染み込ませる。<br><br>
+
+                    <strong>3. 実包の扱いも評価される</strong><br>
+                    実包を落とす、逆向きに入れようとする、複数同時に持って混乱するなどは減点対象。一発ずつ、確実に。<br><br>
+
+                    <strong>4. 射撃後は即座に排莢</strong><br>
+                    射撃姿勢を解いた後、すぐに排莢（弾を抜く）して安全な状態に戻す。装填状態での移動は厳禁。
+                </div>
+            </div>
+
+            <div style="background: #f3e5f5; border-radius: 10px; padding: 1.5rem; margin: 2rem 0;">
+                <h4 style="color: #7b1fa2; margin-bottom: 1rem;">💡 装填のイメージトレーニング</h4>
+                <p style="line-height: 1.8;">
+                    試験前に以下を頭の中でリハーサルしましょう：<br><br>
+                    <strong>手順1：</strong> 「装填します」と宣言 → 銃口上空<br>
+                    <strong>手順2：</strong> 機関部を開く → 薬室が見える<br>
+                    <strong>手順3：</strong> 実包を取る → 薬室に確実に挿入<br>
+                    <strong>手順4：</strong> 「機関部を閉じます」→ カチッ → 銃口はまだ上空<br>
+                    <strong>手順5：</strong> 安全装置ON → 「安全装置良し」<br>
+                    <strong>手順6：</strong> 射撃姿勢へ移行（この時点でも銃口は人に向けない）<br><br>
+                    このイメージを<span class="highlight">最低10回</span>、頭の中で繰り返すと、本番で自然に体が動きます。
+                </p>
+            </div>
+
+            <h3>4. 射撃姿勢</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>姿勢</th>
+                        <th>特徴</th>
+                        <th>ポイント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>立射</strong></td>
+                        <td>最も一般的な射撃姿勢</td>
+                        <td>
+                            足を肩幅に開き、膝を軽く曲げて安定させる。<br>
+                            銃床を肩にしっかり当て、頬を銃床に密着させる。<br>
+                            前腕でしっかり銃を支え、後ろ手は引き金を操作。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>膝射</strong></td>
+                        <td>片膝をついて安定性を高める</td>
+                        <td>
+                            右利きなら右膝を地面につける。<br>
+                            左肘を左膝に乗せて銃を支える。<br>
+                            立射より安定するが、移動には不向き。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>伏射</strong></td>
+                        <td>最も安定する姿勢</td>
+                        <td>
+                            うつ伏せになり、両肘を地面につける。<br>
+                            銃を両肘で支えるため非常に安定。<br>
+                            実技試験ではあまり使われないが、知識として。
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-radius: 15px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="color: #c2185b; text-align: center; margin-bottom: 1.5rem;">🎯 立射姿勢の完璧なフォーム（テキスト図解）</h4>
+
+                <div style="background: white; border-radius: 10px; padding: 2rem; font-family: monospace; line-height: 1.8;">
+                    <pre style="margin: 0; color: #333;">
+        頭部 👤
+        │  頬を銃床に密着（照準のブレ防止）
+        │  目で照星・照門を確認
+        │
+        ├── 右肩 💪
+        │   │  銃床をしっかり当てる（反動を受け止める）
+        │   │
+        │   └── 右手 👋
+        │       │  引き金に指はかけない（射撃直前まで）
+        │       │  銃床を軽く支える
+        │       │
+        │       └── 銃床 ▓▓▓▓
+        │               │
+        ├── 左手 🤚      │
+        │   │           │
+        │   └── 先台を支える（銃の重心を保つ）
+        │               │
+        │       ▓▓▓▓▓▓▓▓▓ 銃身
+        │       👉 銃口（必ず安全な方向＝上空または地面）
+        │
+        ├── 体幹 🧍
+        │   │  やや前傾姿勢
+        │   │  重心は両足に均等に
+        │   │
+        │   ├── 右足 🦵（やや後ろ）
+        │   └── 左足 🦵（やや前）
+        │       肩幅に開く
+        │       膝を軽く曲げて安定
+                    </pre>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">重要ポイントの詳細</h5>
+                    <div style="line-height: 2;">
+                        <strong>1. 銃床の当て方：</strong><br>
+                        肩の内側（鎖骨の下）にしっかり当てる。外側すぎると反動で肩が痛む。<br><br>
+
+                        <strong>2. 頬の密着：</strong><br>
+                        銃床に頬を押し付ける。これで照準が安定する。隙間があるとブレる。<br><br>
+
+                        <strong>3. 左手の位置：</strong><br>
+                        先台（フォアエンド）の中央よりやや前を持つ。銃の重心を支える。<br><br>
+
+                        <strong>4. 右手の役割：</strong><br>
+                        引き金操作と銃床の保持。力を入れすぎない（リラックス）。<br><br>
+
+                        <strong>5. 足の開き：</strong><br>
+                        肩幅に開き、左足をやや前に出す（右利きの場合）。膝を軽く曲げると安定する。<br><br>
+
+                        <strong>6. 照準の合わせ方：</strong><br>
+                        照星（銃口側の突起）と照門（手元側の穴）を一直線に。その先に獲物。<br><br>
+
+                        <strong>7. 引き金を引く瞬間：</strong><br>
+                        息を吐いた後、止める → ゆっくり引く。急に引くと銃がブレる。
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>射撃姿勢の共通ポイント</h4>
+                <p><strong>1. 銃口管理：</strong>常に安全な方向を向ける<br>
+                <strong>2. 銃床の密着：</strong>肩と頬にしっかり当てる（反動を抑える）<br>
+                <strong>3. 照準：</strong>照星と照門を正しく合わせる<br>
+                <strong>4. 呼吸：</strong>引き金を引く瞬間は息を止める<br>
+                <strong>5. 引き金操作：</strong>ゆっくり引く（急に引くとブレる）</p>
+            </div>
+
+            <div class="danger-box">
+                <h4>絶対にやってはいけないこと</h4>
+                <ul class="danger-list">
+                    <li>銃口を人に向ける（どんな理由があっても絶対禁止）</li>
+                    <li>薬室確認をせずに分解・装填する</li>
+                    <li>安全装置をかけ忘れる</li>
+                    <li>引き金に指をかけたまま移動する（射撃直前まで指は引き金の外）</li>
+                    <li>装填したまま銃を置く（必ず排莢してから置く）</li>
+                    <li>点検時に声出し確認を省略する</li>
+                    <li>機関部が半開きのまま操作を続ける</li>
+                    <li>銃を落とす・乱暴に扱う</li>
+                </ul>
+            </div>
+
+            <div class="accent-line"></div>
+
+            <h3>5. 銃の持ち運び方</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">基本の持ち方</div>
+                        <div class="step-detail">
+                            <span class="highlight">銃口は常に上空または地面</span>を向けます。先台を前手で持ち、銃床を後ろ手で支えます。引き金には絶対に指をかけません（トリガーガード＝引き金の外側に指を置く）。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">移動時の持ち方</div>
+                        <div class="step-detail">
+                            長距離を移動する場合は<span class="highlight">銃を肩に担ぐ</span>こともできます。この場合も銃口は上空を向け、安全装置がONであることを確認。試験では試験官の指示に従います。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">受け渡し時</div>
+                        <div class="step-detail">
+                            銃を他人に渡す時は、<span class="highlight">必ず機関部を開いて薬室が空</span>であることを見せます。「薬室良し、お渡しします」と宣言。受け取る側も同様に確認します。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist">
+                <h4>銃取り扱いチェックリスト（試験前に確認）</h4>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>点検手順を6ステップ全て暗記した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>各ステップで声出し確認することを覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>銃口管理の重要性を理解した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>分解・組立の順序を理解した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>装填手順と安全装置の確認を覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>射撃姿勢の基本を理解した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>絶対禁止事項8つを暗記した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>引き金には射撃直前まで指をかけないことを理解した</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 鳥獣判別 -->
+        <section id="bird-identification">
+            <h2>鳥獣判別対策</h2>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                鳥獣判別は<span class="highlight">5秒以内に狩猟可能か判断</span>する試験です。16種類の動物（鳥・獣）が出題され、狩猟鳥獣・非狩猟鳥獣・保護鳥獣を正確に判別します。誤射は重大事故につながるため、確実な知識が求められます。
+            </p>
+
+            <h3>よく出る16種の徹底解説</h3>
+
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦆</div>
+                            <div class="bird-name">マガモ</div>
+                            <div class="bird-detail">カモ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟鳥獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>オスは頭が緑色、首に白いリング<br>
+                                <strong>判別ポイント：</strong>カルガモと違い、くちばしが黄色<br>
+                                <strong>生息地：</strong>湖沼、河川<br>
+                                <strong>狩猟期間：</strong>11月15日〜2月15日
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦆</div>
+                            <div class="bird-name">カルガモ</div>
+                            <div class="bird-detail">カモ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟鳥獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>オスメス同色（茶褐色）、くちばしの先が黄色<br>
+                                <strong>判別ポイント：</strong>マガモより地味、一年中見られる<br>
+                                <strong>生息地：</strong>湖沼、河川、水田<br>
+                                <strong>注意：</strong>ヒナを連れている時期は撃たない（親鳥も保護対象）
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🐦</div>
+                            <div class="bird-name">キジ</div>
+                            <div class="bird-detail">キジ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟鳥獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>オスは赤い顔、緑色の体、長い尾<br>
+                                <strong>判別ポイント：</strong>日本の国鳥だが狩猟可能<br>
+                                <strong>生息地：</strong>草地、農地、里山<br>
+                                <strong>鳴き声：</strong>「ケーン」という特徴的な声
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🕊️</div>
+                            <div class="bird-name">キジバト</div>
+                            <div class="bird-detail">ハト科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟鳥獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>首に青と白の縞模様、ウロコ状の羽<br>
+                                <strong>判別ポイント：</strong>ドバトより小さく、野生的<br>
+                                <strong>生息地：</strong>森林、公園、住宅地<br>
+                                <strong>鳴き声：</strong>「デデッポーポー」
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦅</div>
+                            <div class="bird-name">カラス</div>
+                            <div class="bird-detail">カラス科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟鳥獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>全身真っ黒、大型<br>
+                                <strong>種類：</strong>ハシブトガラス・ハシボソガラス（両方狩猟可）<br>
+                                <strong>判別ポイント：</strong>ハシブトは額が出っ張る<br>
+                                <strong>注意：</strong>ミヤマガラス（額が白い）は非狩猟鳥獣
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦌</div>
+                            <div class="bird-name">ニホンジカ</div>
+                            <div class="bird-detail">シカ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>茶色、白い斑点（夏毛）、オスは角<br>
+                                <strong>判別ポイント：</strong>お尻の白い毛（鏡と呼ぶ）<br>
+                                <strong>生息地：</strong>森林、山地<br>
+                                <strong>農業被害：</strong>深刻な被害を与えるため駆除対象
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🐗</div>
+                            <div class="bird-name">イノシシ</div>
+                            <div class="bird-detail">イノシシ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>全身茶〜黒色、体毛が粗い、牙<br>
+                                <strong>判別ポイント：</strong>ウリボウ（子供）は縞模様<br>
+                                <strong>生息地：</strong>山地、里山<br>
+                                <strong>注意：</strong>攻撃性が高い。半矢（致命傷を与えられない）は危険
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦊</div>
+                            <div class="bird-name">キツネ</div>
+                            <div class="bird-detail">イヌ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>赤茶色、ふさふさの尾、尖った耳<br>
+                                <strong>判別ポイント：</strong>尾の先が白い<br>
+                                <strong>生息地：</strong>森林、草地<br>
+                                <strong>注意：</strong>エキノコックス（寄生虫）のリスク
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦝</div>
+                            <div class="bird-name">タヌキ</div>
+                            <div class="bird-detail">イヌ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>灰褐色、目の周りが黒い、短い脚<br>
+                                <strong>判別ポイント：</strong>アライグマと似るが、尾に縞がない<br>
+                                <strong>生息地：</strong>森林、里山<br>
+                                <strong>習性：</strong>雑食性、夜行性
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦡</div>
+                            <div class="bird-name">アナグマ</div>
+                            <div class="bird-detail">イタチ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">狩猟獣 ⭕</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>灰色、顔に縦の白黒縞、ずんぐり体型<br>
+                                <strong>判別ポイント：</strong>タヌキより鼻が長い<br>
+                                <strong>生息地：</strong>森林、土を掘って巣を作る<br>
+                                <strong>習性：</strong>雑食性、地中に巣穴
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦆</div>
+                            <div class="bird-name">オシドリ</div>
+                            <div class="bird-detail">カモ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">非狩猟鳥獣 ❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>オスは極彩色（オレンジ・緑・白）<br>
+                                <strong>判別ポイント：</strong>派手な色彩で他のカモと明確に違う<br>
+                                <strong>保護理由：</strong>美しい羽色、個体数減少<br>
+                                <strong>重要：</strong>誤射すると重大な違反
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦢</div>
+                            <div class="bird-name">ハクチョウ</div>
+                            <div class="bird-detail">カモ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">非狩猟鳥獣 ❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>全身白色、長い首、大型<br>
+                                <strong>種類：</strong>オオハクチョウ・コハクチョウ（両方保護）<br>
+                                <strong>判別ポイント：</strong>白くて大きければまず間違いない<br>
+                                <strong>保護理由：</strong>天然記念物レベルの保護鳥
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦅</div>
+                            <div class="bird-name">トビ</div>
+                            <div class="bird-detail">タカ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">非狩猟鳥獣 ❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>茶褐色、尾が扇形、大型猛禽類<br>
+                                <strong>判別ポイント：</strong>「ピーヒョロロロ」と鳴きながら旋回<br>
+                                <strong>生息地：</strong>海岸、河川、山地<br>
+                                <strong>保護理由：</strong>猛禽類は全て保護対象
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦉</div>
+                            <div class="bird-name">フクロウ</div>
+                            <div class="bird-detail">フクロウ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">非狩猟鳥獣 ❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>丸い顔、大きな目、夜行性<br>
+                                <strong>判別ポイント：</strong>耳のような羽角（種による）<br>
+                                <strong>生息地：</strong>森林<br>
+                                <strong>保護理由：</strong>猛禽類、益鳥（ネズミを食べる）
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🐻</div>
+                            <div class="bird-name">ツキノワグマ</div>
+                            <div class="bird-detail">クマ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">非狩猟鳥獣 ❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>黒色、胸に三日月状の白い模様<br>
+                                <strong>判別ポイント：</strong>胸の白いV字模様<br>
+                                <strong>生息地：</strong>山地の森林<br>
+                                <strong>注意：</strong>有害駆除の許可が必要（一般狩猟不可）
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="bird-icon">🦌</div>
+                            <div class="bird-name">カモシカ</div>
+                            <div class="bird-detail">ウシ科 | ホバーで裏面へ</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="bird-name">特別天然記念物 ❌❌</div>
+                            <div class="bird-detail">
+                                <strong>特徴：</strong>灰褐色、短い角（オスメス両方）、ずんぐり<br>
+                                <strong>判別ポイント：</strong>ニホンジカより小型、角が短い<br>
+                                <strong>生息地：</strong>山地の森林<br>
+                                <strong>重要：</strong>誤射は極めて重大な違反、特別天然記念物
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>フラッシュカードの使い方</h4>
+                <p>上のカードにカーソルを乗せる（スマホならタップ）と裏面が表示されます。表→裏を繰り返し見て、<span class="highlight">5秒以内に判別できるまで練習</span>しましょう。特に「狩猟鳥獣と非狩猟鳥獣の境界線」にある種類（オシドリ、トビ、カモシカ）は重点的に。</p>
+            </div>
+
+            <h3>5秒判別クイズ</h3>
+            <div class="quiz-container">
+                <h4>この鳥獣は狩猟可能か？</h4>
+                <div class="scoreboard">
+                    <div>正解数</div>
+                    <div class="score-display" id="score">0 / 0</div>
+                    <div class="timer" id="timer">5.0秒</div>
+                </div>
+                <div class="quiz-image" id="quizImage">
+                    🦆
+                </div>
+                <div id="quizName" style="font-size: 1.5rem; font-weight: bold; margin: 1rem 0; color: var(--primary);">
+                    マガモ
+                </div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="answerQuiz(true)">狩猟可能 ⭕</button>
+                    <button class="quiz-option" onclick="answerQuiz(false)">狩猟不可 ❌</button>
+                </div>
+                <button class="quiz-button" onclick="startQuiz()" style="margin-top: 1.5rem;">クイズを開始</button>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 15px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="color: #e65100; text-align: center; margin-bottom: 1.5rem;">🎯 判別のコツ：5秒で見分ける着眼点</h4>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">1. シルエット（体型）から判別</h5>
+                    <div style="line-height: 2;">
+                        <strong>カモ類（マガモ・カルガモ）：</strong><br>
+                        → 水面に浮かぶ姿勢。首が長く、くちばしが平たい。<br>
+                        → <span class="highlight">オシドリは小さくて丸っこい</span>（婚姻色が派手）<br><br>
+
+                        <strong>カラス：</strong><br>
+                        → 全身真っ黒。くちばしが太い。<br>
+                        → <span class="highlight">ミヤマガラスは額が白い</span>（非狩猟鳥獣）<br><br>
+
+                        <strong>ハト類：</strong><br>
+                        → キジバトは茶色っぽく首に縞模様。<br>
+                        → <span class="highlight">ドバトは灰色で都市部にいる</span>（非狩猟鳥獣）<br><br>
+
+                        <strong>猛禽類（トビ・タカ・フクロウ）：</strong><br>
+                        → くちばしが鋭く曲がっている。爪が大きい。<br>
+                        → <span class="highlight">全て非狩猟鳥獣</span>。触ってもダメ。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">2. 色から判別</h5>
+                    <div style="line-height: 2;">
+                        <strong>マガモ♂：</strong> 頭が光沢のある緑色（目立つ）<br>
+                        <strong>キジ♂：</strong> 赤い顔、緑色の胴体、長い尾<br>
+                        <strong>オシドリ♂：</strong> 銀杏羽（銀杏の葉のような羽）が特徴的<br>
+                        <strong>カモシカ：</strong> 白いあごひげ（ニホンジカにはない）<br>
+                        <strong>イノシシ子供：</strong> 縞模様（うり坊）→ 成長すると消える<br><br>
+
+                        <strong>⚠️ メスは地味な色が多い</strong><br>
+                        マガモ♀、キジ♀は茶色っぽく目立たない。オスの特徴を覚えておくと消去法で判別できる。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">3. 大きさから判別</h5>
+                    <div style="line-height: 2;">
+                        <strong>大型（50cm以上）：</strong><br>
+                        ニホンジカ、イノシシ、ハクチョウ、キジ<br><br>
+
+                        <strong>中型（30～50cm）：</strong><br>
+                        カモ類、カラス、キジバト、タヌキ、キツネ<br><br>
+
+                        <strong>小型（30cm未満）：</strong><br>
+                        オシドリ、ヒヨドリ、ムクドリ<br><br>
+
+                        <span class="highlight">大きさだけで判別しない。必ず複数の特徴を組み合わせて判断。</span>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">4. 生息場所から判別</h5>
+                    <div style="line-height: 2;">
+                        <strong>水辺（池・川）：</strong> カモ類、ハクチョウ<br>
+                        <strong>森林：</strong> キジ、キジバト、ヤマドリ<br>
+                        <strong>山岳地帯：</strong> カモシカ、ツキノワグマ<br>
+                        <strong>農地・草地：</strong> キジ、カラス<br>
+                        <strong>都市部：</strong> ドバト、カラス<br><br>
+
+                        <span class="highlight">「こんな場所にハクチョウはいない」など、生息地の知識も判別のヒント。</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 15px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="color: #3f51b5; text-align: center; margin-bottom: 1.5rem;">🍂 季節による見た目の違い</h4>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">🌸 春（3月〜5月）</h5>
+                    <div style="line-height: 2;">
+                        <strong>カモ類：</strong><br>
+                        • オスの婚姻色（エクリプス羽が抜けて鮮やかに）<br>
+                        • マガモ♂の頭は光沢のある緑色が最も美しい時期<br>
+                        • ペアで行動することが多い<br><br>
+
+                        <strong>キジ：</strong><br>
+                        • オスが縄張りを持ち、鳴き声（ケーンケーン）が頻繁<br>
+                        • メスは地味な色（巣を作るため保護色）<br><br>
+
+                        <strong>シカ・イノシシ：</strong><br>
+                        • 繁殖期終了後、警戒心が薄れる<br>
+                        • イノシシの子供（うり坊）が生まれる時期 → <span class="highlight">親子連れは撃たない</span>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">☀️ 夏（6月〜8月）</h5>
+                    <div style="line-height: 2;">
+                        <strong>カモ類：</strong><br>
+                        • <span class="highlight">エクリプス羽</span>に生え変わる（オスがメスのような地味な色に）<br>
+                        • この時期のマガモ♂は識別が困難 → 慎重に判断<br>
+                        • 換羽期で飛べない個体もいる<br><br>
+
+                        <strong>シカ：</strong><br>
+                        • 夏毛（赤茶色で薄い）<br>
+                        • オスの角が成長中（袋角：柔らかい皮膚に覆われている）<br><br>
+
+                        <strong>イノシシ：</strong><br>
+                        • 子供の縞模様が目立つ → うり坊は保護対象<br><br>
+
+                        <strong>⚠️ 注意：</strong> 夏は狩猟禁止期間（11月15日〜翌年2月15日が狩猟期）
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">🍁 秋（9月〜11月）</h5>
+                    <div style="line-height: 2;">
+                        <strong>カモ類：</strong><br>
+                        • エクリプス羽から婚姻色に戻り始める（10月頃）<br>
+                        • 渡り鳥が飛来し始める（北海道・東北から）<br>
+                        • 群れで行動することが多い<br><br>
+
+                        <strong>キジ：</strong><br>
+                        • 草が枯れて見つけやすくなる<br>
+                        • 狩猟期開始（11月15日〜）<br><br>
+
+                        <strong>シカ：</strong><br>
+                        • 冬毛に生え変わり始める（灰褐色）<br>
+                        • オスの角が完成（骨化して硬くなる）<br>
+                        • 繁殖期（発情期）で警戒心が薄れる<br><br>
+
+                        <strong>イノシシ：</strong><br>
+                        • 子供の縞模様が消え始める（成長）
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">❄️ 冬（12月〜2月）</h5>
+                    <div style="line-height: 2;">
+                        <strong>カモ類：</strong><br>
+                        • オスの婚姻色が完全に美しく（識別しやすい）<br>
+                        • 渡り鳥が最も多い時期<br>
+                        • 氷上や雪上にいることも<br><br>
+
+                        <strong>キジ：</strong><br>
+                        • 雪の中でオスの赤い顔が目立つ<br>
+                        • メスは雪に溶け込み見つけにくい<br><br>
+
+                        <strong>シカ：</strong><br>
+                        • 冬毛（厚く濃い灰褐色）<br>
+                        • オスの角が最大サイズ<br>
+                        • 雪の中で目立つ<br><br>
+
+                        <strong>イノシシ：</strong><br>
+                        • 体毛が長く濃くなる<br>
+                        • 脂肪を蓄え、体が丸く大きく見える<br><br>
+
+                        <strong>カモシカ：</strong><br>
+                        • 冬毛で白っぽく見えることがある → ニホンジカと誤認注意<br>
+                        • <span class="highlight">あごひげ（白い）が決定的な特徴</span>
+                    </div>
+                </div>
+
+                <div style="background: #fff9c4; border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem;">
+                    <h5 style="color: #f57f17; margin-bottom: 1rem;">💡 季節別の注意点まとめ</h5>
+                    <div style="line-height: 2;">
+                        <strong>春：</strong> 親子連れは撃たない（繁殖期）<br>
+                        <strong>夏：</strong> カモのオスがメスのような色に（エクリプス羽）<br>
+                        <strong>秋：</strong> 狩猟期開始。渡り鳥が増える<br>
+                        <strong>冬：</strong> 識別しやすい。カモシカの冬毛に注意<br><br>
+
+                        <span class="highlight">試験では季節を考慮した判別が求められることがあります。</span><br>
+                        例：「この写真は夏に撮影されました。マガモのオスですか？」<br>
+                        → 夏はエクリプス羽の可能性があるため、慎重に判断。
+                    </div>
+                </div>
+            </div>
+
+            <h3>迷った時の対処法</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">少しでも迷ったら撃たない</div>
+                        <div class="step-detail">
+                            「多分〇〇だろう」は禁物。<span class="highlight">100%確信が持てない場合は撃たない</span>のが鉄則。誤射は取り返しがつきません。試験でも「わからない」と答える方が減点は少ないです。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">特徴的な部位を確認</div>
+                        <div class="step-detail">
+                            <strong>カモ類：</strong>くちばしの色、頭の色<br>
+                            <strong>シカとカモシカ：</strong>体型（シカは細身、カモシカはずんぐり）、角の長さ<br>
+                            <strong>タヌキとアライグマ：</strong>尾の縞模様の有無<br>
+                            <strong>猛禽類：</strong>全て保護対象と覚える
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">試験官に質問してもOK</div>
+                        <div class="step-detail">
+                            実技試験中、<span class="highlight">「この写真の状況で〇〇が見えれば判断できますが、見えますか？」と質問可能</span>です。試験官が追加情報をくれる場合があります。黙って間違えるより質問する方が印象も良いです。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>絶対に間違えてはいけない組み合わせ</h4>
+                <ul class="danger-list">
+                    <li><strong>ニホンジカ ⭕ ↔ カモシカ ❌</strong>（特別天然記念物）</li>
+                    <li><strong>マガモ ⭕ ↔ オシドリ ❌</strong>（保護鳥）</li>
+                    <li><strong>キジバト ⭕ ↔ ドバト（種不明のため撃たない）</strong></li>
+                    <li><strong>カラス ⭕ ↔ ミヤマガラス ❌</strong>（額の白斑で判別）</li>
+                    <li><strong>タヌキ ⭕ ↔ アライグマ（特定外来生物だが狩猟法では対象外、自治体による）</strong></li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h4>鳥獣判別チェックリスト（試験前に確認）</h4>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>狩猟鳥獣10種を全て言える</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>非狩猟鳥獣6種を全て言える</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>ニホンジカとカモシカの違いを説明できる</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>マガモとオシドリの違いを説明できる</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>猛禽類は全て保護対象と覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>5秒以内に判別できるまで練習した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>迷ったら撃たない原則を理解した</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 距離目測 -->
+        <section id="distance">
+            <h2>距離の目測</h2>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                距離目測は<span class="highlight">獲物までの距離を正確に判断</span>する能力です。散弾銃の有効射程は約30〜40m。これより遠ければ弾が届かず、近すぎると肉が傷みます。試験では30mの距離を±5m以内で判断できることが求められます。
+            </p>
+
+            <div class="distance-demo">
+                <h3 style="text-align: center; color: var(--secondary); margin-bottom: 2rem;">30mの感覚を掴もう</h3>
+                <div class="distance-object">
+                    <div class="deer-icon">🦌</div>
+                </div>
+                <div class="distance-line"></div>
+                <div class="distance-marker" style="left: 50px;">
+                    <div class="distance-label" style="left: 0;">0m</div>
+                </div>
+                <div class="distance-marker" style="left: 25%;">
+                    <div class="distance-label" style="left: 25%;">10m</div>
+                </div>
+                <div class="distance-marker" style="left: 50%;">
+                    <div class="distance-label" style="left: 50%;">20m</div>
+                </div>
+                <div class="distance-marker" style="left: 75%;">
+                    <div class="distance-label" style="left: 75%;">30m</div>
+                </div>
+                <div class="distance-marker" style="right: 50px;">
+                    <div class="distance-label" style="left: calc(100% - 50px);">40m</div>
+                </div>
+                <p style="position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); color: #555; font-size: 0.9rem;">
+                    ※アニメーションで距離感を視覚化
+                </p>
+            </div>
+
+            <h3>30mを感覚で掴む練習</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">基準となる物を覚える</div>
+                        <div class="step-detail">
+                            <strong>10m：</strong>普通の部屋の対角線、バス停の間隔<br>
+                            <strong>20m：</strong>テニスコート1面分の長さ<br>
+                            <strong>30m：</strong>テニスコート1.5面分、電柱3本分<br>
+                            <strong>40m：</strong>50mプールより少し短い
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">対象物の大きさで判断</div>
+                        <div class="step-detail">
+                            <strong>ニホンジカ（体長150cm）：</strong><br>
+                            - 10mなら細部までくっきり見える<br>
+                            - 30mなら全体像ははっきり、細部はぼやける<br>
+                            - 50mなら輪郭がわかる程度<br><br>
+                            <strong>カモ（体長50cm）：</strong><br>
+                            - 20mなら羽の色がはっきりわかる<br>
+                            - 30mなら種類がギリギリ判別できる<br>
+                            - 40m以上は種類の判別が困難
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">自分の歩幅を知る</div>
+                        <div class="step-detail">
+                            自分の一歩が何cmかを測っておきます。例えば一歩70cmなら、<br>
+                            <strong>30m = 約43歩</strong><br>
+                            <strong>40m = 約57歩</strong><br>
+                            実際に歩いて確認すると、<span class="highlight">距離感が体に染み込みます</span>。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">毎日の生活で練習</div>
+                        <div class="step-detail">
+                            散歩中、電柱や看板を見て「あれは何mか」と予想→歩いて確認、を繰り返します。<span class="highlight">1ヶ月続ければかなり正確</span>に判断できるようになります。Googleマップのスケール機能も便利。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>試験での距離目測のコツ</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>距離</th>
+                        <th>見え方の特徴</th>
+                        <th>判断基準</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>10m</strong></td>
+                        <td>顔の表情まで見える</td>
+                        <td>近すぎる。散弾が広がらず肉が傷む。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>20m</strong></td>
+                        <td>細部まではっきり見える</td>
+                        <td>最適射程距離の下限。確実に仕留められる。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>30m</strong></td>
+                        <td>全体像ははっきり、細部はぼやける</td>
+                        <td>散弾銃の理想的な射程距離。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>40m</strong></td>
+                        <td>輪郭がわかるが詳細は不明</td>
+                        <td>射程限界。これ以上は半矢（致命傷を与えられない）のリスク。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>50m以上</strong></td>
+                        <td>何かいるのはわかるが何か不明</td>
+                        <td>撃つべきではない。鳥獣判別も不可能。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box">
+                <h4>試験官が見ているポイント</h4>
+                <p><strong>1. 判断の根拠：</strong>「なぜその距離だと思ったか」を説明できること<br>
+                <strong>2. 安全マージン：</strong>40m以上なら「遠すぎて撃てない」と判断できること<br>
+                <strong>3. 自信：</strong>迷わずパッと答えられること（長考は減点）<br>
+                <strong>4. 実践的思考：</strong>「この距離なら鳥獣判別もできる」など関連付けられること</p>
+            </div>
+
+            <div class="danger-box">
+                <h4>距離目測でやってはいけないこと</h4>
+                <ul class="danger-list">
+                    <li>根拠なく「だいたい30mです」と答える（理由を聞かれる）</li>
+                    <li>「20mか40mか迷うので30mです」という中途半端な回答</li>
+                    <li>試験官の顔色を伺って答えを変える</li>
+                    <li>「わかりません」と投げ出す（推測でも良いので答える）</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h4>距離目測チェックリスト（試験前に確認）</h4>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>自分の歩幅を測定した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>30mを歩いて体感した（最低5回）</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>基準となる物（電柱、テニスコート等）を覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>毎日の生活で距離予想→確認を実践した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>20〜40mの見え方の違いを理解した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>判断根拠を説明できるよう準備した</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 事故対策 -->
+        <section id="accident">
+            <h2>事故対策（口頭試問）</h2>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                事故対策は<span class="highlight">実際の事故事例をもとにした対応方法</span>を問われます。狩猟中に発生しうる事故を未然に防ぐ知識と、万が一の場合の対処法を身につけます。口頭で答える試験のため、暗記と口頭練習が必須です。
+            </p>
+
+            <h3>よく出る事故事例と対応方法</h3>
+
+            <div class="step-container">
+                <div class="step" style="border-left-color: var(--danger);">
+                    <span class="step-number" style="background: var(--danger);">1</span>
+                    <div>
+                        <div class="step-title" style="color: var(--danger);">誤射事故（人を撃つ）</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 獲物と間違えて仲間を撃つ<br>
+                            - 藪の向こうに人がいるのに気づかず撃つ<br>
+                            - 流れ弾が人に当たる<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ <span class="highlight">獲物を100%識別してから撃つ</span>（少しでも迷ったら撃たない）<br>
+                            ✅ 周囲360度を確認してから撃つ<br>
+                            ✅ 仲間の位置を常に把握（無線・笛で連絡）<br>
+                            ✅ 視界が悪い場所では撃たない<br>
+                            ✅ 目立つ服装（オレンジ色のベスト等）を着用<br><br>
+                            <strong>事故が起きた場合：</strong><br>
+                            ① 直ちに119番通報（救急車を呼ぶ）<br>
+                            ② 110番通報（警察に届け出）<br>
+                            ③ 応急処置（止血、保温、気道確保）<br>
+                            ④ 仲間に連絡（応援を呼ぶ）<br>
+                            ⑤ 絶対にその場を離れない
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" style="border-left-color: var(--danger);">
+                    <span class="step-number" style="background: var(--danger);">2</span>
+                    <div>
+                        <div class="step-title" style="color: var(--danger);">暴発事故</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 銃を落とす<br>
+                            - 引き金に指をかけたまま移動<br>
+                            - 安全装置をかけ忘れ<br>
+                            - 装填したまま藪をかき分ける<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ <span class="highlight">射撃直前まで引き金に指をかけない</span><br>
+                            ✅ 移動時は必ず安全装置をON<br>
+                            ✅ 装填は射撃直前、排莢は射撃直後<br>
+                            ✅ 銃を絶対に落とさない（両手でしっかり保持）<br>
+                            ✅ 藪を越える時は一度排莢<br><br>
+                            <strong>事故が起きた場合：</strong><br>
+                            - 誤射事故と同様の対応<br>
+                            - 自分が怪我した場合は仲間に助けを求める
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" style="border-left-color: var(--danger);">
+                    <span class="step-number" style="background: var(--danger);">3</span>
+                    <div>
+                        <div class="step-title" style="color: var(--danger);">半矢事故（致命傷を与えられず獲物が逃げる）</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 射程距離外から撃つ<br>
+                            - 急所を外す<br>
+                            - 弾のパワー不足<br><br>
+                            <strong>問題点：</strong><br>
+                            - 動物が苦しむ（動物愛護の観点で問題）<br>
+                            - イノシシの場合、逆襲される危険<br>
+                            - 獲物を回収できない（無駄な殺生）<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ <span class="highlight">射程距離（30m以内）を守る</span><br>
+                            ✅ 急所（頭部、心臓）を狙う<br>
+                            ✅ 確実に仕留められる距離まで近づく<br>
+                            ✅ 自分の腕前を過信しない<br><br>
+                            <strong>半矢にしてしまった場合：</strong><br>
+                            ① 血痕を追跡（血の色・量で致命傷か判断）<br>
+                            ② 仲間に連絡（捜索の協力を求める）<br>
+                            ③ 猟犬がいれば追跡させる<br>
+                            ④ 見つけたら速やかにとどめを刺す<br>
+                            ⑤ どうしても見つからなければ警察に届け出
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" style="border-left-color: var(--warning);">
+                    <span class="step-number" style="background: var(--warning);">4</span>
+                    <div>
+                        <div class="step-title" style="color: #f57c00;">転倒・滑落事故</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 山道で足を滑らせる<br>
+                            - 凍結した斜面で転ぶ<br>
+                            - 沢で石が崩れる<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ 登山靴など滑りにくい靴を履く<br>
+                            ✅ 転倒しそうな場所では銃を排莢<br>
+                            ✅ 急斜面は無理に進まない<br>
+                            ✅ 天候が悪い日は中止する判断も重要<br><br>
+                            <strong>事故が起きた場合：</strong><br>
+                            - 骨折等の場合は無理に動かず救助を待つ<br>
+                            - 携帯電話で位置を伝える（GPSアプリ活用）<br>
+                            - 笛を吹いて居場所を知らせる
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" style="border-left-color: var(--warning);">
+                    <span class="step-number" style="background: var(--warning);">5</span>
+                    <div>
+                        <div class="step-title" style="color: #f57c00;">遭難事故</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 道に迷う<br>
+                            - 夕暮れで方向感覚を失う<br>
+                            - 天候急変で視界が悪化<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ <span class="highlight">地図・コンパス・GPSを携帯</span><br>
+                            ✅ 単独行動を避ける<br>
+                            ✅ 入山前に家族に行き先を伝える<br>
+                            ✅ 明るいうちに下山する計画<br>
+                            ✅ 無理な追跡をしない<br><br>
+                            <strong>遭難した場合：</strong><br>
+                            ① むやみに動かず現在地に留まる<br>
+                            ② 110番または家族に連絡<br>
+                            ③ 笛を吹いて居場所を知らせる（3回吹く＝SOSの合図）<br>
+                            ④ 防寒対策（体温低下を防ぐ）<br>
+                            ⑤ 夜を越す場合は焚き火・シェルター
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" style="border-left-color: var(--warning);">
+                    <span class="step-number" style="background: var(--warning);">6</span>
+                    <div>
+                        <div class="step-title" style="color: #f57c00;">心臓発作・熱中症</div>
+                        <div class="step-detail">
+                            <strong>原因：</strong><br>
+                            - 高齢者の激しい運動<br>
+                            - 夏場の脱水<br>
+                            - 持病の悪化<br><br>
+                            <strong>防止策：</strong><br>
+                            ✅ 無理な行動をしない<br>
+                            ✅ こまめな水分補給<br>
+                            ✅ 持病がある場合は薬を携帯<br>
+                            ✅ 体調不良なら無理せず中止<br><br>
+                            <strong>事故が起きた場合：</strong><br>
+                            - 直ちに119番<br>
+                            - AEDがあれば使用（心臓発作の場合）<br>
+                            - 涼しい場所に移動・水分補給（熱中症の場合）
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>口頭試問の模擬練習</h3>
+            <div class="quiz-container">
+                <h4>試験官からの質問例</h4>
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; text-align: left;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q1. 狩猟中に仲間を誤って撃ってしまった場合、あなたはどう対応しますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            直ちに119番通報して救急車を呼び、110番で警察にも届け出ます。同時に応急処置として止血を行い、保温と気道確保に努めます。仲間がいれば応援を呼び、絶対にその場を離れません。また、二次災害を防ぐため、自分の銃を安全な状態（排莢・安全装置ON）にします。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q2. 誤射事故を防ぐためにどのような対策をしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            まず、獲物を100%識別してから撃ちます。少しでも迷ったら撃ちません。また、撃つ前に周囲360度を確認し、仲間の位置を常に把握します。視界が悪い場所では撃たず、仲間とは無線や笛で連絡を取り合います。さらに、目立つオレンジ色のベスト等を着用し、お互いの存在を認識しやすくします。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q3. 半矢にしてしまった場合、どうしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            血痕を追跡し、血の色や量で致命傷かどうかを判断します。仲間に連絡して捜索の協力を求め、猟犬がいれば追跡させます。見つけたら速やかにとどめを刺します。どうしても見つからない場合は、動物の苦痛を最小限にするため、警察に届け出て組織的な捜索を依頼します。今後は射程距離を守り、確実に仕留められる距離まで近づくことを心がけます。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q4. 遭難を防ぐために何を準備しますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            地図、コンパス、GPSを必ず携帯します。入山前に家族や仲間に行き先と帰宅予定時刻を伝えます。単独行動を避け、明るいうちに下山する計画を立てます。また、笛、ライト、非常食、防寒具も持参します。万が一遭難した場合は、むやみに動かず現在地に留まり、110番通報と笛で居場所を知らせます。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q5. 暴発事故を防ぐためにどうしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            射撃直前まで引き金に指をかけず、移動時は必ず安全装置をONにします。装填は射撃直前に行い、射撃後はすぐに排莢します。銃を絶対に落とさないよう両手でしっかり保持し、藪を越える時は一度排莢してから進みます。また、転倒しそうな場所では特に慎重に行動します。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q6. 狩猟中に同行者が転倒して動けなくなった場合、どう対応しますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            まず119番に通報して救急車を呼びます。骨折の可能性がある場合は無理に動かさず、その場で救助を待ちます。携帯電話のGPS機能で正確な位置を伝え、体温低下を防ぐため毛布や上着で保温します。意識がある場合は励まし続け、複数人いれば分担して見張りと連絡係を決めます。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q7. 射程距離（30m）を守る理由は何ですか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            30m以上離れると散弾の威力が弱まり、獲物に致命傷を与えられず半矢になる可能性が高まります。半矢は動物を苦しませるだけでなく、イノシシの場合は逆襲される危険もあります。また、遠距離では獲物の識別も困難になり、誤射のリスクも増します。確実に仕留められる距離まで近づくことが、安全かつ動物愛護の観点からも重要です。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q8. 銃を持ったまま柵を越える場合、どうしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            まず排莢して銃を空の状態にし、安全装置をONにします。銃を先に柵の向こう側に置いてから自分が越えます。絶対に装填したまま柵を越えたり、銃を持ったまま飛び越えたりしません。これは転倒時の暴発を防ぐための基本動作です。同行者がいる場合は、銃を手渡してから越える方法もあります。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q9. 薄暗い藪の中で獲物らしきものが見えました。どうしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            少しでも迷ったら絶対に撃ちません。視界が悪い場所では獲物を100%識別できないため、人や非狩猟鳥獣を撃つリスクがあります。明るい場所に出てくるのを待つか、角度を変えてはっきり見えるまで撃たないことが鉄則です。「撃たない勇気」も優秀なハンターの条件です。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q10. 複数人で狩猟する際、安全のためにどんな工夫をしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            無線機や笛で常に互いの位置を確認し合います。目立つオレンジ色のベストを着用してお互いの存在を認識しやすくします。射撃前には周囲360度を確認し、仲間がいないことを確実に確認します。また、射撃方向を事前に決めておき、絶対にその方向以外には撃ちません。移動する際は声をかけ合い、勝手にバラバラに動きません。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q11. 獲物を撃った後、すぐにやるべきことは何ですか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            まず排莢して銃を安全な状態にし、安全装置をONにします。その後、獲物に近づき、完全に息絶えているか確認します。まだ生きている場合は速やかにとどめを刺します。イノシシの場合は特に注意が必要で、半矢の状態で近づくと襲われる危険があるため、慎重に確認します。獲物を回収したら血抜きを行い、鮮度を保ちます。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q12. 狩猟中に天候が急変した場合、どう判断しますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            視界が悪化した場合や雷雨の場合は、直ちに狩猟を中止して安全な場所に避難します。無理に続行すると誤射や遭難のリスクが高まります。獲物を追跡中でも、安全が最優先です。下山が困難な場合は、その場に留まって天候回復を待ち、家族や警察に連絡します。「引き返す勇気」も重要な判断力です。
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--primary);">Q13. カモシカとニホンジカを間違えて撃たないためにどうしますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            カモシカは白いあごひげと短い角が特徴で、ニホンジカより小型です。また、カモシカは単独行動が多く、ニホンジカは群れで行動します。少しでも迷ったら撃たず、角の形、体の大きさ、行動パターンを総合的に確認します。カモシカは天然記念物のため、誤射すると重大な違反になります。
+                        </div>
+                    </div>
+
+                    <div>
+                        <strong style="color: var(--primary);">Q14. 狩猟免許を持っていても狩猟ができない場所はありますか？</strong>
+                        <div style="margin-top: 0.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                            <strong>模範解答：</strong><br>
+                            鳥獣保護区、休猟区、公園、学校周辺、住宅密集地では狩猟が禁止されています。また、私有地では地主の許可が必要です。狩猟前に必ず地図で禁猟区を確認し、標識がある場所では絶対に狩猟しません。違反すると免許取り消しや罰金の対象になります。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>口頭試問で高評価を得るコツ</h4>
+                <p><strong>1. 順序立てて答える：</strong>「まず〇〇、次に△△、最後に□□」と段階的に説明<br>
+                <strong>2. 具体的に答える：</strong>「注意します」ではなく「獲物を100%識別してから撃ちます」<br>
+                <strong>3. 理由も述べる：</strong>「〇〇するのは△△だからです」と根拠を示す<br>
+                <strong>4. 落ち着いて答える：</strong>焦らず、考えてから答える（5秒の沈黙はOK）<br>
+                <strong>5. わからなければ正直に：</strong>「不勉強で申し訳ありませんが、わかりません」と素直に言う方が印象が良い</p>
+            </div>
+
+            <div class="checklist">
+                <h4>事故対策チェックリスト（試験前に確認）</h4>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>6つの事故事例と対応方法を暗記した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>緊急連絡先（119・110）の順序を覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>応急処置の基本（止血・保温・気道確保）を理解した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>誤射防止の5つの対策を説明できる</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>半矢事故の対応手順を説明できる</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>遭難時の対応（留まる・連絡・笛）を覚えた</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>模範解答を声に出して練習した（最低3回）</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>順序立てて・具体的に答える訓練をした</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 減点を避けるコツ -->
+        <section id="tips">
+            <h2>減点を避けるコツ</h2>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                実技試験は<span class="highlight">減点方式</span>です。70点以上で合格ですが、重大な違反（銃口を人に向ける等）は一発で不合格です。以下のポイントを守れば、確実に合格ラインを超えられます。
+            </p>
+
+            <h3>1. 銃口管理の徹底</h3>
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-title">銃口は常に安全な方向へ</div>
+                    <div class="step-detail">
+                        <span class="highlight">銃口を人に向けることは一発不合格</span>です。試験中、常に銃口が「上空」または「地面」を向いているか意識します。試験官に報告する時も、体は試験官に向けても、銃口は上空です。<br><br>
+                        <strong>チェックポイント：</strong><br>
+                        ✅ 銃を受け取る瞬間から銃口の向きを意識<br>
+                        ✅ 方向転換する時も銃口が人を通過しない<br>
+                        ✅ 銃を置く時も銃口は安全な方向
+                    </div>
+                </div>
+            </div>
+
+            <h3>2. 報告のタイミング</h3>
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-title">各ステップで声に出す</div>
+                    <div class="step-detail">
+                        試験官は「この人は安全意識があるか」を見ています。<span class="highlight">声に出して確認・報告することで、安全意識の高さをアピール</span>します。<br><br>
+                        <strong>報告すべき場面：</strong><br>
+                        ✅ 「点検を開始します」<br>
+                        ✅ 「機関部を開きます」<br>
+                        ✅ 「薬室良し」<br>
+                        ✅ 「銃身良し」<br>
+                        ✅ 「機関部を閉じます」<br>
+                        ✅ 「点検完了しました」<br>
+                        ✅ 「装填します」<br>
+                        ✅ 「安全装置良し」<br><br>
+                        <strong>ポイント：</strong>小声ではなく、はっきりと。試験官に聞こえる音量で。
+                    </div>
+                </div>
+            </div>
+
+            <h3>3. 焦らない心構え</h3>
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-title">速さより正確さ</div>
+                    <div class="step-detail">
+                        試験は<span class="highlight">速さを競うものではありません</span>。焦って手順を飛ばしたり、銃を落としたりする方が減点が大きいです。ゆっくり確実に行いましょう。<br><br>
+                        <strong>焦りを防ぐコツ：</strong><br>
+                        ✅ 深呼吸してから開始<br>
+                        ✅ 「次は何だっけ？」と思ったら一旦止まって考える<br>
+                        ✅ 試験官は敵ではなく味方（わからなければ質問OK）<br>
+                        ✅ 1つのステップが終わったら心の中で「OK、次」と確認<br><br>
+                        <strong>制限時間：</strong>実技試験に厳密な制限時間はありません（常識的な範囲で）。5分かかっても問題なしです。
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. 細かいマナー・態度</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>良い例 ⭕</th>
+                        <th>悪い例 ❌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>服装</strong></td>
+                        <td>動きやすい服装、滑りにくい靴</td>
+                        <td>サンダル、ヒール、ジャージ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>挨拶</strong></td>
+                        <td>「よろしくお願いします」「ありがとうございました」</td>
+                        <td>無言で開始・終了</td>
+                    </tr>
+                    <tr>
+                        <td><strong>銃の扱い</strong></td>
+                        <td>丁寧に、両手でしっかり保持</td>
+                        <td>乱暴に、片手で持つ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>質問への回答</strong></td>
+                        <td>「はい」「いいえ」をはっきり、理由も述べる</td>
+                        <td>曖昧な返事、小声</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ミスした時</strong></td>
+                        <td>「申し訳ありません、やり直します」</td>
+                        <td>ごまかす、無視する</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="background: linear-gradient(135deg, #fffde7 0%, #fff59d 100%); border-radius: 15px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="color: #f57f17; text-align: center; margin-bottom: 1.5rem;">📌 ケーススタディ：こうして減点された</h4>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--danger); margin-bottom: 1rem;">❌ ケース1：銃口が一瞬、試験官の方向を向いた</h5>
+                    <div style="line-height: 2;">
+                        <strong>状況：</strong><br>
+                        点検完了後、試験官に「完了しました」と報告する際、体ごと振り返った。その時、銃口が一瞬、試験官を横切った。<br><br>
+                        <strong>結果：</strong><br>
+                        <span class="highlight" style="color: var(--danger);">一発不合格</span>（銃口を人に向けることは重大違反）<br><br>
+                        <strong>正しい動作：</strong><br>
+                        報告する時は、<span class="highlight">銃口は上空のまま</span>、体だけを試験官の方に向ける。または、銃口を地面に向けてから回転する。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--danger); margin-bottom: 1rem;">❌ ケース2：薬室確認が不十分</h5>
+                    <div style="line-height: 2;">
+                        <strong>状況：</strong><br>
+                        機関部を開いたが、薬室を「チラ見」しただけで「薬室良し」と言った。実際には中をしっかり覗き込んでいない。<br><br>
+                        <strong>結果：</strong><br>
+                        <span class="highlight" style="color: var(--warning);">減点5点</span>（安全確認が不十分）<br><br>
+                        <strong>正しい動作：</strong><br>
+                        顔を近づけて、薬室の奥までしっかり目視確認。暗い場合は角度を変えて確認。「確実に空である」と確信してから「薬室良し」。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--danger); margin-bottom: 1rem;">❌ ケース3：装填後に安全装置を確認しなかった</h5>
+                    <div style="line-height: 2;">
+                        <strong>状況：</strong><br>
+                        装填して機関部を閉じた後、安全装置をONにしたが「安全装置良し」と報告しなかった。<br><br>
+                        <strong>結果：</strong><br>
+                        <span class="highlight" style="color: var(--warning);">減点10点</span>（安全装置の確認報告は必須）<br><br>
+                        <strong>正しい動作：</strong><br>
+                        安全装置をONにしたら、必ず<span class="highlight">「安全装置良し」と声に出して確認</span>。試験官に聞こえる音量で。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--danger); margin-bottom: 1rem;">❌ ケース4：先台を落とした</h5>
+                    <div style="line-height: 2;">
+                        <strong>状況：</strong><br>
+                        分解中、先台を片手で持って操作したため、バランスを崩して床に落とした。<br><br>
+                        <strong>結果：</strong><br>
+                        <span class="highlight" style="color: var(--warning);">減点5点</span>（銃の扱いが不適切）<br><br>
+                        <strong>正しい動作：</strong><br>
+                        部品は必ず<span class="highlight">両手で持つ</span>。外した部品は決められた場所に丁寧に置く。焦らず、落ち着いて。
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem;">
+                    <h5 style="color: var(--danger); margin-bottom: 1rem;">❌ ケース5：鳥獣判別で「多分〇〇」と答えた</h5>
+                    <div style="line-height: 2;">
+                        <strong>状況：</strong><br>
+                        カモの写真を見て、「多分マガモだと思います」と答えた。実際はオシドリだった。<br><br>
+                        <strong>結果：</strong><br>
+                        <span class="highlight" style="color: var(--warning);">減点5点</span>（確信がないのに撃つ姿勢は危険）<br><br>
+                        <strong>正しい答え方：</strong><br>
+                        100%確信がない場合は、<span class="highlight">「カモ類に見えますが、確信が持てないため撃ちません」</span>と答える。「わからないから撃たない」は正解。
+                    </div>
+                </div>
+            </div>
+
+            <h3>5. よくある減点ポイント</h3>
+            <div class="danger-box">
+                <h4>これをやると確実に減点される</h4>
+                <ul class="danger-list">
+                    <li><strong>銃口を人に向ける</strong>（一発不合格の可能性）</li>
+                    <li><strong>薬室確認を省略</strong>（重大な減点）</li>
+                    <li><strong>安全装置の確認忘れ</strong>（大きな減点）</li>
+                    <li><strong>引き金に指をかけたまま移動</strong>（大きな減点）</li>
+                    <li><strong>声出し確認をしない</strong>（中程度の減点）</li>
+                    <li><strong>機関部が半開き</strong>（中程度の減点）</li>
+                    <li><strong>銃を落とす・ぶつける</strong>（大きな減点）</li>
+                    <li><strong>装填したまま銃を置く</strong>（重大な減点）</li>
+                    <li><strong>試験官の指示を無視</strong>（大きな減点）</li>
+                    <li><strong>鳥獣判別を間違える</strong>（1問あたり中程度の減点、重大な誤りは大減点）</li>
+                </ul>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%); border-radius: 15px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="color: #01579b; text-align: center; margin-bottom: 1.5rem;">📋 試験前日・当日チェックリスト</h4>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">前日にやること</h5>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        受験票の場所を確認（印刷または画面で表示できるか）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        会場までの経路と所要時間を確認
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        動きやすい服装を準備（ジーンズ・スニーカー等）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        筆記用具・身分証明書を準備
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        このページを最初から最後まで読み直す
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        点検の6ステップを声に出して練習（3回）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        口頭試問の模範解答を3つ暗記
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        22時までに就寝（睡眠不足は判断ミスの元）
+                    </label>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">当日朝（出発前）</h5>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        受験票を持った
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        筆記用具を持った（鉛筆・消しゴム）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        身分証明書を持った（運転免許証等）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        飲み物を持った（緊張で喉が渇く）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        時計を持った（試験時間の確認用）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        朝食を食べた（空腹だと集中できない）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        会場に30分前到着の予定で出発
+                    </label>
+                </div>
+
+                <div style="background: white; border-radius: 10px; padding: 1.5rem;">
+                    <h5 style="color: var(--primary); margin-bottom: 1rem;">待機中（試験直前）</h5>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        トイレを済ませた
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        深呼吸を3回した（緊張をほぐす）
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        「銃口管理」「声出し確認」「焦らない」を心に刻んだ
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        点検の6ステップを頭の中でリハーサルした
+                    </label>
+                    <label style="display: block; margin-bottom: 0.8rem;">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        「自分なら絶対できる」と自己暗示をかけた
+                    </label>
+                </div>
+            </div>
+
+            <h3>6. 試験当日の流れ</h3>
+            <div class="step-container">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">試験会場に早めに到着</div>
+                        <div class="step-detail">
+                            試験開始30分前には到着しましょう。トイレを済ませ、深呼吸してリラックス。試験の流れを頭の中でシミュレーション。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">試験官の説明をよく聞く</div>
+                        <div class="step-detail">
+                            試験官が「これから〇〇をしてください」と指示します。聞き逃したら「すみません、もう一度お願いします」と聞き返してOK。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">実技試験（銃の取り扱い）</div>
+                        <div class="step-detail">
+                            点検→分解→組立→装填→射撃姿勢の順で行います。各ステップで声出し確認を忘れずに。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">鳥獣判別</div>
+                        <div class="step-detail">
+                            写真または模型を見て、5秒以内に「狩猟可能」「狩猟不可」を答えます。迷ったら「わかりません」と答える方が無難。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <div>
+                        <div class="step-title">距離目測</div>
+                        <div class="step-detail">
+                            「あの目標物までの距離は？」と聞かれます。判断根拠も一緒に答えると好印象。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">6</span>
+                    <div>
+                        <div class="step-title">口頭試問（事故対策）</div>
+                        <div class="step-detail">
+                            「〇〇の事故が起きたらどうしますか？」という質問に答えます。順序立てて、具体的に答えましょう。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">7</span>
+                    <div>
+                        <div class="step-title">試験終了</div>
+                        <div class="step-detail">
+                            「お疲れ様でした」と挨拶して退室。結果は後日郵送されます（即日合格発表の場合もあり）。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>試験前日にやるべきこと</h4>
+                <p><strong>復習：</strong>このページを最初から最後まで読み直す<br>
+                <strong>シミュレーション：</strong>頭の中で試験の流れを3回イメージ<br>
+                <strong>早めの就寝：</strong>睡眠不足は判断ミスの元<br>
+                <strong>持ち物確認：</strong>受験票、筆記用具、身分証明書<br>
+                <strong>リラックス：</strong>焦らず、落ち着いて。ほとんどの人が合格します</p>
+            </div>
+
+            <div class="checklist">
+                <h4>最終チェックリスト（試験当日朝）</h4>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>受験票を持った</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>筆記用具を持った</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>身分証明書を持った</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>動きやすい服装を着た</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>銃口管理の重要性を再確認した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>声出し確認をすることを再確認した</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>焦らず落ち着いて行うことを心に刻んだ</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checklist-checkbox"></span>
+                    <span>深呼吸して、自分を信じる</span>
+                </label>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center;">
+                <h3 style="color: var(--success); font-size: 2rem; margin-bottom: 1rem;">あなたなら必ず合格できます</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #2e7d32;">
+                    このガイドを読んだあなたは、もう十分な知識を持っています。<br>
+                    後は落ち着いて、一つ一つ確実に実行するだけ。<br>
+                    <span class="highlight">安全第一、焦らず丁寧に。</span><br>
+                    試験官もあなたの合格を願っています。<br>
+                    自信を持って臨んでください。<strong>応援しています！</strong>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div class="back-to-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // ページトップボタン
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 鳥獣判別クイズ
+        const quizData = [
+            { icon: '🦆', name: 'マガモ', huntable: true },
+            { icon: '🦆', name: 'カルガモ', huntable: true },
+            { icon: '🐦', name: 'キジ', huntable: true },
+            { icon: '🕊️', name: 'キジバト', huntable: true },
+            { icon: '🦅', name: 'カラス', huntable: true },
+            { icon: '🦌', name: 'ニホンジカ', huntable: true },
+            { icon: '🐗', name: 'イノシシ', huntable: true },
+            { icon: '🦊', name: 'キツネ', huntable: true },
+            { icon: '🦝', name: 'タヌキ', huntable: true },
+            { icon: '🦡', name: 'アナグマ', huntable: true },
+            { icon: '🦆', name: 'オシドリ', huntable: false },
+            { icon: '🦢', name: 'ハクチョウ', huntable: false },
+            { icon: '🦅', name: 'トビ', huntable: false },
+            { icon: '🦉', name: 'フクロウ', huntable: false },
+            { icon: '🐻', name: 'ツキノワグマ', huntable: false },
+            { icon: '🦌', name: 'カモシカ', huntable: false }
+        ];
+
+        let currentQuiz = null;
+        let score = 0;
+        let total = 0;
+        let timer = null;
+        let timeLeft = 5.0;
+
+        function startQuiz() {
+            currentQuiz = quizData[Math.floor(Math.random() * quizData.length)];
+            document.getElementById('quizImage').textContent = currentQuiz.icon;
+            document.getElementById('quizName').textContent = currentQuiz.name;
+
+            // ボタンをリセット
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+                opt.disabled = false;
+            });
+
+            // タイマー開始
+            timeLeft = 5.0;
+            if (timer) clearInterval(timer);
+            timer = setInterval(() => {
+                timeLeft -= 0.1;
+                document.getElementById('timer').textContent = timeLeft.toFixed(1) + '秒';
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('timer').textContent = '時間切れ！';
+                    document.getElementById('timer').style.color = 'var(--danger)';
+                    options.forEach(opt => opt.disabled = true);
+                }
+            }, 100);
+        }
+
+        function answerQuiz(userAnswer) {
+            if (!currentQuiz) return;
+            if (timeLeft <= 0) return;
+
+            clearInterval(timer);
+            total++;
+
+            const options = document.querySelectorAll('.quiz-option');
+            if (userAnswer === currentQuiz.huntable) {
+                score++;
+                options[userAnswer ? 0 : 1].classList.add('correct');
+            } else {
+                options[userAnswer ? 0 : 1].classList.add('wrong');
+                options[currentQuiz.huntable ? 0 : 1].classList.add('correct');
+            }
+
+            document.getElementById('score').textContent = score + ' / ' + total;
+            options.forEach(opt => opt.disabled = true);
+
+            // 3秒後に次の問題
+            setTimeout(startQuiz, 3000);
+        }
+
+        // スムーズスクロール
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ローディングスクリーン非表示
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s';
+                    setTimeout(() => loadingScreen.style.display = 'none', 500);
+                }
+            }, 300);
+        });
+    </script>
+    <script src="ui-polish.js"></script>
+    <script src="global-navigation.js"></script>
+</body>
+</html>

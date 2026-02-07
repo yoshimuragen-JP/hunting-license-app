@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>パフォーマンステスト - 狩猟免許試験アプリ</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+        .result-card {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .metric:last-child {
+            border-bottom: none;
+        }
+        .metric-name {
+            font-weight: 600;
+            color: #333;
+        }
+        .metric-value {
+            font-family: monospace;
+            color: #2e7d32;
+        }
+        .good { color: #27ae60; }
+        .warning { color: #f39c12; }
+        .error { color: #e74c3c; }
+        button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 パフォーマンステスト</h1>
+    <p>このページは、アプリのパフォーマンスを測定します。</p>
+
+    <div class="result-card">
+        <h2>自動テスト実行</h2>
+        <button onclick="runAllTests()">全テストを実行</button>
+        <button onclick="testDataLoading()">データ読み込みテスト</button>
+        <button onclick="testMemoryUsage()">メモリ使用量テスト</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        const results = document.getElementById('results');
+
+        async function runAllTests() {
+            results.innerHTML = '<p>テスト実行中...</p>';
+
+            await testPageLoad();
+            await testDataLoading();
+            await testMemoryUsage();
+            await testLocalStorage();
+
+            results.innerHTML += '<div class="result-card"><h3>✅ 全テスト完了</h3></div>';
+        }
+
+        async function testPageLoad() {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = '<h3>ページ読み込みパフォーマンス</h3>';
+
+            if ('performance' in window) {
+                const perfData = performance.getEntriesByType('navigation')[0];
+
+                card.innerHTML += `
+                    <div class="metric">
+                        <span class="metric-name">DOM読み込み時間</span>
+                        <span class="metric-value ${perfData.domContentLoadedEventEnd < 1000 ? 'good' : 'warning'}">
+                            ${Math.round(perfData.domContentLoadedEventEnd)}ms
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">完全読み込み時間</span>
+                        <span class="metric-value ${perfData.loadEventEnd < 2000 ? 'good' : 'warning'}">
+                            ${Math.round(perfData.loadEventEnd)}ms
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">転送サイズ</span>
+                        <span class="metric-value">
+                            ${Math.round(perfData.transferSize / 1024)}KB
+                        </span>
+                    </div>
+                `;
+            } else {
+                card.innerHTML += '<p>Performance APIが利用できません</p>';
+            }
+
+            results.appendChild(card);
+        }
+
+        async function testDataLoading() {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = '<h3>データ読み込みテスト</h3>';
+
+            const startTime = performance.now();
+
+            try {
+                // quiz-database.jsonを読み込み
+                const quizResponse = await fetch('../quiz-database.json');
+                const quizData = await quizResponse.json();
+
+                const quizLoadTime = performance.now() - startTime;
+
+                // hunting-license-data.jsonを読み込み
+                const huntingStart = performance.now();
+                const huntingResponse = await fetch('../hunting-license-data.json');
+                const huntingData = await huntingResponse.json();
+                const huntingLoadTime = performance.now() - huntingStart;
+
+                card.innerHTML += `
+                    <div class="metric">
+                        <span class="metric-name">quiz-database.json</span>
+                        <span class="metric-value ${quizLoadTime < 100 ? 'good' : 'warning'}">
+                            ${Math.round(quizLoadTime)}ms (${quizData.quizzes.length}問)
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">hunting-license-data.json</span>
+                        <span class="metric-value ${huntingLoadTime < 100 ? 'good' : 'warning'}">
+                            ${Math.round(huntingLoadTime)}ms
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">合計読み込み時間</span>
+                        <span class="metric-value ${quizLoadTime + huntingLoadTime < 200 ? 'good' : 'warning'}">
+                            ${Math.round(quizLoadTime + huntingLoadTime)}ms
+                        </span>
+                    </div>
+                `;
+            } catch (error) {
+                card.innerHTML += `<p class="error">エラー: ${error.message}</p>`;
+            }
+
+            results.appendChild(card);
+        }
+
+        async function testMemoryUsage() {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = '<h3>メモリ使用量</h3>';
+
+            if ('memory' in performance) {
+                const memory = performance.memory;
+                const usedMB = (memory.usedJSHeapSize / 1024 / 1024).toFixed(2);
+                const totalMB = (memory.totalJSHeapSize / 1024 / 1024).toFixed(2);
+                const limitMB = (memory.jsHeapSizeLimit / 1024 / 1024).toFixed(2);
+
+                card.innerHTML += `
+                    <div class="metric">
+                        <span class="metric-name">使用中メモリ</span>
+                        <span class="metric-value ${usedMB < 50 ? 'good' : 'warning'}">
+                            ${usedMB} MB
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">割り当て済みメモリ</span>
+                        <span class="metric-value">${totalMB} MB</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">メモリ上限</span>
+                        <span class="metric-value">${limitMB} MB</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">使用率</span>
+                        <span class="metric-value ${(usedMB / limitMB * 100) < 50 ? 'good' : 'warning'}">
+                            ${((usedMB / limitMB) * 100).toFixed(1)}%
+                        </span>
+                    </div>
+                `;
+            } else {
+                card.innerHTML += '<p>Memory APIが利用できません（Chromeのみ対応）</p>';
+            }
+
+            results.appendChild(card);
+        }
+
+        async function testLocalStorage() {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = '<h3>LocalStorage</h3>';
+
+            try {
+                // 保存されているデータサイズを計算
+                let totalSize = 0;
+                for (let key in localStorage) {
+                    if (localStorage.hasOwnProperty(key)) {
+                        totalSize += localStorage[key].length + key.length;
+                    }
+                }
+
+                const sizeKB = (totalSize / 1024).toFixed(2);
+                const limitKB = 5120; // 約5MB
+
+                card.innerHTML += `
+                    <div class="metric">
+                        <span class="metric-name">保存データサイズ</span>
+                        <span class="metric-value ${sizeKB < 1000 ? 'good' : 'warning'}">
+                            ${sizeKB} KB
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">使用率</span>
+                        <span class="metric-value ${(sizeKB / limitKB * 100) < 50 ? 'good' : 'warning'}">
+                            ${((sizeKB / limitKB) * 100).toFixed(1)}%
+                        </span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-name">保存アイテム数</span>
+                        <span class="metric-value">${Object.keys(localStorage).length}</span>
+                    </div>
+                `;
+
+                // 保存されているキー一覧
+                const keys = Object.keys(localStorage).filter(key =>
+                    key.includes('hunting') || key.includes('game') || key.includes('week')
+                );
+
+                if (keys.length > 0) {
+                    card.innerHTML += '<h4 style="margin-top: 20px;">保存されているデータ:</h4>';
+                    keys.forEach(key => {
+                        card.innerHTML += `<div class="metric"><span>${key}</span></div>`;
+                    });
+                }
+
+            } catch (error) {
+                card.innerHTML += `<p class="error">エラー: ${error.message}</p>`;
+            }
+
+            results.appendChild(card);
+        }
+
+        // ページ読み込み時に自動実行
+        window.addEventListener('load', () => {
+            console.log('📊 パフォーマンステストページ読み込み完了');
+        });
+    </script>
+</body>
+</html>

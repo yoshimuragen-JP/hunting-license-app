@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage統一テスト</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5f2d;
+            border-bottom: 3px solid #2c5f2d;
+            padding-bottom: 10px;
+        }
+        button {
+            background: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #1e4620;
+        }
+        button.danger {
+            background: #dc3545;
+        }
+        button.danger:hover {
+            background: #c82333;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            max-height: 400px;
+            border: 1px solid #dee2e6;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 LocalStorage統一テスト</h1>
+
+        <div class="section">
+            <h2>現在のデータ</h2>
+            <button onclick="displayCurrentData()">データを表示</button>
+            <button onclick="checkIntegrity()">整合性チェック</button>
+            <div id="current-data"></div>
+        </div>
+
+        <div class="section">
+            <h2>テストアクション</h2>
+            <button onclick="simulateGamePlay()">ゲームプレイをシミュレート</button>
+            <button onclick="simulateExam()">模擬試験をシミュレート</button>
+            <button onclick="simulateQuiz()">クイズをシミュレート</button>
+        </div>
+
+        <div class="section">
+            <h2>データ管理</h2>
+            <button onclick="migrateOldData()">旧データを移行</button>
+            <button class="danger" onclick="clearAllData()">全データをクリア</button>
+        </div>
+
+        <div class="section">
+            <h2>ログ</h2>
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logDiv.insertBefore(statusDiv, logDiv.firstChild);
+        }
+
+        function displayCurrentData() {
+            const huntingProgress = JSON.parse(localStorage.getItem('huntingProgress'));
+            const huntingGameStats = JSON.parse(localStorage.getItem('huntingGameStats'));
+            const examHistory = JSON.parse(localStorage.getItem('examHistory'));
+
+            const display = document.getElementById('current-data');
+            display.innerHTML = `
+                <h3>統一データ構造 (huntingProgress)</h3>
+                <pre>${JSON.stringify(huntingProgress, null, 2)}</pre>
+
+                <h3>旧データ (huntingGameStats)</h3>
+                <pre>${huntingGameStats ? JSON.stringify(huntingGameStats, null, 2) : '存在しません'}</pre>
+
+                <h3>旧データ (examHistory)</h3>
+                <pre>${examHistory ? JSON.stringify(examHistory, null, 2) : '存在しません'}</pre>
+            `;
+
+            log('データを表示しました', 'success');
+        }
+
+        function checkIntegrity() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress'));
+
+            if (!progress) {
+                log('⚠️ huntingProgressが存在しません', 'error');
+                return;
+            }
+
+            const checks = [
+                { name: 'totalQuestions', exists: typeof progress.totalQuestions === 'number' },
+                { name: 'correctAnswers', exists: typeof progress.correctAnswers === 'number' },
+                { name: 'categories', exists: progress.categories && typeof progress.categories === 'object' },
+                { name: 'quizHistory', exists: Array.isArray(progress.quizHistory) },
+                { name: 'gameStats', exists: progress.gameStats && typeof progress.gameStats === 'object' },
+                { name: 'examHistory', exists: Array.isArray(progress.examHistory) }
+            ];
+
+            const allValid = checks.every(check => check.exists);
+
+            if (allValid) {
+                log('✅ データ整合性チェック: 全て正常', 'success');
+
+                // カテゴリの確認
+                const requiredCategories = ['law', 'tools', 'animals', 'management', 'practical'];
+                const hasAllCategories = requiredCategories.every(cat =>
+                    progress.categories[cat] &&
+                    typeof progress.categories[cat].correct === 'number' &&
+                    typeof progress.categories[cat].total === 'number'
+                );
+
+                if (hasAllCategories) {
+                    log('✅ 全カテゴリが正しく定義されています', 'success');
+                } else {
+                    log('⚠️ 一部のカテゴリが不足しています', 'warning');
+                }
+            } else {
+                const failed = checks.filter(c => !c.exists).map(c => c.name);
+                log(`❌ データ整合性チェック失敗: ${failed.join(', ')}`, 'error');
+            }
+        }
+
+        function simulateGamePlay() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress')) || initProgress();
+
+            // ゲームプレイをシミュレート
+            progress.totalQuestions += 5;
+            progress.correctAnswers += 4;
+            progress.studyTime += 120; // 2分
+            progress.lastStudyDate = new Date().toISOString();
+
+            // カテゴリ別進捗
+            progress.categories.law.total += 2;
+            progress.categories.law.correct += 2;
+            progress.categories.animals.total += 3;
+            progress.categories.animals.correct += 2;
+
+            // ゲーム統計
+            progress.gameStats.totalGames += 1;
+            progress.gameStats.highScore = Math.max(progress.gameStats.highScore || 0, 550);
+            progress.gameStats.maxCombo = Math.max(progress.gameStats.maxCombo || 0, 4);
+
+            // 学習履歴
+            progress.quizHistory.push({
+                date: new Date().toISOString(),
+                type: 'game',
+                mode: 'quickMatch',
+                score: 550,
+                correctCount: 4,
+                totalQuestions: 5,
+                timeSpent: 120,
+                maxCombo: 4
+            });
+
+            localStorage.setItem('huntingProgress', JSON.stringify(progress));
+            log('✅ ゲームプレイをシミュレートしました（5問中4問正解）', 'success');
+            displayCurrentData();
+        }
+
+        function simulateExam() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress')) || initProgress();
+
+            // 模擬試験をシミュレート
+            progress.totalQuestions += 30;
+            progress.correctAnswers += 24;
+            progress.studyTime += 3600; // 60分
+            progress.lastStudyDate = new Date().toISOString();
+
+            // カテゴリ別進捗
+            Object.keys(progress.categories).forEach(cat => {
+                progress.categories[cat].total += 6;
+                progress.categories[cat].correct += 5;
+            });
+
+            // 試験履歴
+            progress.examHistory.push({
+                date: new Date().toISOString(),
+                score: 80,
+                correctCount: 24,
+                totalQuestions: 30,
+                timeUsed: 3600,
+                passed: true,
+                categoryStats: {}
+            });
+
+            // 学習履歴
+            progress.quizHistory.push({
+                date: new Date().toISOString(),
+                type: 'exam',
+                score: 80,
+                correctCount: 24,
+                totalQuestions: 30,
+                timeSpent: 3600,
+                passed: true
+            });
+
+            localStorage.setItem('huntingProgress', JSON.stringify(progress));
+            log('✅ 模擬試験をシミュレートしました（30問中24問正解、合格）', 'success');
+            displayCurrentData();
+        }
+
+        function simulateQuiz() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress')) || initProgress();
+
+            // クイズをシミュレート
+            progress.totalQuestions += 10;
+            progress.correctAnswers += 8;
+            progress.studyTime += 300; // 5分
+            progress.lastStudyDate = new Date().toISOString();
+
+            // カテゴリ別進捗
+            progress.categories.tools.total += 5;
+            progress.categories.tools.correct += 4;
+            progress.categories.practical.total += 5;
+            progress.categories.practical.correct += 4;
+
+            // 学習履歴
+            progress.quizHistory.push({
+                date: new Date().toISOString(),
+                type: 'practice',
+                score: 80,
+                correctCount: 8,
+                totalQuestions: 10,
+                timeSpent: 300
+            });
+
+            localStorage.setItem('huntingProgress', JSON.stringify(progress));
+            log('✅ クイズをシミュレートしました（10問中8問正解）', 'success');
+            displayCurrentData();
+        }
+
+        function migrateOldData() {
+            const oldGameStats = JSON.parse(localStorage.getItem('huntingGameStats'));
+            const oldExamHistory = JSON.parse(localStorage.getItem('examHistory'));
+            const progress = JSON.parse(localStorage.getItem('huntingProgress')) || initProgress();
+
+            let migrated = false;
+
+            if (oldGameStats) {
+                progress.gameStats = {
+                    totalGames: oldGameStats.totalGames || 0,
+                    highScore: oldGameStats.bestScore || 0,
+                    maxCombo: oldGameStats.maxCombo || 0,
+                    achievements: oldGameStats.achievements || [],
+                    dailyStreak: oldGameStats.dailyStreak || 0,
+                    lastPlayDate: oldGameStats.lastPlayDate || null
+                };
+                migrated = true;
+                log('✅ huntingGameStatsを移行しました', 'success');
+            }
+
+            if (oldExamHistory && oldExamHistory.length > 0) {
+                progress.examHistory = oldExamHistory;
+                migrated = true;
+                log('✅ examHistoryを移行しました', 'success');
+            }
+
+            if (migrated) {
+                localStorage.setItem('huntingProgress', JSON.stringify(progress));
+                log('✅ データ移行が完了しました', 'success');
+                displayCurrentData();
+            } else {
+                log('ℹ️ 移行するデータがありません', 'warning');
+            }
+        }
+
+        function clearAllData() {
+            if (confirm('本当に全てのデータを削除しますか？')) {
+                localStorage.removeItem('huntingProgress');
+                localStorage.removeItem('huntingGameStats');
+                localStorage.removeItem('examHistory');
+                log('🗑️ 全データをクリアしました', 'warning');
+                displayCurrentData();
+            }
+        }
+
+        function initProgress() {
+            return {
+                totalQuestions: 0,
+                correctAnswers: 0,
+                studyTime: 0,
+                lastStudyDate: null,
+                categories: {
+                    law: { correct: 0, total: 0 },
+                    tools: { correct: 0, total: 0 },
+                    animals: { correct: 0, total: 0 },
+                    management: { correct: 0, total: 0 },
+                    practical: { correct: 0, total: 0 }
+                },
+                quizHistory: [],
+                gameStats: {
+                    totalGames: 0,
+                    highScore: 0,
+                    maxCombo: 0,
+                    achievements: [],
+                    dailyStreak: 0,
+                    lastPlayDate: null
+                },
+                examHistory: []
+            };
+        }
+
+        // 初期表示
+        displayCurrentData();
+    </script>
+</body>
+</html>

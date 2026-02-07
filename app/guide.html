@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合格への道しるべ - 狩猟免許試験 学習ガイド</title>
+    
+    <!-- 共通UIスタイル -->
+    <link rel="stylesheet" href="common-ui.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        .intro h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .intro p {
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #2e7d32;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4caf50;
+        }
+
+        .section h3 {
+            color: #388e3c;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #81c784;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .week-plan {
+            background: #f1f8e9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 2px solid #c5e1a5;
+        }
+
+        .week-plan h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            border: none;
+            padding-left: 0;
+        }
+
+        .week-plan ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .week-plan li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .achievement {
+            background: #fff9c4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #fbc02d;
+        }
+
+        .achievement strong {
+            color: #f57f17;
+        }
+
+        .tips-box {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ffb74d;
+        }
+
+        .tips-box h4 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .tips-box li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .category-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #64b5f6;
+        }
+
+        .category-box h4 {
+            color: #1565c0;
+            margin-top: 0;
+        }
+
+        .category-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .category-box li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .faq-item {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #9c27b0;
+        }
+
+        .faq-item h4 {
+            color: #6a1b9a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .story-box {
+            background: #fce4ec;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 2px solid #f48fb1;
+        }
+
+        .story-box h4 {
+            color: #c2185b;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .story-box p {
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+
+        .checklist {
+            background: #fff;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .checklist h4 {
+            color: #2e7d32;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 10px 10px 10px 35px;
+            margin-bottom: 8px;
+            background: #f1f8e9;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 12px;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .encouragement {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            border: 3px solid #ff9800;
+        }
+
+        .encouragement p {
+            font-size: 1.2em;
+            color: #e65100;
+            font-weight: bold;
+            line-height: 2;
+        }
+
+        footer {
+            background: #2e7d32;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background: white;
+            color: #2e7d32;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn-home:hover {
+            background: #f1f8e9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .section h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="ux-enhancements.css">
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+</head>
+<body>
+    <!-- ローディングスクリーン -->
+    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+        <div style="text-align: center; color: white;">
+            <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 1.5s infinite;">🌲</div>
+            <div style="font-size: 1.5rem; margin-bottom: 10px;">学習ガイド読み込み中...</div>
+            <div style="font-size: 1rem; opacity: 0.8;">お待ちください</div>
+        </div>
+    </div>
+
+    <!-- 戻るボタン（Quality Guardian統一） -->
+    <div class="back-to-home-wrapper">
+        <button class="btn-back-home" onclick="window.location.href='index.html'" aria-label="トップページに戻る" tabindex="1">
+            トップページ
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🌲 合格への道しるべ 🦌</h1>
+            <p>初心者でも大丈夫！一緒に狩猟免許合格を目指しましょう</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <h2>このガイドについて</h2>
+                <p>
+                    はじめまして！狩猟免許試験に挑戦しようと決めたあなたを、心から応援しています。<br>
+                    「難しそう」「自分にできるかな」と不安に思うかもしれませんが、<span class="highlight">正しい方法で学習すれば、初心者でも十分に合格できます</span>。<br>
+                    このガイドでは、3週間で合格レベルに到達するための学習プラン、効率的な勉強法、そして先輩たちの体験談をお届けします。<br>
+                    一緒に頑張りましょう！
+                </p>
+            </div>
+
+            <!-- 3週間学習プラン -->
+            <section class="section">
+                <h2>📅 3週間学習プラン</h2>
+                <p>
+                    試験まで3週間あれば、十分に準備できます。焦らず、着実にステップを踏んでいきましょう。<br>
+                    <strong>推奨総学習時間：56時間</strong>（第1週16時間、第2週18時間、第3週22時間）<br>
+                    <strong>1日あたり：平日2〜2.5時間、週末3〜4時間</strong>の学習を目安に、無理のないペースで進めてください。
+                </p>
+
+                <div class="tips-box">
+                    <h4>💡 学習時間確保のコツ</h4>
+                    <ul>
+                        <li><strong>朝活：</strong>出勤前に30分（脳が最も活発な時間帯）</li>
+                        <li><strong>通勤時間：</strong>電車で30分（クイズを10〜15問）</li>
+                        <li><strong>昼休み：</strong>食後10分（鳥獣写真を眺める）</li>
+                        <li><strong>帰宅後：</strong>夕食後1時間（テキストを読む、クイズを解く）</li>
+                        <li><strong>就寝前：</strong>15分（間違えた問題を復習）</li>
+                        <li><strong>週末：</strong>午前2時間、午後2時間（模擬試験、弱点補強）</li>
+                    </ul>
+                    <p><strong>合計：平日2時間15分、週末4時間 = 週17〜18時間</strong></p>
+                </div>
+
+                <div class="week-plan">
+                    <h3>📖 第1週：基礎固め（法令・基本知識）</h3>
+                    <p><strong>推奨学習時間：</strong>1日2時間（平日）、3時間（週末）= 週16時間</p>
+
+                    <h4>📅 Day 1-2：法令の全体像を掴む</h4>
+                    <ul>
+                        <li><strong>法令：</strong>鳥獣保護管理法、銃刀法の基本条文を読み込む（各30分）</li>
+                        <li><strong>狩猟制度：</strong>狩猟免許の種類、狩猟期間、禁止区域を理解</li>
+                        <li><strong>クイズ：</strong>法令カテゴリから10問（正答率60%でOK）</li>
+                    </ul>
+
+                    <h4>📅 Day 3-4：重要用語を徹底暗記</h4>
+                    <ul>
+                        <li><strong>用語：</strong>「狩猟鳥獣」「禁止区域」「狩猟期間」「狩猟免許」など20語を暗記</li>
+                        <li><strong>数字：</strong>「30日以内」「50m以内」「12cm以上」など数値を正確に覚える</li>
+                        <li><strong>クイズ：</strong>毎日15問（正答率70%を目指す）</li>
+                        <li><strong>ノート：</strong>間違えた問題をノートにまとめる習慣をつける</li>
+                    </ul>
+
+                    <h4>📅 Day 5-6：引っかけ問題対策</h4>
+                    <ul>
+                        <li><strong>パターン学習：</strong>「すべて」「必ず」など極端な表現に注意</li>
+                        <li><strong>否定形：</strong>「〜してはならない」を見落とさない訓練</li>
+                        <li><strong>クイズ：</strong>20問（正答率75%を目指す）</li>
+                    </ul>
+
+                    <h4>📅 Day 7：第1週の総復習</h4>
+                    <ul>
+                        <li><strong>復習：</strong>間違えた問題を全て解き直し</li>
+                        <li><strong>模擬テスト：</strong>法令分野30問を時間制限で実施</li>
+                        <li><strong>弱点補強：</strong>正答率が低い分野を集中学習</li>
+                    </ul>
+
+                    <div class="checklist">
+                        <h4>第1週チェックポイント</h4>
+                        <ul>
+                            <li>狩猟鳥獣28種の名前を言える</li>
+                            <li>禁止区域を5つ以上説明できる</li>
+                            <li>狩猟期間の原則を説明できる</li>
+                            <li>法令クイズで安定して70%以上取れる</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement">
+                        <strong>達成目標：</strong>法令クイズで70%以上の正答率を安定して出せる / 基本用語を自分の言葉で説明できる
+                    </div>
+                </div>
+
+                <div class="week-plan">
+                    <h3>🦆 第2週：鳥獣識別・猟具</h3>
+                    <p><strong>推奨学習時間：</strong>1日2.5時間（平日）、3時間（週末）= 週18時間</p>
+
+                    <h4>📅 Day 8-9：カモ類を完全マスター</h4>
+                    <ul>
+                        <li><strong>鳥獣識別：</strong>カモ類10種（マガモ、カルガモ、コガモなど）の特徴を覚える</li>
+                        <li><strong>識別ポイント：</strong>「くちばしの色」「頭部の模様」「雄雌の違い」を写真で確認</li>
+                        <li><strong>語呂合わせ：</strong>「マガモは緑の頭、カルガモは嘴が黄色」など覚え方を工夫</li>
+                        <li><strong>クイズ：</strong>カモ類だけを集中的に20問</li>
+                    </ul>
+
+                    <h4>📅 Day 10-11：キジ類・その他の鳥</h4>
+                    <ul>
+                        <li><strong>キジ類：</strong>キジ、ヤマドリ、コジュケイの雄雌の違い</li>
+                        <li><strong>ハト類：</strong>キジバト、カワラバトの識別</li>
+                        <li><strong>保護鳥：</strong>ツバメ、メジロ、ウグイス、トキなど絶対に覚える</li>
+                        <li><strong>クイズ：</strong>鳥類全般から25問（正答率75%を目指す）</li>
+                    </ul>
+
+                    <h4>📅 Day 12：獣類の識別</h4>
+                    <ul>
+                        <li><strong>狩猟獣：</strong>イノシシ、シカ、ノウサギ、タヌキ、キツネなどの特徴</li>
+                        <li><strong>保護獣：</strong>ニホンザル、ツキノワグマなどの見分け方</li>
+                        <li><strong>足跡・痕跡：</strong>動物の痕跡から種類を判別する方法</li>
+                        <li><strong>クイズ：</strong>獣類から15問</li>
+                    </ul>
+
+                    <h4>📅 Day 13-14：猟具の完全理解</h4>
+                    <ul>
+                        <li><strong>わな：</strong>くくりわな、はこわな、トラバサミの構造と法的規制</li>
+                        <li><strong>網：</strong>むそう網、はり網の仕組みと使用方法</li>
+                        <li><strong>銃：</strong>散弾銃、空気銃の構造、安全管理の鉄則</li>
+                        <li><strong>点検手順：</strong>各猟具の点検手順を声に出して練習</li>
+                        <li><strong>クイズ：</strong>猟具から20問（正答率80%を目指す）</li>
+                    </ul>
+
+                    <h4>📅 Day 14：第2週の総復習 + 法令復習</h4>
+                    <ul>
+                        <li><strong>総復習：</strong>鳥獣識別50問、猟具30問を実施</li>
+                        <li><strong>法令復習：</strong>第1週の内容を30分復習（忘れないため）</li>
+                        <li><strong>弱点補強：</strong>間違えた鳥獣を写真で再確認</li>
+                    </ul>
+
+                    <div class="checklist">
+                        <h4>第2週チェックポイント</h4>
+                        <ul>
+                            <li>カモ類10種を写真で識別できる</li>
+                            <li>保護鳥10種を確実に覚えている</li>
+                            <li>猟具の点検手順を説明できる</li>
+                            <li>鳥獣識別クイズで80%以上取れる</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement">
+                        <strong>達成目標：</strong>鳥獣識別クイズで80%以上、猟具クイズで85%以上、法令クイズで85%維持
+                    </div>
+                </div>
+
+                <div class="week-plan">
+                    <h3>🎯 第3週：実技対策・総仕上げ</h3>
+                    <p><strong>推奨学習時間：</strong>1日3時間（平日）、4時間（週末）= 週22時間</p>
+
+                    <h4>📅 Day 15-16：実技シミュレーション（予備講習推奨）</h4>
+                    <ul>
+                        <li><strong>距離目測：</strong>50m、100mの感覚を体で覚える（公園で実測練習）</li>
+                        <li><strong>点検手順：</strong>わな・網・銃の点検を声に出して練習（動画で確認）</li>
+                        <li><strong>声出し確認：</strong>「安全確認よし」「点検完了」を実際に声に出す</li>
+                        <li><strong>予備講習：</strong>可能なら参加して実物の猟具を触る</li>
+                    </ul>
+
+                    <h4>📅 Day 17-18：模擬試験（本番形式）</h4>
+                    <ul>
+                        <li><strong>模擬試験1回目：</strong>法令・猟具・鳥獣から各10問（計30問、制限時間30分）</li>
+                        <li><strong>採点・分析：</strong>間違えた問題を徹底的に復習</li>
+                        <li><strong>模擬試験2回目：</strong>同じ形式で再挑戦（正答率90%を目指す）</li>
+                        <li><strong>弱点補強：</strong>正答率が低い分野を2時間集中学習</li>
+                    </ul>
+
+                    <h4>📅 Day 19：最終確認（鳥獣識別重点）</h4>
+                    <ul>
+                        <li><strong>鳥獣識別：</strong>写真を見て瞬時に答える訓練（50問）</li>
+                        <li><strong>似た鳥の区別：</strong>「マガモ vs カルガモ」「キジ vs ヤマドリ」を再確認</li>
+                        <li><strong>保護鳥：</strong>絶対に間違えない鳥10種を最終チェック</li>
+                    </ul>
+
+                    <h4>📅 Day 20：最終模擬試験</h4>
+                    <ul>
+                        <li><strong>模擬試験3回目：</strong>本番と同じ形式で実施（制限時間厳守）</li>
+                        <li><strong>目標正答率：</strong>90%以上（これで合格圏内）</li>
+                        <li><strong>自信確認：</strong>「自分は合格できる」と心に刻む</li>
+                    </ul>
+
+                    <h4>📅 Day 21：試験前日（リラックス重視）</h4>
+                    <ul>
+                        <li><strong>軽い復習：</strong>間違えやすい問題だけ30分復習</li>
+                        <li><strong>持ち物準備：</strong>受験票、筆記用具、身分証明書を確認</li>
+                        <li><strong>睡眠：</strong>夜更かし厳禁！22時までに就寝（脳をリフレッシュ）</li>
+                        <li><strong>ポジティブ思考：</strong>「今までこんなに頑張った、絶対合格できる」</li>
+                    </ul>
+
+                    <div class="checklist">
+                        <h4>第3週チェックポイント</h4>
+                        <ul>
+                            <li>模擬試験で90%以上を安定して取れる</li>
+                            <li>猟具の点検手順を暗記している</li>
+                            <li>距離目測の感覚が身についている</li>
+                            <li>試験当日の持ち物を準備済み</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement">
+                        <strong>達成目標：</strong>模擬試験で90%以上、実技シミュレーションを自信を持ってできる / 心身ともに試験準備完了
+                    </div>
+                </div>
+            </section>
+
+            <!-- 学習のコツ -->
+            <section class="section">
+                <h2>💡 学習のコツ</h2>
+
+                <div class="tips-box">
+                    <h4>📝 効率的な暗記法</h4>
+                    <ul>
+                        <li><strong>語呂合わせ：</strong>「カモ・キジ・ヤマドリ」など、リズムで覚える</li>
+                        <li><strong>イラスト活用：</strong>鳥獣の絵を描いて視覚的に記憶</li>
+                        <li><strong>声に出す：</strong>鳥の名前を声に出して読むと定着しやすい</li>
+                        <li><strong>反復学習：</strong>同じ問題を3日連続で解くと長期記憶になる</li>
+                        <li><strong>関連付け：</strong>「カルガモ＝嘴が黄色」など特徴と名前をセットで覚える</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>⏰ スキマ時間の活用</h4>
+                    <ul>
+                        <li><strong>通勤・通学：</strong>スマホでクイズを5問だけでもOK</li>
+                        <li><strong>昼休み：</strong>10分間で鳥獣写真を眺める</li>
+                        <li><strong>就寝前：</strong>その日間違えた問題を3問だけ復習</li>
+                        <li><strong>小さな積み重ね：</strong>1日10分×7日＝70分の効果！</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>🔥 モチベーション維持</h4>
+                    <ul>
+                        <li><strong>目標設定：</strong>「合格したら〇〇へ狩猟に行く」など具体的に</li>
+                        <li><strong>進捗記録：</strong>カレンダーに学習時間を書き込む（達成感UP）</li>
+                        <li><strong>仲間を作る：</strong>SNSで同じ目標の人と繋がる</li>
+                        <li><strong>ご褒美：</strong>1週間頑張ったら好きなものを食べる</li>
+                        <li><strong>ポジティブ思考：</strong>「間違えた＝成長のチャンス」と捉える</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>📚 予備講習会の活用</h4>
+                    <ul>
+                        <li><strong>参加推奨：</strong>実技試験の流れが理解でき、合格率が大幅UP</li>
+                        <li><strong>質問チャンス：</strong>講師に疑問点を直接聞ける貴重な機会</li>
+                        <li><strong>実物確認：</strong>猟具の実物を見て触れる（写真だけでは分からない）</li>
+                        <li><strong>仲間との交流：</strong>同じ目標を持つ人と情報交換できる</li>
+                        <li><strong>最新情報：</strong>試験の傾向や注意点を教えてもらえる</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- カテゴリ別攻略 -->
+            <section class="section">
+                <h2>🎓 カテゴリ別攻略法</h2>
+
+                <div class="category-box">
+                    <h4>⚖️ 法令：引っかけ問題の見抜き方（重要度：★★★★★）</h4>
+                    <p><strong>試験での配分：</strong>全体の約40% / <strong>合格ライン：</strong>80%以上</p>
+
+                    <h5>頻出問題パターン TOP5</h5>
+                    <ul>
+                        <li><strong>①狩猟期間：</strong>「11月15日〜2月15日」（北海道は10月1日〜）の例外を覚える</li>
+                        <li><strong>②禁止区域：</strong>「鳥獣保護区」「休猟区」「公道50m以内」など7種類</li>
+                        <li><strong>③免許更新：</strong>「3年ごと」「更新は30日前から可能」</li>
+                        <li><strong>④銃刀法：</strong>「所持許可は3年ごと」「保管義務違反は罰則あり」</li>
+                        <li><strong>⑤狩猟鳥獣：</strong>「鳥類28種、獣類20種」の正確な数を覚える</li>
+                    </ul>
+
+                    <h5>引っかけ問題の見抜き方</h5>
+                    <ul>
+                        <li><strong>「すべて」「必ず」「絶対」：</strong>極端な表現は要注意（例外がある場合が多い）</li>
+                        <li><strong>数字を確認：</strong>「30日以内」「50m以内」「12cm以上」など数値は1文字も間違えない</li>
+                        <li><strong>否定形に注意：</strong>「〜してはならない」「〜を除く」を見落とさない</li>
+                        <li><strong>主語を確認：</strong>「狩猟者」「所持者」「免許保持者」など誰の義務かを意識</li>
+                        <li><strong>過去問パターン：</strong>似た問題が繰り返し出るので同じ問題を3回解く</li>
+                    </ul>
+
+                    <h5>覚え方のコツ</h5>
+                    <ul>
+                        <li><strong>語呂合わせ：</strong>「イイコ行こう（11/15）ニーサン（2/15）まで」→狩猟期間</li>
+                        <li><strong>表にまとめる：</strong>禁止区域・期間・距離を一覧表にする</li>
+                        <li><strong>声に出す：</strong>数字を声に出して読むと記憶に定着しやすい</li>
+                    </ul>
+                </div>
+
+                <div class="category-box">
+                    <h4>🔧 猟具：安全管理のポイント（重要度：★★★★☆）</h4>
+                    <p><strong>試験での配分：</strong>全体の約30% / <strong>合格ライン：</strong>85%以上</p>
+
+                    <h5>頻出問題パターン TOP5</h5>
+                    <ul>
+                        <li><strong>①くくりわな：</strong>「輪の直径12cm以上」「締め付け防止金具必須」</li>
+                        <li><strong>②トラバサミ：</strong>「爪が欠けたものは使用禁止」「設置場所の制限」</li>
+                        <li><strong>③はこわな：</strong>「扉の開閉機構」「動物に怪我をさせない構造」</li>
+                        <li><strong>④銃の安全管理：</strong>「銃口は常に安全な方向」「装填は発射直前」</li>
+                        <li><strong>⑤法的規制：</strong>「わなの設置標識義務」「点検義務」</li>
+                    </ul>
+
+                    <h5>点検手順（実技試験で超重要）</h5>
+                    <ul>
+                        <li><strong>ステップ1【見る】：</strong>目視で破損・変形・錆がないか確認</li>
+                        <li><strong>ステップ2【触る】：</strong>手で触って緩み・がたつきがないか確認</li>
+                        <li><strong>ステップ3【動かす】：</strong>実際に作動させて正常に動くか確認</li>
+                        <li><strong>声出し確認：</strong>「異常なし！」「安全確認よし！」と声に出す（試験官に好印象）</li>
+                    </ul>
+
+                    <h5>覚え方のコツ</h5>
+                    <ul>
+                        <li><strong>語呂合わせ：</strong>「いいニセンチ（12cm）くくり」→くくりわなの直径</li>
+                        <li><strong>図解：</strong>猟具の構造を自分で図に描くと理解が深まる</li>
+                        <li><strong>動画：</strong>YouTubeで猟具の使い方動画を見て動きをイメージ</li>
+                        <li><strong>実物確認：</strong>予備講習で実物を触ると記憶に定着しやすい</li>
+                    </ul>
+
+                    <h5>実技試験の評価ポイント</h5>
+                    <ul>
+                        <li><strong>①丁寧さ：</strong>猟具を雑に扱わない（試験官が見ている）</li>
+                        <li><strong>②手順厳守：</strong>点検の順番を飛ばさない</li>
+                        <li><strong>③声出し：</strong>「安全確認よし」など明確に発声</li>
+                        <li><strong>④落ち着き：</strong>焦らずゆっくり確実に</li>
+                    </ul>
+                </div>
+
+                <div class="category-box">
+                    <h4>🦆 鳥獣：識別の決め手（重要度：★★★★★）</h4>
+                    <p><strong>試験での配分：</strong>全体の約30% / <strong>合格ライン：</strong>90%以上（ここで差がつく！）</p>
+
+                    <h5>カモ類（最頻出！全10種を完全暗記）</h5>
+                    <ul>
+                        <li><strong>マガモ：</strong>雄は頭が緑色、首に白い輪、嘴は黄色</li>
+                        <li><strong>カルガモ：</strong>雄雌同色、嘴が黄色（決め手！）</li>
+                        <li><strong>コガモ：</strong>最小のカモ、雄は顔に緑の帯</li>
+                        <li><strong>オナガガモ：</strong>尾羽が長い、首が細長い</li>
+                        <li><strong>ヒドリガモ：</strong>雄は額が黄色、ピューピューと鳴く</li>
+                        <li><strong>覚え方：</strong>「マ（緑）カル（黄嘴）コ（小）オナ（長尾）ヒドリ（黄額）」</li>
+                    </ul>
+
+                    <h5>キジ類（雄雌の違いが決め手）</h5>
+                    <ul>
+                        <li><strong>キジ：</strong>雄は赤い顔、緑の体、長い尾羽 / 雌は茶色で地味</li>
+                        <li><strong>ヤマドリ：</strong>雄は超長い尾羽（1m以上！）、銅色の体</li>
+                        <li><strong>コジュケイ：</strong>「チョットコイ」と鳴く、眉班が白い</li>
+                    </ul>
+
+                    <h5>保護鳥（絶対に間違えてはダメ！）</h5>
+                    <ul>
+                        <li><strong>ツバメ：</strong>喉が赤い、尾羽が燕尾状</li>
+                        <li><strong>メジロ：</strong>目の周りが白い輪（決め手！）</li>
+                        <li><strong>ウグイス：</strong>地味な緑褐色、「ホーホケキョ」</li>
+                        <li><strong>トキ：</strong>顔が赤い、全身白〜ピンク色</li>
+                        <li><strong>タンチョウ：</strong>頭頂が赤い、大型ツル</li>
+                        <li><strong>覚え方：</strong>「ツメウトタン」（ツバメ、メジロ、ウグイス、トキ、タンチョウ）</li>
+                    </ul>
+
+                    <h5>似た鳥の区別法（引っかけ注意！）</h5>
+                    <ul>
+                        <li><strong>カルガモ vs マガモ：</strong>カルガモは雄雌同色、マガモは雄の頭が緑</li>
+                        <li><strong>キジ vs ヤマドリ：</strong>ヤマドリの尾羽は超長い（1m以上）</li>
+                        <li><strong>スズメ vs メジロ：</strong>メジロは目の周りが白い輪</li>
+                        <li><strong>コガモ vs オナガガモ：</strong>オナガガモは尾羽が長い</li>
+                    </ul>
+
+                    <h5>覚え方のコツ</h5>
+                    <ul>
+                        <li><strong>写真を毎日見る：</strong>通勤中にスマホで1日10種確認</li>
+                        <li><strong>特徴を絵で描く：</strong>「マガモ＝緑頭」など簡単な絵で記憶</li>
+                        <li><strong>鳴き声で覚える：</strong>「コジュケイ＝チョットコイ」など音で記憶</li>
+                        <li><strong>グループ分け：</strong>カモ類、キジ類、保護鳥でグループ化</li>
+                        <li><strong>比較表：</strong>似た鳥を並べて違いを表にする</li>
+                    </ul>
+                </div>
+
+                <div class="category-box">
+                    <h4>✅ 実技：減点を避ける</h4>
+                    <ul>
+                        <li><strong>大きな声：</strong>「安全確認よし！」など声を出すと好印象</li>
+                        <li><strong>丁寧に扱う：</strong>猟具を乱暴に扱わない（試験官が見ている）</li>
+                        <li><strong>手順厳守：</strong>点検の順番を飛ばさない</li>
+                        <li><strong>距離目測：</strong>事前に50m、100mの感覚を体で覚える</li>
+                        <li><strong>落ち着いて：</strong>わからなければ試験官に質問OK（減点されない）</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- よくある質問 -->
+            <section class="section">
+                <h2>❓ よくある質問（FAQ）</h2>
+
+                <h3>📝 試験申込に関する質問</h3>
+
+                <div class="faq-item">
+                    <h4>Q1. 狩猟免許はどこで受験できますか？</h4>
+                    <p>
+                        <strong>都道府県ごとに試験が実施されます。</strong><br>
+                        お住まいの都道府県の環境部（自然保護課など）に問い合わせるか、公式サイトで試験日程を確認してください。年に2〜4回実施されることが多いです。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q2. 受験資格はありますか？年齢制限は？</h4>
+                    <p>
+                        <strong>基本的に誰でも受験可能です。</strong><br>
+                        年齢制限：網・わな猟免許は満18歳以上、第一種・第二種銃猟免許は満20歳以上。<br>
+                        ただし、以下の場合は受験できません：
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>鳥獣保護管理法違反で免許取消から3年以内</li>
+                            <li>狩猟法違反で罰金刑を受けた場合</li>
+                            <li>禁治産者、準禁治産者</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q3. 受験料はいくらですか？</h4>
+                    <p>
+                        <strong>都道府県により異なりますが、5,200円程度です。</strong><br>
+                        複数の免許を同時受験する場合は割引があることも。詳細はお住まいの都道府県にお問い合わせください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q4. 申込時に必要な書類は？</h4>
+                    <p>
+                        <strong>以下の書類が一般的に必要です：</strong><br>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>受験申請書（都道府県のサイトからダウンロード）</li>
+                            <li>写真（縦3cm×横2.4cm、3枚程度）</li>
+                            <li>医師の診断書（視力・聴力・運動能力など）</li>
+                            <li>本籍地が記載された住民票</li>
+                            <li>受験料の振込証明書</li>
+                        </ul>
+                        診断書は指定のフォーマットがある場合があるので、事前に確認してください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q5. 診断書はどこで取得できますか？</h4>
+                    <p>
+                        <strong>一般の病院で取得できます。</strong><br>
+                        かかりつけ医や内科で「狩猟免許試験用の診断書」と伝えれば発行してもらえます。費用は3,000〜5,000円程度。視力検査、聴力検査、精神疾患の有無などを確認されます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q6. 複数の免許を同時に受験できますか？</h4>
+                    <p>
+                        <strong>はい、可能です！</strong><br>
+                        網猟・わな猟・第一種銃猟・第二種銃猟の4種類を同時受験できます。ただし、勉強範囲が広がるので、初心者はまず1種類に絞ることをおすすめします。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q7. 試験日程はどこで確認できますか？</h4>
+                    <p>
+                        <strong>都道府県の環境部の公式サイトで確認できます。</strong><br>
+                        「〇〇県 狩猟免許試験」で検索すると試験日程、申込期間、会場が掲載されています。申込は試験の1〜2ヶ月前が多いので、早めにチェックしましょう。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q8. 申込後にキャンセルできますか？</h4>
+                    <p>
+                        <strong>基本的に受験料は返金されません。</strong><br>
+                        やむを得ない事情で受験できない場合は、都道府県の担当部署に早めに連絡してください。次回試験への振替が可能な場合もあります。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q9. 他県で取得した免許は使えますか？</h4>
+                    <p>
+                        <strong>はい、全国で有効です。</strong><br>
+                        どの都道府県で取得した免許でも、日本全国どこでも狩猟ができます。ただし、狩猟をする都道府県ごとに「狩猟者登録」が必要です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q10. 予備講習はいつ申し込めばいいですか？</h4>
+                    <p>
+                        <strong>試験の1〜2ヶ月前が目安です。</strong><br>
+                        予備講習は各都道府県の猟友会や自然保護団体が主催しています。受講料は5,000〜15,000円程度。試験直前に開催されることが多いので、早めに申し込みましょう。
+                    </p>
+                </div>
+
+                <h3>📚 勉強方法に関する質問</h3>
+
+                <div class="faq-item">
+                    <h4>Q11. 独学で合格できますか？</h4>
+                    <p>
+                        <strong>はい、可能です！</strong><br>
+                        実際に多くの人が独学で合格しています。テキストとクイズアプリをしっかり活用すれば、十分に合格レベルに到達できます。ただし、<span class="highlight">予備講習会に参加すると実技試験の合格率が格段に上がる</span>ので、可能なら参加をおすすめします。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q12. 勉強時間はどれくらい必要ですか？</h4>
+                    <p>
+                        <strong>目安は30〜50時間です。</strong><br>
+                        3週間で合格を目指すなら、1日2〜3時間の学習が理想的。仕事や学校で忙しい場合は、スキマ時間を活用して少しずつ進めましょう。焦らず、自分のペースで大丈夫です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q13. おすすめのテキストはありますか？</h4>
+                    <p>
+                        <strong>都道府県が発行する公式テキストが最適です。</strong><br>
+                        試験申込時に配布されることが多いです。市販のテキストでは「狩猟読本」「狩猟免許試験対策テキスト」などがあります。また、環境省の「鳥獣保護管理法の概要」もネットで無料閲覧できます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q14. どの分野から勉強すべきですか？</h4>
+                    <p>
+                        <strong>法令→鳥獣識別→猟具の順がおすすめです。</strong><br>
+                        法令は全ての基礎なので最初に固めましょう。次に鳥獣識別（覚えることが多い）、最後に猟具（実技と連動）という流れが効率的です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q15. 鳥獣識別が覚えられません。コツは？</h4>
+                    <p>
+                        <strong>写真を毎日見ることが最強の対策です。</strong><br>
+                        毎朝10種類の鳥獣写真を見る習慣をつけましょう。特徴を自分の言葉でメモ（「マガモ＝緑頭」など）すると記憶に定着します。また、保護鳥（ツバメ、メジロなど）は絶対に覚える必要があるので優先的に。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q16. 過去問はどこで入手できますか？</h4>
+                    <p>
+                        <strong>都道府県のサイトで公開されている場合があります。</strong><br>
+                        「〇〇県 狩猟免許 過去問」で検索してみてください。また、予備講習で過去問を配布してくれることもあります。このサイトのクイズも過去問ベースなので活用してください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q17. 予備講習は必須ですか？</h4>
+                    <p>
+                        <strong>必須ではありませんが、強く推奨します。</strong><br>
+                        知識試験は独学でも大丈夫ですが、実技試験は「猟具の実物を見て、触って、動かす」経験が重要です。予備講習では試験と同じ流れを体験でき、<span class="highlight">合格率が20〜30%上がる</span>と言われています。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q18. モチベーションが続きません。どうすればいいですか？</h4>
+                    <p>
+                        <strong>小さな目標とご褒美を設定しましょう。</strong><br>
+                        「今日は法令を10問解く」「今週は鳥獣識別50問クリア」など小さな目標を立てます。達成したら好きなものを食べるなどご褒美を。また、SNSで同じ目標の人と繋がるとモチベーションが保てます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q19. 暗記が苦手です。何かコツはありますか？</h4>
+                    <p>
+                        <strong>語呂合わせとイラストが効果的です。</strong><br>
+                        「イイコ行こう（11/15）ニーサン（2/15）まで」→狩猟期間、「いいニセンチ（12cm）くくり」→くくりわなの直径など。また、鳥獣は簡単な絵を描くと視覚的に記憶できます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q20. 仕事が忙しくて時間がありません。</h4>
+                    <p>
+                        <strong>スキマ時間を最大活用しましょう。</strong><br>
+                        通勤電車で5問、昼休みに10分、寝る前に3問など、スキマ時間を積み重ねると1日30〜40分確保できます。1日10分×21日＝210分（3.5時間）の効果です！
+                    </p>
+                </div>
+
+                <h3>📋 試験当日に関する質問</h3>
+
+                <div class="faq-item">
+                    <h4>Q21. 試験当日の注意点は？</h4>
+                    <p>
+                        <strong>忘れ物チェックと時間厳守です。</strong><br>
+                        受験票、筆記用具、身分証明書は前日に準備。試験会場には30分前到着を目標に。遅刻すると受験できません。また、実技試験では<span class="highlight">動きやすい服装と靴</span>が重要です（ヒールやサンダルは避ける）。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q22. 試験時間はどれくらいですか？</h4>
+                    <p>
+                        <strong>知識試験30分、実技試験10〜15分です。</strong><br>
+                        知識試験は30問を30分で解答（1問1分ペース）。実技試験は猟具の点検、鳥獣判別、距離目測などを1人ずつ実施します。全体で半日〜1日かかります。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q23. 試験中にトイレに行けますか？</h4>
+                    <p>
+                        <strong>原則として試験中の退室は不可です。</strong><br>
+                        試験開始前に必ずトイレを済ませましょう。体調不良など緊急の場合は試験官に相談してください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q24. 服装の指定はありますか？</h4>
+                    <p>
+                        <strong>特に指定はありませんが、動きやすい服装を推奨します。</strong><br>
+                        実技試験では猟具を操作するため、動きやすいズボンとスニーカーがおすすめ。スカート、ヒール、サンダルは避けましょう。また、会場の温度調整用に羽織るものがあると便利です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q25. 試験中に質問できますか？</h4>
+                    <p>
+                        <strong>知識試験中は質問不可、実技試験は質問OKです。</strong><br>
+                        知識試験は静かに解答します。実技試験では「この猟具の扱い方がわからない」など質問して大丈夫です。わからないまま進めるより、聞いた方が減点されません。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q26. 緊張して頭が真っ白になりそうです。</h4>
+                    <p>
+                        <strong>深呼吸とポジティブ思考が効果的です。</strong><br>
+                        試験前に5回深呼吸して心拍数を落ち着かせましょう。「今までこんなに頑張った、絶対できる」と自分に言い聞かせることも大切。また、軽いストレッチで体をほぐすとリラックスできます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q27. 試験結果はいつ分かりますか？</h4>
+                    <p>
+                        <strong>当日または1〜2週間後です。</strong><br>
+                        都道府県により異なります。当日発表の場合はその場で合否が分かります。後日発表の場合は郵送または掲示板で通知されます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q28. 合格証はいつもらえますか？</h4>
+                    <p>
+                        <strong>合格後1〜2週間で郵送されます。</strong><br>
+                        合格証が届いたら大切に保管してください。狩猟をする際は必ず携帯する義務があります。紛失した場合は再発行（有料）が可能です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q29. 知識試験だけ合格した場合、次回は実技だけ受験できますか？</h4>
+                    <p>
+                        <strong>都道府県により異なります。</strong><br>
+                        多くの都道府県では「1年以内なら知識試験免除」などの制度があります。詳細は受験地の担当部署に確認してください。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q30. 落ちたらどうなりますか？</h4>
+                    <p>
+                        <strong>再挑戦できます！</strong><br>
+                        年に複数回試験があるので、次回に向けて再チャレンジできます。落ちても恥ずかしいことではありません。むしろ「どこが弱点か分かった」と前向きに捉えて、次こそ合格を掴みましょう。
+                    </p>
+                </div>
+
+                <h3>🎓 合格後に関する質問</h3>
+
+                <div class="faq-item">
+                    <h4>Q31. 合格後、すぐに狩猟できますか？</h4>
+                    <p>
+                        <strong>いいえ、狩猟者登録が必要です。</strong><br>
+                        狩猟免許を取得しても、狩猟をする都道府県ごとに「狩猟者登録」をしなければ狩猟できません。登録料は約15,000円（都道府県により異なる）。また、狩猟者登録の際に狩猟者共済（任意保険）への加入も推奨されます。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q32. 免許の有効期限はありますか？</h4>
+                    <p>
+                        <strong>はい、3年ごとに更新が必要です。</strong><br>
+                        更新は試験ではなく、講習を受けるだけです。更新を忘れると免許が失効するので、更新時期が来たら忘れずに手続きしましょう。更新料は約3,000円程度です。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q33. 狩猟をしなくても更新は必要ですか？</h4>
+                    <p>
+                        <strong>はい、免許を維持するには更新が必要です。</strong><br>
+                        実際に狩猟をしていなくても、免許を保持し続けたい場合は3年ごとに更新しなければなりません。更新しないと免許が失効し、再度試験を受ける必要があります。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q34. わな猟免許だけで銃は使えますか？</h4>
+                    <p>
+                        <strong>いいえ、銃を使うには銃猟免許が必要です。</strong><br>
+                        わな猟免許ではわなと網のみ使用可能。銃を使いたい場合は第一種銃猟免許（散弾銃・ライフル銃）または第二種銃猟免許（空気銃のみ）を別途取得する必要があります。
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q35. 初心者が最初に取るべき免許は？</h4>
+                    <p>
+                        <strong>わな猟免許がおすすめです。</strong><br>
+                        理由：①試験が比較的簡単、②銃の所持許可が不要、③初期費用が安い、④一人でも始めやすい。銃猟は銃の所持許可取得に時間と費用がかかるため、まずはわな猟で経験を積むのが一般的です。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 合格体験談 -->
+            <section class="section">
+                <h2>🏆 合格体験談</h2>
+
+                <div class="story-box">
+                    <h4>🌟 事例1：完全初心者から一発合格（30代・会社員）</h4>
+                    <p>
+                        私は狩猟に関する知識がゼロでしたが、このサイトの3週間プランを実践して一発合格できました。<br>
+                        <strong>苦労したポイント：</strong>鳥獣識別が最初は全く分からず、カモの種類を覚えるのに1週間かかりました。<br>
+                        <strong>役立った勉強法：</strong>毎朝の通勤電車でクイズを10問解く習慣をつけたこと。スキマ時間の積み重ねが大きかったです。<br>
+                        <strong>実技試験：</strong>予備講習に参加して猟具を実際に触れたおかげで、自信を持って臨めました。試験官に「丁寧な点検ですね」と褒められたのが嬉しかったです！
+                    </p>
+                </div>
+
+                <div class="story-box">
+                    <h4>🌟 事例2：2回目で合格（40代・主婦）</h4>
+                    <p>
+                        正直に言うと、1回目は不合格でした。法令の引っかけ問題にやられました。<br>
+                        <strong>反省点：</strong>「すべて」「必ず」などの極端な表現を見逃していました。また、実技試験で緊張しすぎて手順を飛ばしてしまいました。<br>
+                        <strong>2回目の対策：</strong>過去問を3周解いて、間違えた問題をノートにまとめました。実技は予備講習でシミュレーションを繰り返し、本番では落ち着いて「声出し確認」を実践。<br>
+                        <strong>結果：</strong>2回目は知識90点、実技も満点で合格！諦めずに再挑戦して本当に良かったです。
+                    </p>
+                </div>
+
+                <div class="story-box">
+                    <h4>🌟 事例3：短期集中で合格（20代・学生）</h4>
+                    <p>
+                        試験まで2週間しかなく、正直焦りましたが、毎日5時間集中して勉強しました。<br>
+                        <strong>戦略：</strong>法令と猟具を最初の1週間で完璧にし、残り1週間を鳥獣識別に全振り。模擬試験を毎日1回実施して弱点をつぶしました。<br>
+                        <strong>成功の鍵：</strong>友人と一緒に受験したので、お互いにクイズを出し合ってモチベーションを保てました。<br>
+                        <strong>アドバイス：</strong>短期間でも諦めなければ合格できます！集中力と効率を意識すれば大丈夫です。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 試験当日ガイド -->
+            <section class="section">
+                <h2>📋 試験当日ガイド</h2>
+
+                <h3>⏰ 試験当日のタイムライン</h3>
+                <div class="week-plan">
+                    <h4>試験前日</h4>
+                    <ul>
+                        <li><strong>20:00-21:00：</strong>持ち物の最終確認（受験票、筆記用具、身分証明書）</li>
+                        <li><strong>21:00-21:30：</strong>軽く復習（間違えやすい問題だけ）</li>
+                        <li><strong>22:00：</strong>就寝（睡眠は最高の試験対策！）</li>
+                    </ul>
+
+                    <h4>試験当日</h4>
+                    <ul>
+                        <li><strong>6:30：</strong>起床（余裕を持って準備）</li>
+                        <li><strong>7:00：</strong>朝食（脳にエネルギー補給。糖質を摂る）</li>
+                        <li><strong>7:30：</strong>持ち物の最終確認（玄関に全て並べる）</li>
+                        <li><strong>8:00：</strong>会場へ出発（電車の遅延も考慮して早めに）</li>
+                        <li><strong>8:45：</strong>会場到着（受付開始の15分前が理想）</li>
+                        <li><strong>9:00：</strong>受付開始（受験票と身分証明書を提示）</li>
+                        <li><strong>9:15：</strong>トイレ・最終確認（テキストを軽く見る）</li>
+                        <li><strong>9:30：</strong>知識試験開始（30問、30分）</li>
+                        <li><strong>10:00：</strong>知識試験終了</li>
+                        <li><strong>10:15：</strong>休憩時間（水分補給、トイレ）</li>
+                        <li><strong>10:30：</strong>実技試験開始（1人10〜15分、順番待ち）</li>
+                        <li><strong>12:00：</strong>実技試験終了（受験者数により前後）</li>
+                        <li><strong>12:30：</strong>合格発表（当日発表の場合）または帰宅</li>
+                    </ul>
+                </div>
+
+                <h3>🎒 持ち物チェックリスト</h3>
+                <div class="checklist">
+                    <h4>絶対必須（忘れると受験不可！）</h4>
+                    <ul>
+                        <li>受験票（写真貼付済み、必ず確認）</li>
+                        <li>筆記用具（鉛筆またはシャープペン、消しゴム、予備も）</li>
+                        <li>身分証明書（運転免許証、マイナンバーカード、パスポートなど）</li>
+                        <li>受験料の領収書（コピー可、念のため持参）</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h4>あると便利（持っていくと安心）</h4>
+                    <ul>
+                        <li>腕時計（会場に時計がない場合がある、スマホは使用禁止）</li>
+                        <li>飲み物（水またはお茶、500ml以上推奨）</li>
+                        <li>軽食（チョコレート、ゼリー飲料など、脳の栄養補給）</li>
+                        <li>羽織るもの（カーディガン、上着など、会場の温度調整用）</li>
+                        <li>テキスト（待ち時間に最終確認できる）</li>
+                        <li>ハンカチ・ティッシュ（実技試験で手が汚れる場合も）</li>
+                        <li>マスク（予備も含めて2〜3枚）</li>
+                        <li>会場の地図・住所メモ（スマホが使えない場合に備えて）</li>
+                    </ul>
+                </div>
+
+                <h3>👕 服装の注意点</h3>
+                <div class="tips-box">
+                    <h4>推奨する服装</h4>
+                    <ul>
+                        <li><strong>上着：</strong>動きやすいシャツ、Tシャツ、ポロシャツなど</li>
+                        <li><strong>ズボン：</strong>ジーンズ、チノパン、スポーツウェアなど（スカートは非推奨）</li>
+                        <li><strong>靴：</strong>スニーカー、運動靴（実技で動くため）</li>
+                        <li><strong>羽織るもの：</strong>カーディガンやパーカー（温度調整用）</li>
+                    </ul>
+
+                    <h4>避けるべき服装</h4>
+                    <ul>
+                        <li>❌ スカート、ワンピース（実技で動きにくい）</li>
+                        <li>❌ ヒール、サンダル、革靴（実技で危険）</li>
+                        <li>❌ タイトな服（猟具の操作がしにくい）</li>
+                        <li>❌ 派手すぎる服（試験官の印象を考慮）</li>
+                    </ul>
+                </div>
+
+                <h3>🏢 会場での注意点</h3>
+                <div class="tips-box">
+                    <ul>
+                        <li><strong>30分前到着：</strong>遅刻は絶対NG！電車の遅延も考慮して余裕を持って</li>
+                        <li><strong>受付：</strong>受験票と身分証明書を忘れずに提示</li>
+                        <li><strong>トイレは事前に：</strong>試験中の退室は原則不可（必ず済ませる）</li>
+                        <li><strong>携帯電話：</strong>必ず電源を切る（マナーモードでもNG、電源OFF必須）</li>
+                        <li><strong>試験官の指示：</strong>開始・終了の合図をよく聞く（フライング・延長はNG）</li>
+                        <li><strong>静粛：</strong>試験中の私語、カンニングは厳禁（即失格）</li>
+                        <li><strong>質問：</strong>試験内容に関する質問は知識試験では不可、実技試験ではOK</li>
+                    </ul>
+                </div>
+
+                <h3>📝 知識試験のコツ</h3>
+                <div class="category-box">
+                    <h4>試験前（5分）</h4>
+                    <ul>
+                        <li><strong>深呼吸：</strong>5回ゆっくり深呼吸して心を落ち着ける</li>
+                        <li><strong>ポジティブ思考：</strong>「今までこんなに頑張った、絶対できる」</li>
+                        <li><strong>筆記用具確認：</strong>鉛筆、消しゴムが手元にあるか確認</li>
+                    </ul>
+
+                    <h4>試験中（30分）</h4>
+                    <ul>
+                        <li><strong>全体を見る：</strong>まず全30問をざっと確認（難易度を把握）</li>
+                        <li><strong>簡単な問題から：</strong>確実に解ける問題から手をつける</li>
+                        <li><strong>わからない問題は飛ばす：</strong>時間をかけすぎない（後で戻る）</li>
+                        <li><strong>選択肢を絞る：</strong>「すべて」「必ず」など極端な表現は要注意</li>
+                        <li><strong>数字を確認：</strong>「30日」「50m」など数値は1文字も間違えない</li>
+                        <li><strong>マークミス注意：</strong>マークシートの場合、番号ズレに注意</li>
+                    </ul>
+
+                    <h4>見直し（5分）</h4>
+                    <ul>
+                        <li><strong>全問題を再確認：</strong>マークミス、読み間違いがないか</li>
+                        <li><strong>飛ばした問題：</strong>未回答の問題がないか必ず確認</li>
+                        <li><strong>勘に頼る：</strong>どうしてもわからない場合は勘で選ぶ（空欄はもったいない）</li>
+                    </ul>
+                </div>
+
+                <h3>😌 緊張への対処法</h3>
+                <div class="tips-box">
+                    <h4>試験前</h4>
+                    <ul>
+                        <li><strong>深呼吸：</strong>鼻から4秒吸って、口から8秒吐く（5回繰り返す）</li>
+                        <li><strong>肩の力を抜く：</strong>肩を上げて、ストンと落とす（筋肉の緊張をほぐす）</li>
+                        <li><strong>手首・首を回す：</strong>軽いストレッチでリラックス</li>
+                        <li><strong>ポジティブ思考：</strong>「3週間頑張った、絶対できる」と心の中で唱える</li>
+                        <li><strong>笑顔を作る：</strong>口角を上げるだけで脳がリラックスする</li>
+                    </ul>
+
+                    <h4>試験中</h4>
+                    <ul>
+                        <li><strong>焦らない：</strong>わからない問題は飛ばしてOK、焦らず進める</li>
+                        <li><strong>失敗を恐れない：</strong>間違えても大丈夫、全問正解じゃなくても合格できる</li>
+                        <li><strong>自分のペース：</strong>周りの人の進度は気にしない</li>
+                        <li><strong>深呼吸：</strong>頭が真っ白になったら深呼吸（5秒で立て直す）</li>
+                    </ul>
+                </div>
+
+                <h3>🎯 実技試験の心構え</h3>
+                <div class="category-box">
+                    <h4>試験前の準備</h4>
+                    <ul>
+                        <li><strong>順番確認：</strong>自分の順番を確認（待ち時間にイメージトレーニング）</li>
+                        <li><strong>点検手順を復習：</strong>頭の中で「見る→触る→動かす」を唱える</li>
+                        <li><strong>深呼吸：</strong>順番が来る前に深呼吸して心を落ち着ける</li>
+                    </ul>
+
+                    <h4>実技試験中のポイント</h4>
+                    <ul>
+                        <li><strong>第一印象：</strong>元気な挨拶「よろしくお願いします！」（笑顔で）</li>
+                        <li><strong>声出し確認：</strong>「安全確認よし」「点検完了」など明確に発声（試験官に好印象）</li>
+                        <li><strong>丁寧な動作：</strong>猟具を雑に扱わない、ゆっくり確実に操作</li>
+                        <li><strong>手順厳守：</strong>点検の順番（見る→触る→動かす）を飛ばさない</li>
+                        <li><strong>質問OK：</strong>わからなければ試験官に聞いて大丈夫（減点されない）</li>
+                        <li><strong>焦らない：</strong>ゆっくりでOK、スピードより正確さが大事</li>
+                        <li><strong>最後まで集中：</strong>「ありがとうございました」と挨拶するまで気を抜かない</li>
+                    </ul>
+
+                    <h4>実技試験の評価ポイント</h4>
+                    <ul>
+                        <li><strong>①安全確認：</strong>猟具の安全な扱い方ができているか</li>
+                        <li><strong>②点検手順：</strong>正しい順番で点検できているか</li>
+                        <li><strong>③声出し：</strong>確認事項を声に出しているか</li>
+                        <li><strong>④態度：</strong>真剣な姿勢、丁寧な扱いができているか</li>
+                        <li><strong>⑤距離目測：</strong>50m、100mを正確に判断できるか（誤差±10%以内）</li>
+                    </ul>
+                </div>
+
+                <h3>🚗 会場への行き方の確認</h3>
+                <div class="tips-box">
+                    <ul>
+                        <li><strong>前日に確認：</strong>会場の住所、最寄り駅、バス停を再確認</li>
+                        <li><strong>所要時間：</strong>自宅から会場まで何分かかるか計算（余裕を持って+30分）</li>
+                        <li><strong>電車・バスの時刻：</strong>何時の電車/バスに乗るか決めておく</li>
+                        <li><strong>代替ルート：</strong>電車遅延に備えて別のルートも調べる</li>
+                        <li><strong>駐車場：</strong>車で行く場合は駐車場の有無を確認</li>
+                        <li><strong>地図を印刷：</strong>スマホが使えない場合に備えて紙の地図も持参</li>
+                    </ul>
+                </div>
+
+                <h3>🍀 試験後のこと</h3>
+                <div class="tips-box">
+                    <h4>合格発表まで</h4>
+                    <ul>
+                        <li><strong>自己採点：</strong>試験後に自分の解答を振り返る（可能なら）</li>
+                        <li><strong>結果通知：</strong>当日発表または1〜2週間後に郵送</li>
+                        <li><strong>リラックス：</strong>試験が終わったら自分を褒めて、ゆっくり休む</li>
+                    </ul>
+
+                    <h4>合格した場合</h4>
+                    <ul>
+                        <li><strong>合格証：</strong>1〜2週間後に郵送される（大切に保管）</li>
+                        <li><strong>狩猟者登録：</strong>実際に狩猟をする場合は都道府県ごとに登録が必要</li>
+                        <li><strong>狩猟者共済：</strong>任意保険への加入を検討（事故に備えて）</li>
+                    </ul>
+
+                    <h4>不合格だった場合</h4>
+                    <ul>
+                        <li><strong>落ち込まない：</strong>再挑戦できる！次回に向けて弱点を補強</li>
+                        <li><strong>弱点分析：</strong>どの分野が弱かったか振り返る</li>
+                        <li><strong>次回申込：</strong>次の試験日程を確認して再度チャレンジ</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 励ましメッセージ -->
+            <div class="encouragement">
+                <p>
+                    🌟 ここまで読んでくれてありがとうございます 🌟<br>
+                    あなたが狩猟免許に挑戦する決意をしたこと、<br>
+                    それ自体が素晴らしい一歩です。<br>
+                    <br>
+                    <span class="highlight">不安があっても大丈夫。</span><br>
+                    <span class="highlight">焦らなくても大丈夫。</span><br>
+                    <span class="highlight">あなたは必ず合格できます。</span><br>
+                    <br>
+                    一緒に、一歩ずつ進んでいきましょう！<br>
+                    応援しています 📣
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>あなたの合格を心から応援しています</p>
+            <p>わからないことがあれば、いつでも戻ってきてください</p>
+            <a href="index.html" class="btn-home">トップページに戻る</a>
+        </footer>
+    </div>
+    <script src="ux-enhancements.js"></script>
+
+    <script>
+        // ローディングスクリーン非表示
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s';
+                    setTimeout(() => loadingScreen.style.display = 'none', 500);
+                }
+            }, 300);
+        });
+    </script>
+    <script src="ui-polish.js"></script>
+    <script src="global-navigation.js"></script>
+</body>
+</html>

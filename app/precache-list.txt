@@ -1,0 +1,37 @@
+# HTMLファイル
+/
+/index.html
+/animals.html
+/practical.html
+/mock-exam.html
+/dashboard.html
+/game.html
+/guide.html
+/notes.html
+/faq.html
+
+# CSSファイル
+/design-system.css
+/style.css
+/accessibility.css
+/mobile-optimized.css
+
+# JavaScriptファイル
+/app.js
+/dashboard.js
+/game.js
+/mock-exam.js
+/notes.js
+/sound.js
+/accessibility.js
+/mobile-utils.js
+
+# データファイル
+../quiz-database.json
+../extended-quiz-database.json
+../hunting-license-data.json
+../study-tips.json
+../motivational-messages.json
+
+# PWA
+/manifest.json

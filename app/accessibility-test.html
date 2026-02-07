@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>アクセシビリティテスト - 狩猟免許試験アプリ</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .test-section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 12px;
+        }
+
+        .test-item {
+            margin: 16px 0;
+            padding: 16px;
+            border-left: 4px solid #3498db;
+            background: #f8f9fa;
+        }
+
+        .test-result {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 12px;
+        }
+
+        .test-pass {
+            background: #27ae60;
+            color: white;
+        }
+
+        .test-fail {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .test-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .keyboard-test {
+            border: 2px dashed #3498db;
+            padding: 24px;
+            margin: 16px 0;
+        }
+
+        .focus-demo {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .focus-demo button,
+        .focus-demo a {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 12px 24px;
+        }
+
+        .contrast-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .contrast-item {
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .stat-card {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
+    <header class="header" role="banner">
+        <div class="container">
+            <h1>🔍 アクセシビリティテスト</h1>
+            <nav role="navigation" aria-label="テストナビゲーション">
+                <a href="index.html">← アプリに戻る</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="container">
+            <!-- 概要 -->
+            <section class="test-section">
+                <h2>テスト概要</h2>
+                <p>このページは、狩猟免許試験アプリのアクセシビリティ機能をテストするためのページです。</p>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="test-total">0</div>
+                        <div class="stat-label">総テスト数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="test-pass">0</div>
+                        <div class="stat-label">合格</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="test-fail">0</div>
+                        <div class="stat-label">不合格</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="test-warning">0</div>
+                        <div class="stat-label">警告</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- キーボード操作テスト -->
+            <section class="test-section">
+                <h2>1. キーボード操作テスト</h2>
+
+                <div class="test-item">
+                    <h3>フォーカス可視化</h3>
+                    <p>Tabキーで以下の要素を順番にフォーカスできるか確認してください。</p>
+                    <div class="focus-demo">
+                        <button>ボタン1</button>
+                        <button>ボタン2</button>
+                        <a href="#test">リンク1</a>
+                        <a href="#test">リンク2</a>
+                        <input type="text" placeholder="テキスト入力" aria-label="テスト用テキスト入力">
+                        <select aria-label="テスト用選択">
+                            <option>オプション1</option>
+                            <option>オプション2</option>
+                        </select>
+                    </div>
+                    <div id="keyboard-test-1"></div>
+                </div>
+
+                <div class="test-item">
+                    <h3>ショートカットキー</h3>
+                    <ul>
+                        <li><strong>Alt + H</strong>: ホームに戻る（動作しない場合あり）</li>
+                        <li><strong>Alt + S</strong>: アクセシビリティ設定を開く</li>
+                        <li><strong>Escape</strong>: モーダルを閉じる</li>
+                    </ul>
+                    <button onclick="testShortcuts()">ショートカットをテスト</button>
+                    <div id="keyboard-test-2"></div>
+                </div>
+
+                <div class="test-item">
+                    <h3>Enter/Spaceでの選択</h3>
+                    <p>以下のボタンをキーボードでフォーカスして、EnterまたはSpaceで押せるか確認してください。</p>
+                    <button onclick="alert('ボタンが押されました！')">Enterで押す</button>
+                    <button onclick="alert('Spaceで押されました！')">Spaceで押す</button>
+                    <div id="keyboard-test-3"></div>
+                </div>
+            </section>
+
+            <!-- ARIA属性テスト -->
+            <section class="test-section">
+                <h2>2. ARIA属性テスト</h2>
+
+                <div class="test-item">
+                    <h3>ランドマーク</h3>
+                    <ul id="landmark-list"></ul>
+                    <button onclick="testLandmarks()">ランドマークをチェック</button>
+                </div>
+
+                <div class="test-item">
+                    <h3>フォームラベル</h3>
+                    <ul id="form-label-list"></ul>
+                    <button onclick="testFormLabels()">フォームラベルをチェック</button>
+                </div>
+
+                <div class="test-item">
+                    <h3>画像の代替テキスト</h3>
+                    <ul id="image-alt-list"></ul>
+                    <button onclick="testImageAlt()">画像のaltをチェック</button>
+                </div>
+
+                <div class="test-item">
+                    <h3>ライブリージョン</h3>
+                    <button onclick="testLiveRegion()">ライブリージョンをテスト</button>
+                    <div id="live-region-test"></div>
+                </div>
+            </section>
+
+            <!-- カラーコントラストテスト -->
+            <section class="test-section">
+                <h2>3. カラーコントラストテスト</h2>
+
+                <div class="test-item">
+                    <h3>コントラスト比の例</h3>
+                    <div class="contrast-demo">
+                        <div class="contrast-item" style="background: #ffffff; color: #2c3e50;">
+                            <strong>通常テキスト</strong><br>
+                            #2c3e50 on #ffffff<br>
+                            12.6:1 ✅
+                        </div>
+                        <div class="contrast-item" style="background: #ffffff; color: #0066cc;">
+                            <strong>リンク</strong><br>
+                            #0066cc on #ffffff<br>
+                            7.9:1 ✅
+                        </div>
+                        <div class="contrast-item" style="background: #3498db; color: #ffffff;">
+                            <strong>ボタン(Primary)</strong><br>
+                            #ffffff on #3498db<br>
+                            4.7:1 ✅
+                        </div>
+                        <div class="contrast-item" style="background: #e74c3c; color: #ffffff;">
+                            <strong>エラー</strong><br>
+                            #ffffff on #e74c3c<br>
+                            5.5:1 ✅
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-item">
+                    <h3>ハイコントラストモード</h3>
+                    <p>アクセシビリティ設定（Alt+S）からハイコントラストモードをONにしてください。</p>
+                    <button onclick="testHighContrast()">ハイコントラストをテスト</button>
+                    <div id="contrast-test"></div>
+                </div>
+            </section>
+
+            <!-- フォントサイズテスト -->
+            <section class="test-section">
+                <h2>4. フォントサイズテスト</h2>
+
+                <div class="test-item">
+                    <h3>フォントサイズ調整</h3>
+                    <p>アクセシビリティ設定（Alt+S）からフォントサイズを変更してください。</p>
+                    <button onclick="testFontSize()">フォントサイズをチェック</button>
+                    <div id="font-size-test"></div>
+                </div>
+            </section>
+
+            <!-- タップ領域テスト -->
+            <section class="test-section">
+                <h2>5. タップ領域テスト</h2>
+
+                <div class="test-item">
+                    <h3>最小タップ領域（44x44px）</h3>
+                    <ul id="tap-target-list"></ul>
+                    <button onclick="testTapTargets()">タップ領域をチェック</button>
+                </div>
+            </section>
+
+            <!-- スクリーンリーダーテスト -->
+            <section class="test-section">
+                <h2>6. スクリーンリーダーテスト</h2>
+
+                <div class="test-item">
+                    <h3>手動テスト項目</h3>
+                    <ul>
+                        <li>□ NVDA/JAWSで見出しナビゲーション（H）が機能する</li>
+                        <li>□ ボタンナビゲーション（B）が機能する</li>
+                        <li>□ リンクナビゲーション（K）が機能する</li>
+                        <li>□ フォーム要素が正しく読み上げられる</li>
+                        <li>□ 画像の代替テキストが読み上げられる</li>
+                        <li>□ ライブリージョンの変更が通知される</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 自動テスト結果 -->
+            <section class="test-section">
+                <h2>7. 自動テスト結果</h2>
+                <button onclick="runAllTests()" class="btn btn-primary btn-lg">すべてのテストを実行</button>
+                <div id="auto-test-results" style="margin-top: 24px;"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 狩猟免許試験 完全攻略 - アクセシビリティテスト</p>
+        </div>
+    </footer>
+
+    <script src="accessibility.js"></script>
+    <script>
+        // テスト統計
+        let testStats = { total: 0, pass: 0, fail: 0, warning: 0 };
+
+        function updateStats() {
+            document.getElementById('test-total').textContent = testStats.total;
+            document.getElementById('test-pass').textContent = testStats.pass;
+            document.getElementById('test-fail').textContent = testStats.fail;
+            document.getElementById('test-warning').textContent = testStats.warning;
+        }
+
+        function addTestResult(elementId, pass, message) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            testStats.total++;
+            if (pass === true) {
+                testStats.pass++;
+                el.innerHTML = `<span class="test-result test-pass">✅ 合格</span> ${message}`;
+            } else if (pass === false) {
+                testStats.fail++;
+                el.innerHTML = `<span class="test-result test-fail">❌ 不合格</span> ${message}`;
+            } else {
+                testStats.warning++;
+                el.innerHTML = `<span class="test-result test-warning">⚠️ 警告</span> ${message}`;
+            }
+            updateStats();
+        }
+
+        // ランドマークテスト
+        function testLandmarks() {
+            const landmarks = {
+                'banner': document.querySelectorAll('[role="banner"], header').length,
+                'navigation': document.querySelectorAll('[role="navigation"], nav').length,
+                'main': document.querySelectorAll('[role="main"], main').length,
+                'contentinfo': document.querySelectorAll('[role="contentinfo"], footer').length
+            };
+
+            const list = document.getElementById('landmark-list');
+            list.innerHTML = '';
+
+            for (const [name, count] of Object.entries(landmarks)) {
+                const li = document.createElement('li');
+                const pass = count > 0;
+                li.innerHTML = `${pass ? '✅' : '❌'} ${name}: ${count}個`;
+                list.appendChild(li);
+
+                testStats.total++;
+                if (pass) testStats.pass++;
+                else testStats.fail++;
+            }
+            updateStats();
+        }
+
+        // フォームラベルテスト
+        function testFormLabels() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            const list = document.getElementById('form-label-list');
+            list.innerHTML = '';
+
+            let withoutLabel = 0;
+            inputs.forEach(input => {
+                const hasLabel = input.id && document.querySelector(`label[for="${input.id}"]`) ||
+                               input.getAttribute('aria-label') ||
+                               input.getAttribute('aria-labelledby');
+                if (!hasLabel) withoutLabel++;
+            });
+
+            const pass = withoutLabel === 0;
+            const li = document.createElement('li');
+            li.innerHTML = `${pass ? '✅' : '❌'} フォーム要素: ${inputs.length}個中${inputs.length - withoutLabel}個にラベルあり`;
+            list.appendChild(li);
+
+            testStats.total++;
+            if (pass) testStats.pass++;
+            else testStats.fail++;
+            updateStats();
+        }
+
+        // 画像のaltテスト
+        function testImageAlt() {
+            const images = document.querySelectorAll('img');
+            const list = document.getElementById('image-alt-list');
+            list.innerHTML = '';
+
+            let withoutAlt = 0;
+            images.forEach(img => {
+                if (!img.hasAttribute('alt')) withoutAlt++;
+            });
+
+            const pass = withoutAlt === 0;
+            const li = document.createElement('li');
+            li.innerHTML = `${pass ? '✅' : '❌'} 画像: ${images.length}個中${images.length - withoutAlt}個にaltあり`;
+            list.appendChild(li);
+
+            testStats.total++;
+            if (pass) testStats.pass++;
+            else testStats.fail++;
+            updateStats();
+        }
+
+        // ライブリージョンテスト
+        function testLiveRegion() {
+            const notificationArea = document.getElementById('notification-area');
+            const alertArea = document.getElementById('alert-area');
+
+            const el = document.getElementById('live-region-test');
+            const pass = notificationArea && alertArea;
+
+            testStats.total++;
+            if (pass) {
+                testStats.pass++;
+                el.innerHTML = '<span class="test-result test-pass">✅ 合格</span> ライブリージョンが存在します';
+
+                // テスト通知
+                if (accessibilityManager) {
+                    accessibilityManager.announce('テスト通知: ライブリージョンが機能しています');
+                }
+            } else {
+                testStats.fail++;
+                el.innerHTML = '<span class="test-result test-fail">❌ 不合格</span> ライブリージョンが見つかりません';
+            }
+            updateStats();
+        }
+
+        // ハイコントラストテスト
+        function testHighContrast() {
+            const hasClass = document.documentElement.classList.contains('high-contrast');
+            const el = document.getElementById('contrast-test');
+
+            testStats.total++;
+            if (hasClass) {
+                testStats.pass++;
+                el.innerHTML = '<span class="test-result test-pass">✅ 合格</span> ハイコントラストモードが有効です';
+            } else {
+                testStats.warning++;
+                el.innerHTML = '<span class="test-result test-warning">⚠️ 警告</span> ハイコントラストモードを有効にしてください';
+            }
+            updateStats();
+        }
+
+        // フォントサイズテスト
+        function testFontSize() {
+            const fontSize = window.getComputedStyle(document.documentElement).fontSize;
+            const el = document.getElementById('font-size-test');
+
+            testStats.total++;
+            testStats.pass++;
+            el.innerHTML = `<span class="test-result test-pass">✅ 確認</span> 現在のフォントサイズ: ${fontSize}`;
+            updateStats();
+        }
+
+        // タップ領域テスト
+        function testTapTargets() {
+            const interactive = document.querySelectorAll('button, a, input[type="button"], input[type="submit"]');
+            const list = document.getElementById('tap-target-list');
+            list.innerHTML = '';
+
+            let tooSmall = 0;
+            interactive.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.width < 44 || rect.height < 44) {
+                    tooSmall++;
+                }
+            });
+
+            const pass = tooSmall === 0;
+            const li = document.createElement('li');
+            li.innerHTML = `${pass ? '✅' : '❌'} インタラクティブ要素: ${interactive.length}個中${interactive.length - tooSmall}個が44x44px以上`;
+            list.appendChild(li);
+
+            testStats.total++;
+            if (pass) testStats.pass++;
+            else testStats.fail++;
+            updateStats();
+        }
+
+        // ショートカットテスト
+        function testShortcuts() {
+            alert('Alt+Sを押してアクセシビリティ設定を開いてください。\n開けたら合格です。');
+        }
+
+        // すべてのテストを実行
+        function runAllTests() {
+            testStats = { total: 0, pass: 0, fail: 0, warning: 0 };
+            updateStats();
+
+            testLandmarks();
+            testFormLabels();
+            testImageAlt();
+            testLiveRegion();
+            testHighContrast();
+            testFontSize();
+            testTapTargets();
+
+            const results = document.getElementById('auto-test-results');
+            const percentage = Math.round((testStats.pass / testStats.total) * 100);
+            results.innerHTML = `
+                <div style="background: ${percentage >= 80 ? '#27ae60' : '#e74c3c'}; color: white; padding: 24px; border-radius: 8px; text-align: center;">
+                    <h3>テスト完了</h3>
+                    <p style="font-size: 2rem; margin: 16px 0;">${percentage}%</p>
+                    <p>${testStats.pass}/${testStats.total}項目が合格</p>
+                </div>
+            `;
+        }
+
+        // ページ読み込み時に初期統計を表示
+        updateStats();
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+{
+  "name": "狩猟免許試験 一発合格アプリ",
+  "short_name": "狩猟免許",
+  "description": "狩猟免許試験（第一種）の一発合格を目指すインタラクティブ学習アプリ。クイズ、実技シミュレーション、鳥獣判別で効率的に学習できます。",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "theme_color": "#2c3e50",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icons/icon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "reference", "lifestyle"],
+  "lang": "ja",
+  "dir": "ltr",
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ホーム画面 - 学習進捗とダッシュボード"
+    },
+    {
+      "src": "/screenshots/quiz.png",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "クイズ画面 - インタラクティブな学習"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "今日の学習",
+      "short_name": "学習",
+      "description": "今日のおすすめ学習を開始",
+      "url": "/study",
+      "icons": [{ "src": "/icons/shortcut-study.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "クイズ",
+      "short_name": "クイズ",
+      "description": "問題を解く",
+      "url": "/quiz",
+      "icons": [{ "src": "/icons/shortcut-quiz.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "模擬試験",
+      "short_name": "模擬試験",
+      "description": "本番形式の模擬試験",
+      "url": "/mock-exam",
+      "icons": [{ "src": "/icons/shortcut-exam.png", "sizes": "96x96" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

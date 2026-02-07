@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>UI動作テスト - 狩猟免許試験アプリ</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success { color: #27ae60; }
+        .error { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <h1>🧪 UI動作テスト</h1>
+    <p>このページは、狩猟免許試験アプリのUI要素が正しく動作するかテストするためのページです。</p>
+
+    <!-- データ読み込みテスト -->
+    <div class="test-section">
+        <h2>1. データ読み込みテスト</h2>
+        <button class="btn btn-primary" onclick="testDataLoading()">データを読み込む</button>
+        <div id="data-test-result" class="test-result"></div>
+    </div>
+
+    <!-- ボタンスタイルテスト -->
+    <div class="test-section">
+        <h2>2. ボタンスタイルテスト</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="btn btn-primary">プライマリ</button>
+            <button class="btn btn-secondary">セカンダリ</button>
+            <button class="btn btn-outline">アウトライン</button>
+            <button class="btn btn-danger">危険</button>
+            <button class="btn btn-ghost">ゴースト</button>
+            <button class="btn btn-primary" disabled>無効</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <button class="btn btn-primary btn-sm">小</button>
+            <button class="btn btn-primary">通常</button>
+            <button class="btn btn-primary btn-lg">大</button>
+        </div>
+    </div>
+
+    <!-- カードテスト -->
+    <div class="test-section">
+        <h2>3. カード要素テスト</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">カードタイトル</h3>
+                </div>
+                <div class="card-body">
+                    これはカードの本文です。様々な情報を表示できます。
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-sm">アクション</button>
+                </div>
+            </div>
+
+            <div class="card card-interactive">
+                <h3>インタラクティブカード</h3>
+                <p>ホバーすると反応します</p>
+            </div>
+
+            <div class="stats-card">
+                <span class="stats-value">85</span>
+                <span class="stats-label">正答率</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- バッジテスト -->
+    <div class="test-section">
+        <h2>4. バッジテスト</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="badge badge-primary">プライマリ</span>
+            <span class="badge badge-success">成功</span>
+            <span class="badge badge-warning">警告</span>
+            <span class="badge badge-error">エラー</span>
+            <span class="badge badge-info">情報</span>
+        </div>
+        <h3 style="margin-top: 20px;">カテゴリバッジ</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="badge badge-category-law">📜 法令</span>
+            <span class="badge badge-category-tool">🔧 猟具</span>
+            <span class="badge badge-category-animal">🦌 鳥獣</span>
+            <span class="badge badge-category-protection">🌿 保護管理</span>
+            <span class="badge badge-category-practical">✋ 実技</span>
+        </div>
+        <h3 style="margin-top: 20px;">難易度バッジ</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="badge badge-difficulty badge-difficulty-easy">易</span>
+            <span class="badge badge-difficulty badge-difficulty-medium">中</span>
+            <span class="badge badge-difficulty badge-difficulty-hard">難</span>
+        </div>
+    </div>
+
+    <!-- プログレスバーテスト -->
+    <div class="test-section">
+        <h2>5. プログレスバーテスト</h2>
+        <div class="progress-label">
+            <span>学習進捗</span>
+            <span>70%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" style="width: 70%;"></div>
+        </div>
+
+        <div class="progress-label" style="margin-top: 20px;">
+            <span>合格ライン</span>
+            <span>85%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar success" style="width: 85%;"></div>
+        </div>
+
+        <div class="progress-label" style="margin-top: 20px;">
+            <span>要注意</span>
+            <span>45%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar warning" style="width: 45%;"></div>
+        </div>
+    </div>
+
+    <!-- アラートテスト -->
+    <div class="test-section">
+        <h2>6. アラートテスト</h2>
+        <div class="alert alert-success">
+            <div class="alert-title">成功！</div>
+            問題演習を完了しました。
+        </div>
+        <div class="alert alert-warning">
+            <div class="alert-title">警告</div>
+            一部の問題が未回答です。
+        </div>
+        <div class="alert alert-error">
+            <div class="alert-title">エラー</div>
+            データの読み込みに失敗しました。
+        </div>
+        <div class="alert alert-info">
+            <div class="alert-title">ヒント</div>
+            この問題は引っかけ問題です。注意して解答してください。
+        </div>
+    </div>
+
+    <!-- 選択肢テスト -->
+    <div class="test-section">
+        <h2>7. 選択肢UIテスト</h2>
+        <div class="choices">
+            <div class="choice">
+                <span class="choice-indicator"></span>
+                <span class="choice-text">選択肢1: 通常状態</span>
+            </div>
+            <div class="choice selected">
+                <span class="choice-indicator"></span>
+                <span class="choice-text">選択肢2: 選択状態</span>
+            </div>
+            <div class="choice correct">
+                <span class="choice-indicator"></span>
+                <span class="choice-text">選択肢3: 正解</span>
+            </div>
+            <div class="choice incorrect">
+                <span class="choice-indicator"></span>
+                <span class="choice-text">選択肢4: 不正解</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScriptテスト -->
+    <script>
+        async function testDataLoading() {
+            const resultDiv = document.getElementById('data-test-result');
+            resultDiv.innerHTML = '読み込み中...';
+
+            try {
+                // quiz-database.jsonを読み込み
+                const quizResponse = await fetch('../quiz-database.json');
+                const quizData = await quizResponse.json();
+
+                // hunting-license-data.jsonを読み込み
+                const huntingResponse = await fetch('../hunting-license-data.json');
+                const huntingData = await huntingResponse.json();
+
+                // 結果表示
+                resultDiv.innerHTML = `
+                    <div class="success">✅ データ読み込み成功！</div>
+                    <ul>
+                        <li>問題数: ${quizData.quizzes.length}問</li>
+                        <li>カテゴリ数: ${quizData.categories.length}</li>
+                        <li>模擬試験数: ${quizData.mockExams.length}回</li>
+                        <li>狩猟鳥類: ${huntingData.gameAnimals.birds.length}種</li>
+                        <li>狩猟獣類: ${huntingData.gameAnimals.mammals.length}種</li>
+                    </ul>
+                    <p style="margin-top: 10px;">
+                        <strong>最初の問題:</strong><br>
+                        ${quizData.quizzes[0].question}
+                    </p>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ エラー: ${error.message}</div>
+                    <p>データの読み込みに失敗しました。パスが正しいか確認してください。</p>
+                `;
+            }
+        }
+
+        console.log('🧪 UIテストページ読み込み完了');
+    </script>
+</body>
+</html>

@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="狩猟免許試験に関するよくある質問（FAQ）。受験資格、勉強方法、試験内容、合格後の手続きなど、初心者の疑問に答えます。">
+    <meta name="keywords" content="狩猟免許,FAQ,よくある質問,受験資格,勉強方法,合格率,費用">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="狩猟免許FAQ">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>よくある質問（FAQ） | 狩猟免許試験 完全攻略</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-optimized.css">
+
+    <style>
+        /* FAQ専用スタイル */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .faq-hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .faq-hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .faq-hero-description {
+            font-size: 1.125rem;
+            opacity: 0.95;
+        }
+
+        .faq-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-nav-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .faq-nav-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .faq-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .faq-nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+
+        .faq-category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .faq-category-icon {
+            font-size: 2rem;
+        }
+
+        .faq-category-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+
+        .faq-question-text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .faq-question-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-question-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding: 1.25rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            background: var(--bg-light);
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .faq-answer-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .faq-answer-content a:hover {
+            border-bottom-color: var(--primary-color);
+        }
+
+        .faq-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--success-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-tag--warning {
+            background: var(--warning-color);
+        }
+
+        .faq-tag--info {
+            background: var(--info-color);
+        }
+
+        .faq-cta {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        .faq-cta-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .faq-cta-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .back-to-home:hover {
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero-title {
+                font-size: 2rem;
+            }
+
+            .faq-category-title {
+                font-size: 1.5rem;
+            }
+
+            .faq-nav-list {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .faq-answer-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon" aria-hidden="true">🎯</span>
+                        <span class="logo-text">狩猟免許試験 完全攻略</span>
+                    </a>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main id="main-content">
+        <div class="faq-container">
+            <!-- ヒーローセクション -->
+            <div class="faq-hero">
+                <h2 class="faq-hero-title">よくある質問（FAQ）</h2>
+                <p class="faq-hero-description">
+                    初心者がよく疑問に思うことをまとめました。<br>
+                    あなたの不安や疑問を解消し、自信を持って試験に臨めるようサポートします。
+                </p>
+            </div>
+
+            <!-- カテゴリナビゲーション -->
+            <nav class="faq-nav" aria-label="FAQカテゴリ">
+                <h3 class="faq-nav-title">カテゴリから探す</h3>
+                <ul class="faq-nav-list">
+                    <li><a href="#exam" class="faq-nav-link">試験について</a></li>
+                    <li><a href="#qualification" class="faq-nav-link">受験資格・手続き</a></li>
+                    <li><a href="#study" class="faq-nav-link">勉強方法</a></li>
+                    <li><a href="#exam-day" class="faq-nav-link">試験当日</a></li>
+                    <li><a href="#after" class="faq-nav-link">合格後</a></li>
+                    <li><a href="#app" class="faq-nav-link">このアプリについて</a></li>
+                </ul>
+            </nav>
+
+            <!-- 試験について -->
+            <section id="exam" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">📝</span>
+                    <h3 class="faq-category-title">試験について</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                独学で合格できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>独学で十分合格可能です！</strong> 実際、多くの合格者が独学で学習しています。</p>
+                                <p>このアプリでは、法令・猟具・鳥獣識別・実技まで、試験に必要な知識を網羅的に学べます。計画的に学習を進めれば、予備講習を受けなくても合格は十分狙えます。</p>
+                                <p>ただし、実技試験が不安な方や、効率的に学びたい方は、都道府県が実施する予備講習の受講も検討してみてください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                勉強時間はどれくらい必要ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>目安は20〜40時間程度</strong>です。</p>
+                                <p>知識ゼロから始める場合：</p>
+                                <ul>
+                                    <li><strong>基礎学習：</strong> 10〜15時間（各カテゴリの基本知識習得）</li>
+                                    <li><strong>問題演習：</strong> 5〜10時間（繰り返し演習で定着）</li>
+                                    <li><strong>鳥獣識別：</strong> 3〜5時間（30種の識別訓練）</li>
+                                    <li><strong>実技対策：</strong> 2〜5時間（手順の暗記と練習）</li>
+                                    <li><strong>模擬試験：</strong> 3〜5時間（3回分×復習）</li>
+                                </ul>
+                                <p>1日1〜2時間の学習なら、2〜4週間で合格レベルに到達できます。焦らず、確実に知識を積み上げていきましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                合格率はどれくらいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>全国平均で約70〜80%</strong>と高い合格率です。</p>
+                                <p>予備講習を受講した方の合格率はさらに高く、90%前後とも言われています。しっかり準備すれば、決して難しい試験ではありません。</p>
+                                <p>ただし、都道府県や年度によって若干のばらつきがあります。油断せず、計画的に学習を進めることが大切です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                難しい試験ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">適切な準備で合格できます</span>
+                                <p><strong>適切に準備すれば、決して難しくありません。</strong></p>
+                                <p>知識試験は「◯×形式」が中心で、基本的な法令や猟具の知識を問うものがほとんど。鳥獣識別も、代表的な30種程度を覚えれば十分です。</p>
+                                <p>実技試験も、手順を正しく覚えて落ち着いて実施すれば問題ありません。このアプリで計画的に学習すれば、自信を持って試験に臨めます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                予備講習は必須ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--info">任意です</span>
+                                <p><strong>予備講習は任意です。</strong> 受講しなくても受験できます。</p>
+                                <p><strong>予備講習を受けるメリット：</strong></p>
+                                <ul>
+                                    <li>実物の猟具を見ながら学べる</li>
+                                    <li>実技試験の流れを直接確認できる</li>
+                                    <li>講師に質問できる</li>
+                                    <li>合格率が高い（90%前後）</li>
+                                </ul>
+                                <p><strong>デメリット：</strong></p>
+                                <ul>
+                                    <li>費用がかかる（1〜2万円程度）</li>
+                                    <li>1〜2日拘束される</li>
+                                    <li>開催日時・場所が限られる</li>
+                                </ul>
+                                <p>時間・予算に余裕があれば受講をおすすめしますが、このアプリで十分学習できるので、独学でも問題ありません。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験の形式を教えてください
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>試験は<strong>知識試験</strong>と<strong>実技試験</strong>の2つで構成されます。</p>
+                                <p><strong>【知識試験】</strong></p>
+                                <ul>
+                                    <li>形式：◯×形式、選択式</li>
+                                    <li>問題数：30問程度（都道府県により異なる）</li>
+                                    <li>試験時間：90分程度</li>
+                                    <li>合格ライン：70%以上の正答率</li>
+                                </ul>
+                                <p><strong>【実技試験】</strong></p>
+                                <ul>
+                                    <li>猟具（銃・わな）の取り扱い</li>
+                                    <li>点検・操作の手順</li>
+                                    <li>安全確認の実演</li>
+                                    <li>重大なミスがなければ合格</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                どの免許を取ればいいですか？（第一種・第二種・わな・網）
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>目的に応じて選びましょう。</strong></p>
+                                <p><strong>第一種銃猟免許：</strong></p>
+                                <ul>
+                                    <li>装薬銃（散弾銃・ライフル）と空気銃が使える</li>
+                                    <li>最も汎用性が高い</li>
+                                    <li>ただし、銃の所持許可が別途必要</li>
+                                </ul>
+                                <p><strong>第二種銃猟免許：</strong></p>
+                                <ul>
+                                    <li>空気銃のみ使える</li>
+                                    <li>比較的取得しやすい</li>
+                                </ul>
+                                <p><strong>わな猟免許：</strong></p>
+                                <ul>
+                                    <li>くくりわな・箱わなが使える</li>
+                                    <li>人気上昇中（有害鳥獣駆除にも有効）</li>
+                                    <li>銃より低コストで始められる</li>
+                                </ul>
+                                <p><strong>網猟免許：</strong></p>
+                                <ul>
+                                    <li>網を使った猟（むそう網など）</li>
+                                    <li>取得者は少ない</li>
+                                </ul>
+                                <p>迷ったら、<strong>第一種銃猟</strong>と<strong>わな猟</strong>の併願がおすすめです。同日受験でき、併願割引がある都道府県もあります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                落ちる人はどんなミスをしていますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">注意</span>
+                                <p><strong>よくある失敗例：</strong></p>
+                                <p><strong>【知識試験】</strong></p>
+                                <ul>
+                                    <li>狩猟鳥獣と非狩猟鳥獣の混同（カラス、ハト、タヌキなど）</li>
+                                    <li>法定猟具の範囲を誤解</li>
+                                    <li>禁止区域・禁止期間を覚えていない</li>
+                                    <li>鳥獣保護法の基本を理解していない</li>
+                                </ul>
+                                <p><strong>【実技試験】</strong></p>
+                                <ul>
+                                    <li>安全確認を忘れる（最重要！）</li>
+                                    <li>手順の順番を間違える</li>
+                                    <li>緊張して手順が飛ぶ</li>
+                                    <li>銃口の向きに無頓着</li>
+                                </ul>
+                                <p>これらのミスは<strong>適切な準備で防げます。</strong> このアプリで繰り返し練習し、自信を持って試験に臨みましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 受験資格・手続き -->
+            <section id="qualification" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">📋</span>
+                    <h3 class="faq-category-title">受験資格・手続き</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                年齢制限はありますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>網猟・わな猟：18歳以上</strong></p>
+                                <p><strong>第一種・第二種銃猟：20歳以上</strong></p>
+                                <p>上限はありません。70代、80代で取得される方もいらっしゃいます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                費用はどれくらいかかりますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>【試験手数料】</strong></p>
+                                <ul>
+                                    <li>1種目：5,200円</li>
+                                    <li>2種目：10,400円（併願割引がある場合も）</li>
+                                </ul>
+                                <p><strong>【予備講習（任意）】</strong></p>
+                                <ul>
+                                    <li>10,000〜20,000円程度（都道府県により異なる）</li>
+                                </ul>
+                                <p><strong>【免許証交付手数料】</strong></p>
+                                <ul>
+                                    <li>1種目：2,900円</li>
+                                    <li>2種目：5,800円</li>
+                                </ul>
+                                <p>合計で<strong>1万円〜3万円程度</strong>が目安です。（予備講習を受ける場合はプラス1〜2万円）</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                申し込み方法は？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>手順：</strong></p>
+                                <ol>
+                                    <li>お住まいの都道府県の公式サイトで試験日程を確認</li>
+                                    <li>申請書を入手（窓口またはダウンロード）</li>
+                                    <li>必要書類を準備（証明写真、医師の診断書など）</li>
+                                    <li>期限までに提出（郵送または窓口）</li>
+                                </ol>
+                                <p><strong>必要書類（一般的な例）：</strong></p>
+                                <ul>
+                                    <li>狩猟免許申請書</li>
+                                    <li>証明写真（縦3cm×横2.4cm）</li>
+                                    <li>医師の診断書（精神疾患、目・耳の障害がないことの証明）</li>
+                                    <li>手数料</li>
+                                </ul>
+                                <p>詳細はお住まいの都道府県の公式サイトで確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験はいつ実施されますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>都道府県により異なります。</strong></p>
+                                <p>多くの都道府県では、<strong>年1〜4回程度</strong>実施されます。狩猟シーズン前の<strong>6月〜9月</strong>に集中する傾向があります。</p>
+                                <p>お住まいの都道府県の公式サイトで最新の試験日程を確認してください。申込期限は試験日の1〜2ヶ月前が一般的です。</p>
+                                <p><strong>参考リンク：</strong></p>
+                                <ul>
+                                    <li><a href="https://www.env.go.jp/nature/choju/index.html" target="_blank" rel="noopener noreferrer">環境省 鳥獣保護管理</a></li>
+                                    <li>各都道府県の公式サイト（「〇〇県 狩猟免許」で検索）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                他の都道府県でも受験できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">可能です</span>
+                                <p><strong>住民票がある都道府県以外でも受験できます。</strong></p>
+                                <p>ただし、都道府県によっては「在住・在勤・在学者のみ」という制限がある場合もあるため、事前に確認してください。</p>
+                                <p>また、免許証は「全国共通」なので、どこで取得しても日本全国で使えます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                複数の免許を同時に受験できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>同日に複数の免許を受験できます。</strong></p>
+                                <p>例えば「第一種銃猟」と「わな猟」を同時に受験する方も多いです。試験内容に重複する部分も多いので、効率的に取得できます。</p>
+                                <p>ただし、併願すると試験時間が長くなるので、体力と集中力の配分に注意しましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                医師の診断書は必須ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">必須です</span>
+                                <p><strong>医師の診断書が必要です。</strong></p>
+                                <p>以下の項目について「異常なし」の証明が必要です：</p>
+                                <ul>
+                                    <li>精神疾患の有無</li>
+                                    <li>目・耳の障害の有無</li>
+                                    <li>その他狩猟に支障がある疾病の有無</li>
+                                </ul>
+                                <p>かかりつけ医で発行してもらえます（費用：3,000〜5,000円程度）。診断書の様式は申請書類に含まれています。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                視力が悪くても受験できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">矯正視力でOK</span>
+                                <p><strong>メガネ・コンタクトレンズで矯正した視力で問題ありません。</strong></p>
+                                <p>視力の基準は都道府県により若干異なりますが、一般的には「両眼で0.5以上（矯正可）」が目安です。</p>
+                                <p>医師の診断書に視力検査の結果を記載してもらえば大丈夫です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                前科・前歴があると受験できませんか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>狩猟免許自体は、犯罪歴があっても取得できる場合が多いです。</strong></p>
+                                <p>ただし、<strong>銃の所持許可</strong>は別の話です。銃猟免許を取得しても、過去に銃刀法違反や暴力的な犯罪歴がある場合、銃の所持許可が下りないことがあります。</p>
+                                <p>詳細は警察署の生活安全課に相談することをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                外国人でも受験できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>日本に住所がある外国人であれば受験できます。</strong></p>
+                                <p>必要書類や申請方法は日本人と同じです。ただし、試験は日本語で実施されるため、一定の日本語能力が必要です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 勉強方法 -->
+            <section id="study" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">📚</span>
+                    <h3 class="faq-category-title">勉強方法</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                何から始めればいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>おすすめの学習ステップ：</strong></p>
+                                <ol>
+                                    <li><strong>基礎学習で全体像を把握</strong><br>5つのカテゴリ（法令・猟具・鳥獣・保護管理・実技）を一通り学ぶ</li>
+                                    <li><strong>問題演習で知識を定着</strong><br>繰り返し解いて、理解度を高める</li>
+                                    <li><strong>鳥獣図鑑で識別力を磨く</strong><br>30種の鳥獣を確実に識別できるようにする</li>
+                                    <li><strong>実技ガイドで手順を覚える</strong><br>猟具の取り扱い手順を暗記する</li>
+                                    <li><strong>模擬試験で総仕上げ</strong><br>本番と同じ形式で実力を確認</li>
+                                </ol>
+                                <p>焦らず、1日1〜2時間のペースで進めていけば、2〜4週間で合格レベルに到達できます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                おすすめの参考書はありますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>このアプリだけで十分合格可能</strong>ですが、さらに深く学びたい方には以下の書籍もおすすめです：</p>
+                                <ul>
+                                    <li>「狩猟読本」（大日本猟友会）- 狩猟の基礎知識</li>
+                                    <li>「鳥獣保護管理法の解説」（環境省）- 法令の詳細</li>
+                                    <li>各都道府県が発行する「狩猟のてびき」</li>
+                                </ul>
+                                <p>ただし、<strong>まずはこのアプリで学習</strong>し、足りない部分があれば書籍で補完する、という順番をおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                スマホだけで勉強できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>このアプリはスマホに最適化</strong>されています。通勤・通学中のスキマ時間でも効率的に学習できます。</p>
+                                <p>データは自動保存されるので、いつでもどこでも続きから学習できます。PCやタブレットでも同じように使えます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                実技試験はどう対策すればいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>対策方法：</strong></p>
+                                <ol>
+                                    <li><strong>このアプリの「実技ガイド」で手順を暗記</strong><br>銃器・わなの取り扱い手順を完璧に覚える</li>
+                                    <li><strong>YouTubeなどで実演動画を見る</strong><br>実際の動きをイメージする</li>
+                                    <li><strong>予備講習で実物に触れる（推奨）</strong><br>実物の猟具を使って練習できる</li>
+                                    <li><strong>当日は落ち着いて、声に出しながら確認</strong><br>「安全確認よし」と声に出すと忘れにくい</li>
+                                </ol>
+                                <p>実技試験で最も重要なのは<strong>「安全確認」</strong>です。手順を間違えても減点程度ですが、安全確認を怠ると即不合格になることもあります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                鳥獣識別が苦手です。覚え方のコツは？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>覚え方のコツ：</strong></p>
+                                <ul>
+                                    <li><strong>狩猟鳥獣を優先的に覚える</strong><br>狩猟できる鳥獣は限られている（鳥類28種、獣類20種）</li>
+                                    <li><strong>特徴的な見た目に注目</strong><br>大きさ、色、模様、くちばしの形など</li>
+                                    <li><strong>似ている鳥獣を比較する</strong><br>カラス類、ハト類、タヌキとアライグマなど</li>
+                                    <li><strong>このアプリの「鳥獣図鑑」で繰り返し確認</strong><br>識別ポイントを解説付きで学べる</li>
+                                    <li><strong>実物の写真を見る</strong><br>野鳥図鑑やネットで実物の画像を見る</li>
+                                </ul>
+                                <p>焦らず、毎日少しずつ覚えていきましょう。1週間〜10日で30種程度は十分覚えられます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                法令が覚えられません...
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>安心してください。法令は丸暗記不要です。</strong></p>
+                                <p>試験では「条文の暗記」ではなく、「基本的なルールの理解」が問われます。</p>
+                                <p><strong>重要ポイントだけ押さえればOK：</strong></p>
+                                <ul>
+                                    <li>狩猟鳥獣と非狩猟鳥獣の区別</li>
+                                    <li>狩猟期間（一般的に11月15日〜2月15日）</li>
+                                    <li>禁止区域（鳥獣保護区、都市公園など）</li>
+                                    <li>禁止猟法（毒薬、爆発物など）</li>
+                                    <li>狩猟者登録が必要</li>
+                                </ul>
+                                <p>このアプリの問題演習を繰り返せば、自然と重要ポイントが頭に入ります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                模擬試験は何回解けばいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>最低3回分を1回ずつ、理想は複数回解くこと。</strong></p>
+                                <p>このアプリには3回分の模擬試験が用意されています。</p>
+                                <p><strong>おすすめの使い方：</strong></p>
+                                <ol>
+                                    <li>1回目：現在の実力を測る（学習初期）</li>
+                                    <li>2回目：弱点を確認する（学習中期）</li>
+                                    <li>3回目：本番前の総仕上げ（試験直前）</li>
+                                </ol>
+                                <p>間違えた問題は必ず復習し、なぜ間違えたかを理解することが大切です。3回分すべてで70%以上取れれば、本番でも合格できる可能性が高いです。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                忙しくて勉強時間が取れません...
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>スキマ時間を活用しましょう。</strong></p>
+                                <p>このアプリはスマホで使えるので、以下のような時間を有効活用できます：</p>
+                                <ul>
+                                    <li>通勤・通学中（電車・バス）</li>
+                                    <li>昼休み</li>
+                                    <li>寝る前の10分</li>
+                                    <li>待ち時間（病院、銀行など）</li>
+                                </ul>
+                                <p>1日10〜15分でもOK。<strong>毎日継続する</strong>ことが最も重要です。1ヶ月続ければ、5〜7時間の学習時間になります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                どのくらいの正答率で合格できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>一般的に70%以上の正答率で合格</strong>とされています。</p>
+                                <p>このアプリの模擬試験で70%以上を安定して取れれば、本番でも合格できる可能性が高いです。</p>
+                                <p>ただし、都道府県や年度により合格基準が若干異なる場合があるため、<strong>80%以上を目標</strong>にすることをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験直前は何をすればいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>試験前日〜当日の過ごし方：</strong></p>
+                                <p><strong>【前日】</strong></p>
+                                <ul>
+                                    <li>模擬試験で最終確認（3回目を推奨）</li>
+                                    <li>鳥獣図鑑で識別の復習</li>
+                                    <li>実技手順の最終確認</li>
+                                    <li>早めに就寝（十分な睡眠が大切）</li>
+                                    <li>持ち物の確認</li>
+                                </ul>
+                                <p><strong>【当日】</strong></p>
+                                <ul>
+                                    <li>朝食をしっかり取る</li>
+                                    <li>時間に余裕を持って会場へ</li>
+                                    <li>新しいことは覚えず、復習に徹する</li>
+                                    <li>深呼吸してリラックス</li>
+                                </ul>
+                                <p>焦らず、これまで学習してきたことを信じて、落ち着いて試験に臨みましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 試験当日 -->
+            <section id="exam-day" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">✏️</span>
+                    <h3 class="faq-category-title">試験当日</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                持ち物は何が必要ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>必須の持ち物：</strong></p>
+                                <ul>
+                                    <li>受験票</li>
+                                    <li>筆記用具（HB以上の鉛筆、消しゴム）</li>
+                                    <li>本人確認書類（運転免許証、マイナンバーカードなど）</li>
+                                </ul>
+                                <p><strong>あると便利：</strong></p>
+                                <ul>
+                                    <li>時計（会場に時計がない場合がある）</li>
+                                    <li>飲み物</li>
+                                    <li>このアプリ（直前の復習に）</li>
+                                </ul>
+                                <p>詳細は受験票に記載されているので、必ず確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                服装の指定はありますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--info">自由です</span>
+                                <p><strong>服装の指定は特にありません。</strong> 普段着で大丈夫です。</p>
+                                <p>ただし、実技試験があるため、<strong>動きやすい服装</strong>を選ぶことをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験時間はどれくらいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>一般的な試験スケジュール：</strong></p>
+                                <ul>
+                                    <li><strong>知識試験：</strong> 90分程度</li>
+                                    <li><strong>実技試験：</strong> 1人5〜10分程度（待ち時間含む）</li>
+                                </ul>
+                                <p>併願する場合は、試験時間が長くなります。全体で<strong>半日〜1日</strong>かかると考えておきましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                不合格の場合、再受験できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>何度でも再受験できます。</strong> 回数制限はありません。</p>
+                                <p>ただし、試験は年に数回しか実施されないので、次回の試験日を確認して、計画的に再挑戦しましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                知識試験と実技試験、どちらが先ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>一般的には知識試験が先、実技試験が後</strong>です。</p>
+                                <p>知識試験に合格した人だけが実技試験に進めるパターンが多いですが、都道府県により異なる場合があります。</p>
+                                <p>当日の流れは受験票に記載されているので、必ず確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                実技試験で緊張してしまいそうです...
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>緊張するのは当たり前。落ち着いて対処しましょう。</strong></p>
+                                <p><strong>緊張対策：</strong></p>
+                                <ul>
+                                    <li><strong>深呼吸をする</strong><br>試験前に深く息を吸って、ゆっくり吐く</li>
+                                    <li><strong>手順を声に出す</strong><br>「安全確認よし」と声に出すことで、手順を忘れにくくなる</li>
+                                    <li><strong>試験官は敵ではない</strong><br>試験官は落とすためではなく、合格させるために見ている</li>
+                                    <li><strong>完璧を求めない</strong><br>多少手順が遅くても、安全確認さえできていればOK</li>
+                                </ul>
+                                <p>このアプリで十分練習してきたあなたなら、必ずできます。自信を持って臨みましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験中にトイレに行けますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>知識試験中でも、手を挙げて試験官に伝えればトイレに行けます。</strong></p>
+                                <p>ただし、試験時間は延長されないので、試験前にトイレを済ませておくことをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験結果はいつわかりますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>一般的には試験当日または数日後</strong>に発表されます。</p>
+                                <p>都道府県により異なりますが、多くの場合、試験当日の夕方または翌日に合格者が発表されます。</p>
+                                <p>発表方法（掲示、郵送、Webなど）も都道府県により異なるので、受験票や案内で確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                知識試験だけ合格した場合、実技試験は次回受けられますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">基本的には不可</span>
+                                <p><strong>一般的には、知識試験と実技試験は同日に合格する必要があります。</strong></p>
+                                <p>ただし、都道府県によっては「知識試験の免除期間」がある場合もあるので、詳細は受験地の担当窓口に確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                試験に遅刻したらどうなりますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">受験不可になる可能性大</span>
+                                <p><strong>原則として、遅刻は認められません。</strong></p>
+                                <p>試験開始時刻に遅れると、受験できなくなる可能性が高いです。公共交通機関の遅延などやむを得ない事情がある場合は、すぐに試験会場に連絡してください。</p>
+                                <p><strong>時間に余裕を持って会場に到着する</strong>ことを強くおすすめします（30分前到着が理想）。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 合格後 -->
+            <section id="after" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">🎉</span>
+                    <h3 class="faq-category-title">合格後</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                免許証はいつもらえますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>一般的には合格発表後、数日〜2週間程度</strong>で交付されます。</p>
+                                <p>交付方法は都道府県により異なります：</p>
+                                <ul>
+                                    <li>郵送</li>
+                                    <li>窓口で受け取り</li>
+                                    <li>交付式で手渡し</li>
+                                </ul>
+                                <p>交付時に手数料（2,900円/種目）が必要な場合があるので、案内をよく確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                更新は必要ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">3年ごとの更新が必要</span>
+                                <p><strong>狩猟免許は3年ごとに更新が必要です。</strong></p>
+                                <p>更新には以下が必要です：</p>
+                                <ul>
+                                    <li>更新申請書の提出</li>
+                                    <li>適性検査（視力・聴力など）</li>
+                                    <li>更新手数料（2,900円/種目）</li>
+                                </ul>
+                                <p>更新を忘れると免許が失効するので、有効期限をしっかり確認しておきましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                実際に狩猟するには何が必要ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>狩猟免許だけでは狩猟できません。</strong> 以下の手続きが必要です：</p>
+                                <p><strong>【必須】</strong></p>
+                                <ul>
+                                    <li><strong>狩猟者登録</strong><br>狩猟する都道府県で毎年登録が必要（手数料：約1.5万円）</li>
+                                    <li><strong>ハンターマップ（狩猟者記章）の携帯</strong></li>
+                                    <li><strong>狩猟者共済保険への加入</strong>（事故時の補償）</li>
+                                </ul>
+                                <p><strong>【銃猟の場合】</strong></p>
+                                <ul>
+                                    <li><strong>銃の所持許可</strong>（警察署で申請、講習・試験あり）</li>
+                                    <li><strong>銃の購入</strong>（10万円〜）</li>
+                                    <li><strong>ガンロッカー・装弾ロッカーの設置</strong></li>
+                                </ul>
+                                <p><strong>【わな猟の場合】</strong></p>
+                                <ul>
+                                    <li><strong>わなの購入</strong>（くくりわな：1万円〜、箱わな：3万円〜）</li>
+                                </ul>
+                                <p>初年度は<strong>10〜30万円程度</strong>の初期費用がかかることを見込んでおきましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                銃の所持許可はどうやって取りますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>銃の所持許可の取得手順：</strong></p>
+                                <ol>
+                                    <li><strong>猟銃等講習会（初心者講習）の受講</strong><br>警察署で申し込み、講習後に試験（費用：約7,000円）</li>
+                                    <li><strong>教習射撃の受講</strong><br>射撃場で実弾射撃の教習（費用：約3万円）</li>
+                                    <li><strong>所持許可申請</strong><br>必要書類を警察署に提出（費用：約1万円）</li>
+                                    <li><strong>身辺調査・精神科医の診断書提出</strong></li>
+                                    <li><strong>銃の購入・受け取り</strong><br>許可証が下りたら銃砲店で購入</li>
+                                    <li><strong>確認検査</strong><br>警察官が自宅を訪問し、保管状況を確認</li>
+                                </ol>
+                                <p>全体で<strong>3〜6ヶ月程度</strong>かかります。詳細は最寄りの警察署の生活安全課に相談してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                狩猟者登録は毎年必要ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">はい、毎年必要です</span>
+                                <p><strong>狩猟する都道府県で、毎年登録が必要です。</strong></p>
+                                <p>登録期間は狩猟期間（一般的に11月15日〜2月15日）に合わせて設定されます。複数の都道府県で狩猟する場合は、それぞれで登録が必要です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                初心者が狩猟を始めるには、どうすればいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>おすすめのステップ：</strong></p>
+                                <ol>
+                                    <li><strong>地元の猟友会に加入する</strong><br>経験者から直接学べる、仲間ができる</li>
+                                    <li><strong>ベテランハンターに同行させてもらう</strong><br>実際の狩猟現場を見学・体験</li>
+                                    <li><strong>狩猟イベントや講習会に参加する</strong><br>知識・技術を学べる</li>
+                                    <li><strong>少しずつ道具を揃える</strong><br>いきなり高額な道具を買わず、必要なものから</li>
+                                </ol>
+                                <p>初心者が一人で狩猟を始めるのは危険です。必ず<strong>経験者の指導を受けながら</strong>始めましょう。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                猟友会には入らないとダメですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--info">任意です</span>
+                                <p><strong>猟友会への加入は任意</strong>です。加入しなくても狩猟できます。</p>
+                                <p>ただし、猟友会に加入すると以下のメリットがあります：</p>
+                                <ul>
+                                    <li>経験豊富なハンターから学べる</li>
+                                    <li>狩猟者共済保険に安く加入できる</li>
+                                    <li>狩猟情報が得られる</li>
+                                    <li>有害鳥獣駆除の依頼が来る（報酬あり）</li>
+                                </ul>
+                                <p>特に初心者は、猟友会への加入をおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                獲った獲物はどうすればいいですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>選択肢はいくつかあります：</strong></p>
+                                <ul>
+                                    <li><strong>自分で食べる</strong><br>ジビエ料理として調理（適切な処理が必要）</li>
+                                    <li><strong>食肉処理施設に持ち込む</strong><br>精肉してもらう（有料、または買取してもらえる場合も）</li>
+                                    <li><strong>知人に配る</strong></li>
+                                    <li><strong>廃棄する</strong><br>食べられない部分は適切に処理</li>
+                                </ul>
+                                <p><strong>重要：</strong> 獲物を獲ったら、必ず<strong>狩猟者登録証に記録</strong>する義務があります。虚偽の記録や無記録は法令違反です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                免許を持っているだけで狩猟しなくてもいいですか?
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">もちろんOKです</span>
+                                <p><strong>免許を持っているだけで、実際に狩猟しなくても問題ありません。</strong></p>
+                                <p>以下のような理由で免許を取得する方もいます：</p>
+                                <ul>
+                                    <li>将来のために取っておく</li>
+                                    <li>鳥獣管理の仕事に役立てる</li>
+                                    <li>知識として学びたい</li>
+                                    <li>有害鳥獣駆除のボランティアに参加したい</li>
+                                </ul>
+                                <p>ただし、免許の更新（3年ごと）は必要です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                有害鳥獣駆除とは何ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>農作物被害や生活被害を防ぐため、行政が依頼する鳥獣の捕獲活動</strong>です。</p>
+                                <p><strong>特徴：</strong></p>
+                                <ul>
+                                    <li>狩猟期間外でも実施可能</li>
+                                    <li>自治体から報酬が出る場合がある（1頭数千円〜数万円）</li>
+                                    <li>狩猟免許が必要</li>
+                                    <li>猟友会を通じて依頼が来ることが多い</li>
+                                </ul>
+                                <p>近年、シカ・イノシシ・サルなどによる農業被害が深刻化しており、駆除の担い手が不足しています。社会貢献にもなる活動です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- このアプリについて -->
+            <section id="app" class="faq-category">
+                <div class="faq-category-header">
+                    <span class="faq-category-icon">📱</span>
+                    <h3 class="faq-category-title">このアプリについて</h3>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                無料ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">完全無料です</span>
+                                <p><strong>すべての機能を無料で利用できます。</strong></p>
+                                <p>広告なし、課金なし、アカウント登録不要。安心してご利用ください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                オフラインで使えますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、使えます</span>
+                                <p><strong>一度アクセスすれば、オフラインでも利用可能</strong>です（PWA対応）。</p>
+                                <p>学習データはブラウザに保存されるため、通信環境がなくても学習を続けられます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                データは保存されますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">自動保存されます</span>
+                                <p><strong>学習データはブラウザに自動保存</strong>されます。</p>
+                                <p>ただし、以下の場合はデータが消える可能性があります：</p>
+                                <ul>
+                                    <li>ブラウザのキャッシュをクリアした場合</li>
+                                    <li>ブラウザのデータを削除した場合</li>
+                                    <li>別のデバイスで使う場合（データは共有されません）</li>
+                                </ul>
+                                <p>長期間使わない場合は、定期的にアクセスしてデータを維持することをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                公式の教材ですか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--info">非公式です</span>
+                                <p><strong>このアプリは非公式の学習支援ツール</strong>です。</p>
+                                <p>環境省や各都道府県が公式に発行するものではありません。ただし、公的な資料や過去の試験内容を参考に作成しています。</p>
+                                <p>最新の法令や試験内容は、受験される都道府県の公式サイトで必ず確認してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                アプリをインストールできますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">はい、可能です</span>
+                                <p><strong>PWA（Progressive Web App）として、スマホのホーム画面に追加できます。</strong></p>
+                                <p><strong>【iPhone/iPadの場合】</strong></p>
+                                <ol>
+                                    <li>Safariでこのサイトを開く</li>
+                                    <li>画面下の「共有」ボタンをタップ</li>
+                                    <li>「ホーム画面に追加」を選択</li>
+                                </ol>
+                                <p><strong>【Androidの場合】</strong></p>
+                                <ol>
+                                    <li>Chromeでこのサイトを開く</li>
+                                    <li>画面上のポップアップ「ホーム画面に追加」をタップ</li>
+                                    <li>または、メニューから「ホーム画面に追加」を選択</li>
+                                </ol>
+                                <p>インストール後は、アプリのように起動できます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                データをバックアップできますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag--warning">現在は対応していません</span>
+                                <p><strong>学習データのエクスポート・インポート機能は現在未実装</strong>です。</p>
+                                <p>将来的には追加を検討していますが、現時点ではブラウザのデータを削除しないよう注意してください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                問題の内容に誤りがあった場合は？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>最善の注意を払って作成していますが、誤りがある可能性もあります。</strong></p>
+                                <p>誤りを発見された場合は、お手数ですが以下の方法でご報告いただけると幸いです：</p>
+                                <ul>
+                                    <li>フィードバックフォーム（準備中）</li>
+                                    <li>X（Twitter）などSNSでの報告</li>
+                                </ul>
+                                <p>また、試験前には必ず<strong>公式情報</strong>で確認することをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                対応ブラウザは？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>主要なモダンブラウザに対応しています：</strong></p>
+                                <ul>
+                                    <li>Chrome（推奨）</li>
+                                    <li>Safari（iPhone/iPad）</li>
+                                    <li>Edge</li>
+                                    <li>Firefox</li>
+                                </ul>
+                                <p>古いブラウザでは一部機能が動作しない可能性があります。最新版へのアップデートをおすすめします。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                今後の機能追加予定は？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>検討中の機能：</strong></p>
+                                <ul>
+                                    <li>学習データのエクスポート・インポート</li>
+                                    <li>音声読み上げ機能</li>
+                                    <li>暗記カード機能</li>
+                                    <li>学習リマインダー</li>
+                                    <li>都道府県別の試験情報</li>
+                                </ul>
+                                <p>利用者の声を参考に、継続的に改善していきます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">
+                                <span class="faq-question-label">Q</span>
+                                本当にこれで合格できますか？
+                            </span>
+                            <span class="faq-question-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <span class="faq-tag">計画的に学習すれば可能です</span>
+                                <p><strong>このアプリで計画的に学習すれば、十分合格できます。</strong></p>
+                                <p>ただし、最も重要なのは<strong>「あなたの努力」</strong>です。アプリはあくまでサポートツール。毎日コツコツと学習を続けることが、合格への最短ルートです。</p>
+                                <p>知識ゼロから始めても、1日1〜2時間、2〜4週間の学習で合格レベルに到達できます。焦らず、確実に知識を積み上げていきましょう。</p>
+                                <p><strong>あなたの合格を心から応援しています！</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <div class="faq-cta">
+                <h2 class="faq-cta-title">疑問は解消されましたか？</h2>
+                <p class="faq-cta-description">
+                    さあ、学習を始めましょう。<br>
+                    あなたの合格を全力でサポートします。
+                </p>
+                <a href="index.html" class="back-to-home">
+                    ← ホームに戻って学習を始める
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">狩猟免許試験 完全攻略</h3>
+                    <p class="footer-description">
+                        知識ゼロから一発合格を目指す学習アプリ
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">ホーム</a></li>
+                        <li><a href="faq.html" class="footer-link">よくある質問</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">情報源</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://www.env.go.jp/nature/choju/index.html" class="footer-link" target="_blank" rel="noopener noreferrer">
+                                環境省 鳥獣保護管理
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <h4 class="disclaimer-title">免責事項</h4>
+                    <p class="disclaimer-text">
+                        本アプリは狩猟免許試験の学習をサポートするツールです。
+                        掲載されている情報は参考情報であり、実際の試験内容や合否を保証するものではありません。
+                        最新の法令や試験要項は、受験される都道府県の公式情報をご確認ください。
+                    </p>
+                </div>
+                <p class="footer-copyright">
+                    &copy; 2026 狩猟免許試験 完全攻略. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAQ アコーディオンスクリプト -->
+    <script>
+        // FAQアコーディオン機能
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // すべてのアイテムを閉じる（オプション：1つだけ開く場合）
+                    // faqItems.forEach(i => i.classList.remove('active'));
+
+                    // クリックされたアイテムをトグル
+                    if (isActive) {
+                        item.classList.remove('active');
+                        question.setAttribute('aria-expanded', 'false');
+                    } else {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // URLハッシュに対応してアコーディオンを開く
+            if (window.location.hash) {
+                const hash = window.location.hash;
+                const targetSection = document.querySelector(hash);
+                if (targetSection) {
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+
+            // スムーススクロール
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // URLを更新
+                        history.pushState(null, null, href);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+    <script src="ui-polish.js"></script>
+</body>
+</html>

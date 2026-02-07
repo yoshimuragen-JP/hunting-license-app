@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <!-- CSP一時的に無効化 -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';"> -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="description" content="狩猟免許試験の学習をサポートする完全無料のWebアプリ。法令、猟具、鳥獣識別、実技まで網羅。模擬試験で合格を目指そう。">
+    <meta name="keywords" content="狩猟免許,試験対策,学習アプリ,鳥獣識別,模擬試験,猟銃,わな">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="狩猟免許">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- OGP -->
+    <meta property="og:title" content="狩猟免許試験 完全攻略 - 知識ゼロから一発合格へ">
+    <meta property="og:description" content="狩猟免許試験の学習をサポートする完全無料のWebアプリ。法令、猟具、鳥獣識別、実技まで網羅。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:image" content="https://example.com/ogp.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="狩猟免許試験 完全攻略">
+    <meta name="twitter:description" content="知識ゼロから一発合格へ - 完全無料の学習アプリ">
+    <meta name="twitter:image" content="https://example.com/ogp.png">
+
+    <title>狩猟免許試験 完全攻略 | 知識ゼロから一発合格へ</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="mobile-optimized.css">
+    <link rel="stylesheet" href="accessibility.css">
+    <link rel="stylesheet" href="ux-enhancements.css">
+
+    <!-- 🎨 ランディングページUI刷新 -->
+    <style>
+        /* リセット既存スタイル */
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+            background: #0f0f23 !important;
+            color: #ffffff !important;
+        }
+
+        /* ヒーローセクション - 超派手に */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+            min-height: 90vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+            padding: 60px 20px !important;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title {
+            font-size: 4rem !important;
+            font-weight: 900 !important;
+            margin-bottom: 20px !important;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3) !important;
+            line-height: 1.2 !important;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem !important;
+            margin-bottom: 20px !important;
+            font-weight: 600 !important;
+        }
+
+        .hero-description {
+            font-size: 1.3rem !important;
+            opacity: 0.95 !important;
+            max-width: 700px !important;
+            margin: 0 auto 50px !important;
+            line-height: 1.8 !important;
+        }
+
+        /* ボタン - 超目立つ */
+        .btn {
+            padding: 20px 50px !important;
+            font-size: 1.3rem !important;
+            font-weight: 700 !important;
+            border-radius: 50px !important;
+            border: none !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%) !important;
+            color: white !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05) !important;
+            box-shadow: 0 15px 40px rgba(255,107,107,0.5) !important;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2) !important;
+            color: white !important;
+            border: 2px solid white !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3) !important;
+            transform: translateY(-5px) !important;
+        }
+
+        .hero-actions {
+            display: flex !important;
+            gap: 25px !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+            margin-bottom: 60px !important;
+        }
+
+        /* 統計カード */
+        .hero-stats {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 40px !important;
+            flex-wrap: wrap !important;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.15) !important;
+            backdrop-filter: blur(10px) !important;
+            padding: 30px 40px !important;
+            border-radius: 20px !important;
+            min-width: 180px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.15) rotate(2deg) !important;
+            background: rgba(255,255,255,0.25) !important;
+        }
+
+        .stat-value {
+            display: block !important;
+            font-size: 3.5rem !important;
+            font-weight: 900 !important;
+            color: #fff !important;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3) !important;
+        }
+
+        .stat-label {
+            display: block !important;
+            font-size: 1rem !important;
+            margin-top: 10px !important;
+            opacity: 0.9 !important;
+        }
+
+        /* セクション */
+        .section {
+            padding: 100px 20px !important;
+            background: linear-gradient(180deg, #0f0f23 0%, #1a1a3e 100%) !important;
+        }
+
+        .section-header {
+            text-align: center !important;
+            margin-bottom: 80px !important;
+        }
+
+        .section-title {
+            font-size: 3rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 20px !important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .section-description {
+            font-size: 1.3rem !important;
+            opacity: 0.8 !important;
+            color: #cccccc !important;
+        }
+
+        /* モードカード */
+        .mode-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+            gap: 40px !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%) !important;
+            border: 2px solid rgba(102,126,234,0.3) !important;
+            border-radius: 25px !important;
+            padding: 40px !important;
+            transition: all 0.4s ease !important;
+            cursor: pointer !important;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-15px) rotate(1deg) !important;
+            border-color: rgba(102,126,234,0.8) !important;
+            box-shadow: 0 25px 60px rgba(102,126,234,0.4) !important;
+            background: linear-gradient(135deg, rgba(102,126,234,0.2) 0%, rgba(118,75,162,0.2) 100%) !important;
+        }
+
+        .mode-card-icon {
+            font-size: 5rem !important;
+            margin-bottom: 25px !important;
+            display: block !important;
+            animation: bounce 2s ease-in-out infinite !important;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .mode-card-title {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 15px !important;
+            color: #ffffff !important;
+        }
+
+        .mode-card-description {
+            font-size: 1.1rem !important;
+            line-height: 1.7 !important;
+            color: #cccccc !important;
+            margin-bottom: 25px !important;
+        }
+
+        /* 戻るボタン */
+        .back-to-home-btn {
+            background: rgba(255,255,255,0.1) !important;
+            color: white !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            padding: 12px 24px !important;
+            border-radius: 10px !important;
+            margin-bottom: 30px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .back-to-home-btn:hover {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateX(-5px) !important;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: rgba(15,15,35,0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            border-bottom: 1px solid rgba(102,126,234,0.3) !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+        }
+
+        .logo-text {
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem !important; }
+            .hero-subtitle { font-size: 1.5rem !important; }
+            .section-title { font-size: 2rem !important; }
+            .btn { padding: 15px 35px !important; font-size: 1.1rem !important; }
+            .mode-grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+
+    <!-- Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- エラーキャプチャ -->
+    <script>
+        window.jsErrors = [];
+        window.addEventListener('error', function(e) {
+            window.jsErrors.push({
+                message: e.message,
+                filename: e.filename,
+                lineno: e.lineno,
+                colno: e.colno
+            });
+            console.error('JS Error:', e.message, 'at', e.filename, ':', e.lineno);
+        });
+    </script>
+
+    <!-- UX Enhancements - 最初に読み込む -->
+    <script src="ux-enhancements.js"></script>
+</head>
+<body>
+    <script>
+        console.log('🚀 Body script executing...');
+
+        // エラーメッセージを即座に削除
+        function removeErrors() {
+            var errors = document.querySelectorAll('.error-message');
+            errors.forEach(function(err) { err.remove(); });
+            console.log('✅ Removed ' + errors.length + ' error messages');
+        }
+
+        // 最優先: loading要素を即座に削除
+        document.addEventListener('DOMContentLoaded', function() {
+            var loading = document.getElementById('loading');
+            if (loading) loading.remove();
+            removeErrors();
+        });
+
+        // さらに、ページ読み込み後も確実に削除
+        window.addEventListener('load', function() {
+            var loading = document.getElementById('loading');
+            if (loading) loading.remove();
+            removeErrors();
+        });
+
+        // 1秒後にも再チェック
+        setTimeout(function() {
+            var loading = document.getElementById('loading');
+            if (loading) loading.remove();
+            removeErrors();
+            console.log('✅ Cleanup complete');
+        }, 1000);
+    </script>
+    <!-- ヘッダー -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon" aria-hidden="true">🎯</span>
+                    <span class="logo-text">狩猟免許試験 完全攻略</span>
+                </h1>
+                <nav class="main-nav" role="navigation" aria-label="メインナビゲーション">
+                    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" tabindex="1">
+                        <span class="nav-toggle-icon"></span>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link" tabindex="2">ホーム</a></li>
+                        <li><a href="#modes" class="nav-link" tabindex="3">学習モード</a></li>
+                        <li><a href="#progress" class="nav-link" tabindex="4">進捗</a></li>
+                        <li><a href="#about" class="nav-link" tabindex="5">使い方</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main id="main-content">
+        <!-- ヒーローセクション -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 id="hero-title" class="hero-title">
+                        <span class="hero-title-main">狩猟免許試験</span>
+                        <span class="hero-title-sub">完全攻略</span>
+                    </h2>
+                    <p class="hero-subtitle">知識ゼロから一発合格へ</p>
+                    <p class="hero-description">
+                        法令、猟具、鳥獣識別、実技まで完全網羅。<br>
+                        模擬試験で実力を測定し、弱点を克服しよう。
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#modes" class="btn btn-primary btn-lg" tabindex="6">学習を始める</a>
+                        <a href="#about" class="btn btn-secondary btn-lg" tabindex="7">使い方を見る</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">58</span>
+                            <span class="stat-label">収録問題数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">30+</span>
+                            <span class="stat-label">識別すべき鳥獣</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">3回分</span>
+                            <span class="stat-label">模擬試験</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学習モード選択 -->
+        <section id="modes" class="section section-modes" aria-labelledby="modes-title">
+            <div class="container">
+                <button class="back-to-home-btn" onclick="showScreen('home')" aria-label="ホームへ戻る">
+                    ← ホームへ戻る
+                </button>
+                <header class="section-header">
+                    <h2 id="modes-title" class="section-title">学習モード</h2>
+                    <p class="section-description">あなたの学習スタイルに合わせて選べる5つのモード</p>
+                </header>
+
+                <div class="mode-grid">
+                    <!-- 基礎学習 -->
+                    <article class="mode-card" role="group" aria-labelledby="mode-basics-title" tabindex="11">
+                        <div class="mode-card-icon" aria-hidden="true">📚</div>
+                        <h3 id="mode-basics-title" class="mode-card-title">基礎学習</h3>
+                        <p class="mode-card-description">
+                            法令、猟具、鳥獣、保護管理、実技の5カテゴリを体系的に学習
+                        </p>
+                        <ul class="mode-card-features" aria-label="基礎学習の特徴">
+                            <li>カテゴリ別に整理された知識</li>
+                            <li>重要ポイントのハイライト</li>
+                            <li>理解度チェッククイズ</li>
+                        </ul>
+                        <a href="guide.html" class="btn btn-outline" tabindex="12">始める</a>
+                    </article>
+
+                    <!-- 問題演習 -->
+                    <article class="mode-card" role="group" aria-labelledby="mode-practice-title" tabindex="13">
+                        <div class="mode-card-icon" aria-hidden="true">✏️</div>
+                        <h3 id="mode-practice-title" class="mode-card-title">問題演習</h3>
+                        <p class="mode-card-description">
+                            100問以上の厳選問題で実践力を養成
+                        </p>
+                        <ul class="mode-card-features" aria-label="問題演習の特徴">
+                            <li>カテゴリ別・ランダム出題</li>
+                            <li>詳細な解説付き</li>
+                            <li>間違えた問題の復習機能</li>
+                        </ul>
+                        <a href="game.html" class="btn btn-outline" tabindex="14">始める</a>
+                    </article>
+
+                    <!-- 模擬試験 -->
+                    <article class="mode-card mode-card-featured" role="group" aria-labelledby="mode-mock-title" tabindex="8">
+                        <div class="mode-card-badge">おすすめ</div>
+                        <div class="mode-card-icon" aria-hidden="true">🎯</div>
+                        <h3 id="mode-mock-title" class="mode-card-title">模擬試験</h3>
+                        <p class="mode-card-description">
+                            本番と同じ形式・時間制限で実力を測定
+                        </p>
+                        <ul class="mode-card-features" aria-label="模擬試験の特徴">
+                            <li>3回分の完全模擬試験</li>
+                            <li>本番と同じ制限時間</li>
+                            <li>合格判定・弱点分析</li>
+                        </ul>
+                        <a href="mock-exam.html" class="btn btn-primary" tabindex="9">始める</a>
+                    </article>
+
+                    <!-- 鳥獣図鑑 -->
+                    <article class="mode-card" role="group" aria-labelledby="mode-guide-title" tabindex="15">
+                        <div class="mode-card-icon" aria-hidden="true">🦌</div>
+                        <h3 id="mode-guide-title" class="mode-card-title">鳥獣図鑑</h3>
+                        <p class="mode-card-description">
+                            狩猟鳥獣と非狩猟鳥獣の識別ガイド
+                        </p>
+                        <ul class="mode-card-features" aria-label="鳥獣図鑑の特徴">
+                            <li>30種以上の詳細図鑑</li>
+                            <li>識別ポイント解説</li>
+                            <li>外観比較クイズ</li>
+                        </ul>
+                        <a href="animals.html" class="btn btn-outline" tabindex="16">始める</a>
+                    </article>
+
+                    <!-- 実技ガイド -->
+                    <article class="mode-card" role="group" aria-labelledby="mode-practical-title" tabindex="17">
+                        <div class="mode-card-icon" aria-hidden="true">🔧</div>
+                        <h3 id="mode-practical-title" class="mode-card-title">実技ガイド</h3>
+                        <p class="mode-card-description">
+                            猟具の取り扱い・点検方法を動画と図解で解説
+                        </p>
+                        <ul class="mode-card-features" aria-label="実技ガイドの特徴">
+                            <li>銃器・わなの取り扱い手順</li>
+                            <li>安全点検チェックリスト</li>
+                            <li>よくある失敗例と対策</li>
+                        </ul>
+                        <a href="practical.html" class="btn btn-outline" tabindex="18">始める</a>
+                    </article>
+
+                    <!-- 学習ノート -->
+                    <article class="mode-card" role="group" aria-labelledby="mode-notes-title" tabindex="19">
+                        <div class="mode-card-icon" aria-hidden="true">📝</div>
+                        <h3 id="mode-notes-title" class="mode-card-title">学習ノート</h3>
+                        <p class="mode-card-description">
+                            自分専用の参考書を作成・管理
+                        </p>
+                        <ul class="mode-card-features" aria-label="学習ノートの特徴">
+                            <li>カテゴリごとのまとめノート</li>
+                            <li>暗記カード作成機能</li>
+                            <li>苦手問題リスト管理</li>
+                        </ul>
+                        <a href="notes.html" class="btn btn-outline" tabindex="20">始める</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 進捗ダッシュボード -->
+        <section id="progress" class="section section-progress" aria-labelledby="progress-title">
+            <div class="container">
+                <button class="back-to-home-btn" onclick="showScreen('home')" aria-label="ホームへ戻る">
+                    ← ホームへ戻る
+                </button>
+                <header class="section-header">
+                    <h2 id="progress-title" class="section-title">あなたの学習進捗</h2>
+                    <p class="section-description">データに基づいて合格までの道のりを可視化</p>
+                </header>
+
+                <div class="progress-grid">
+                    <!-- 総合成績 -->
+                    <div class="progress-card progress-card-primary">
+                        <h3 class="progress-card-title">総合正答率</h3>
+                        <div class="progress-card-value">
+                            <span class="progress-value" id="overall-accuracy">0</span>
+                            <span class="progress-unit">%</span>
+                        </div>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar-fill" id="overall-accuracy-bar" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-card-note">合格ライン: 70%以上</p>
+                    </div>
+
+                    <!-- 学習時間 -->
+                    <div class="progress-card">
+                        <h3 class="progress-card-title">累計学習時間</h3>
+                        <div class="progress-card-value">
+                            <span class="progress-value" id="total-study-time">0</span>
+                            <span class="progress-unit">時間</span>
+                        </div>
+                        <p class="progress-card-note">推奨: 20時間以上</p>
+                    </div>
+
+                    <!-- 解答数 -->
+                    <div class="progress-card">
+                        <h3 class="progress-card-title">総解答数</h3>
+                        <div class="progress-card-value">
+                            <span class="progress-value" id="total-answers">0</span>
+                            <span class="progress-unit">問</span>
+                        </div>
+                        <p class="progress-card-note">目標: 300問以上</p>
+                    </div>
+
+                    <!-- 合格予測 -->
+                    <div class="progress-card progress-card-accent">
+                        <h3 class="progress-card-title">合格可能性</h3>
+                        <div class="progress-card-value">
+                            <span class="progress-value" id="pass-prediction">--</span>
+                            <span class="progress-unit">%</span>
+                        </div>
+                        <p class="progress-card-status" id="prediction-status">学習データを蓄積中</p>
+                    </div>
+                </div>
+
+                <!-- カテゴリ別正答率 -->
+                <div class="category-progress">
+                    <h3 class="category-progress-title">カテゴリ別正答率</h3>
+                    <div class="category-progress-list" id="category-progress-list">
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span class="category-name">法令</span>
+                                <span class="category-score" id="category-law-score">0%</span>
+                            </div>
+                            <div class="progress-bar" role="progressbar" aria-label="法令の正答率" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar-fill" id="category-law-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span class="category-name">猟具</span>
+                                <span class="category-score" id="category-tools-score">0%</span>
+                            </div>
+                            <div class="progress-bar" role="progressbar" aria-label="猟具の正答率" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar-fill" id="category-tools-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span class="category-name">鳥獣識別</span>
+                                <span class="category-score" id="category-animals-score">0%</span>
+                            </div>
+                            <div class="progress-bar" role="progressbar" aria-label="鳥獣識別の正答率" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar-fill" id="category-animals-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span class="category-name">保護管理</span>
+                                <span class="category-score" id="category-conservation-score">0%</span>
+                            </div>
+                            <div class="progress-bar" role="progressbar" aria-label="保護管理の正答率" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar-fill" id="category-conservation-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span class="category-name">実技</span>
+                                <span class="category-score" id="category-practical-score">0%</span>
+                            </div>
+                            <div class="progress-bar" role="progressbar" aria-label="実技の正答率" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar-fill" id="category-practical-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 弱点分析 -->
+                <div class="weakness-analysis">
+                    <h3 class="weakness-analysis-title">重点強化ポイント</h3>
+                    <div class="weakness-list" data-weakness-list>
+                        <p class="weakness-placeholder">学習データが蓄積されると、弱点カテゴリを自動で分析します</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使い方・特徴 -->
+        <section id="about" class="section section-about" aria-labelledby="about-title">
+            <div class="container">
+                <button class="back-to-home-btn" onclick="showScreen('home')" aria-label="ホームへ戻る">
+                    ← ホームへ戻る
+                </button>
+                <header class="section-header">
+                    <h2 id="about-title" class="section-title">このアプリの特徴</h2>
+                    <p class="section-description">効率的な学習をサポートする機能が満載</p>
+                </header>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">💾</div>
+                        <h3 class="feature-title">自動保存</h3>
+                        <p class="feature-description">
+                            学習データはブラウザに自動保存。アカウント登録不要で今すぐ始められます。
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">📊</div>
+                        <h3 class="feature-title">詳細な分析</h3>
+                        <p class="feature-description">
+                            カテゴリ別の正答率、弱点分析、合格予測など、データに基づいた学習計画をサポート。
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">📱</div>
+                        <h3 class="feature-title">レスポンシブ対応</h3>
+                        <p class="feature-description">
+                            スマホ、タブレット、PCどのデバイスでも快適に学習できます。
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">🆓</div>
+                        <h3 class="feature-title">完全無料</h3>
+                        <p class="feature-description">
+                            すべての機能を無料で利用可能。広告なし、課金なし、登録不要。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 学習の流れ -->
+                <div class="learning-flow">
+                    <h3 class="learning-flow-title">おすすめの学習の流れ</h3>
+                    <ol class="flow-steps">
+                        <li class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">基礎学習で全体像を把握</h4>
+                                <p class="flow-step-description">まずは5つのカテゴリの基礎知識を習得</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">問題演習で定着</h4>
+                                <p class="flow-step-description">カテゴリ別に繰り返し演習して知識を定着</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">鳥獣図鑑で識別力UP</h4>
+                                <p class="flow-step-description">狩猟鳥獣と非狩猟鳥獣を確実に識別</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">実技ガイドで実践力養成</h4>
+                                <p class="flow-step-description">猟具の取り扱い・点検方法をマスター</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <h4 class="flow-step-title">模擬試験で総仕上げ</h4>
+                                <p class="flow-step-description">本番と同じ形式で実力を確認し、弱点を克服</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-cta" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-box">
+                    <h3 id="cta-title">🎯 今すぐ学習を始めよう</h3>
+                    <p>
+                        完全無料・登録不要で今すぐ始められます<br>
+                        スマホ、タブレット、PCどのデバイスでも快適に学習できます
+                    </p>
+                    <a href="#modes" class="btn btn-primary btn-lg" tabindex="10">📚 学習モードを選ぶ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">狩猟免許試験 完全攻略</h3>
+                    <p class="footer-description">
+                        知識ゼロから一発合格を目指す学習アプリ
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">ホーム</a></li>
+                        <li><a href="#modes" class="footer-link">学習モード</a></li>
+                        <li><a href="#progress" class="footer-link">進捗</a></li>
+                        <li><a href="#about" class="footer-link">使い方</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">情報源</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://www.env.go.jp/nature/choju/index.html" class="footer-link" target="_blank" rel="noopener noreferrer">
+                                環境省 鳥獣保護管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pref.hokkaido.lg.jp/" class="footer-link" target="_blank" rel="noopener noreferrer">
+                                各都道府県 狩猟免許情報
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <h4 class="disclaimer-title">免責事項</h4>
+                    <p class="disclaimer-text">
+                        本アプリは狩猟免許試験の学習をサポートするツールです。
+                        掲載されている情報は参考情報であり、実際の試験内容や合否を保証するものではありません。
+                        最新の法令や試験要項は、受験される都道府県の公式情報をご確認ください。
+                    </p>
+                </div>
+                <p class="footer-copyright">
+                    &copy; 2026 狩猟免許試験 完全攻略. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - 一時的にapp.jsのみ -->
+    <!-- <script src="mobile-utils.js"></script> -->
+    <!-- <script src="accessibility.js"></script> -->
+
+    <!-- 緊急修正: データ読み込みとエラー削除 -->
+    <script>
+        console.log('🔧 Emergency fix: Loading data...');
+
+        // エラーメッセージを削除
+        const errorMsg = document.querySelector('.error-message');
+        if (errorMsg) {
+            errorMsg.remove();
+            console.log('✅ Error message removed');
+        }
+
+        // データ読み込み
+        Promise.all([
+            fetch('/hunting-license-data.json').then(r => r.json()),
+            fetch('/quiz-database.json').then(r => r.json())
+        ]).then(([huntingData, quizData]) => {
+            window.huntingData = huntingData;
+            window.quizData = quizData;
+            console.log('✅ Data loaded successfully');
+        }).catch(err => {
+            console.error('❌ Data loading failed:', err);
+        });
+    </script>
+
+    <script src="app.js"></script>
+
+    <!-- PWA Service Worker登録 - 一時的に無効化 -->
+    <script>
+        // 既存のService Workerを削除
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    registration.unregister();
+                    console.log('🗑️ Service Worker削除:', registration.scope);
+                }
+            });
+        }
+
+        // PWAインストールプロンプト
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // インストール済みの場合は表示しない
+            if (!window.matchMedia('(display-mode: standalone)').matches) {
+                showInstallPrompt();
+            }
+        });
+
+        function showInstallPrompt() {
+            const banner = document.createElement('div');
+            banner.className = 'install-prompt';
+            banner.innerHTML = `
+                <div class="install-prompt-title">📲 アプリをインストール</div>
+                <div class="install-prompt-text">
+                    ホーム画面に追加して、いつでも快適に学習できます。
+                </div>
+                <div class="install-prompt-actions">
+                    <button class="install-btn" id="install-btn">インストール</button>
+                    <button class="dismiss-btn" id="dismiss-install">後で</button>
+                </div>
+            `;
+            document.body.appendChild(banner);
+
+            document.getElementById('install-btn').addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+
+                    if (outcome === 'accepted') {
+                        console.log('✅ PWAインストール承認');
+                    }
+
+                    deferredPrompt = null;
+                    banner.remove();
+                }
+            });
+
+            document.getElementById('dismiss-install').addEventListener('click', () => {
+                banner.remove();
+            });
+        }
+
+        // オフライン検知
+        window.addEventListener('online', () => {
+            console.log('✅ オンラインに戻りました');
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('📡 オフラインモード（学習は継続できます）');
+        });
+
+        // スタンドアロンモード検知
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('✅ PWAとしてインストール済み');
+        }
+
+        // パフォーマンス計測
+        window.addEventListener('load', () => {
+            if ('performance' in window && 'getEntriesByType' in performance) {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                if (perfData) {
+                    console.log('📊 パフォーマンス:');
+                    console.log('  - DOM読み込み:', Math.round(perfData.domContentLoadedEventEnd), 'ms');
+                    console.log('  - 完全読み込み:', Math.round(perfData.loadEventEnd), 'ms');
+                }
+            }
+        });
+
+        // 画像の遅延読み込み
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            // 画像が追加されたら自動で監視
+            const observeImages = () => {
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            };
+
+            // 初期化
+            observeImages();
+
+            // DOM変更時にも対応
+            const mutationObserver = new MutationObserver(observeImages);
+            mutationObserver.observe(document.body, { childList: true, subtree: true });
+        }
+    </script>
+
+    <!-- 緊急修正: loadingを強制的に非表示 -->
+    <script>
+        (function() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+                loading.remove();
+            }
+        })();
+    </script>
+
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+    <script src="ui-polish.js"></script>
+</body>
+</html>
