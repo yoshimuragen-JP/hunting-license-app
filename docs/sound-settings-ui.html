@@ -1,0 +1,222 @@
+<!--
+  音響効果設定UI
+
+  このHTMLスニペットを設定画面に組み込んでください。
+  sound.jsが読み込まれていれば、自動的に動作します。
+-->
+
+<div class="sound-settings-panel">
+    <h3>🔊 音響設定</h3>
+
+    <!-- 音響ON/OFF -->
+    <div class="setting-item">
+        <label class="setting-label">
+            <span class="setting-name">音響効果</span>
+            <div class="toggle-switch">
+                <input type="checkbox" id="sound-toggle" checked>
+                <span class="toggle-slider"></span>
+            </div>
+        </label>
+    </div>
+
+    <!-- 音量調整 -->
+    <div class="setting-item">
+        <label class="setting-label">
+            <span class="setting-name">音量</span>
+            <div class="volume-control">
+                <input type="range" id="volume-slider" min="0" max="100" value="30" class="volume-slider">
+                <span id="volume-display" class="volume-display">30%</span>
+            </div>
+        </label>
+    </div>
+
+    <!-- 振動フィードバック（モバイルのみ表示） -->
+    <div class="setting-item" id="vibration-setting">
+        <label class="setting-label">
+            <span class="setting-name">振動フィードバック</span>
+            <div class="toggle-switch">
+                <input type="checkbox" id="vibration-toggle" checked>
+                <span class="toggle-slider"></span>
+            </div>
+        </label>
+    </div>
+
+    <!-- テストボタン -->
+    <div class="setting-item">
+        <div class="test-sounds">
+            <button class="test-sound-btn" onclick="soundSystem.playCorrect()">✅ 正解音</button>
+            <button class="test-sound-btn" onclick="soundSystem.playIncorrect()">❌ 不正解音</button>
+            <button class="test-sound-btn" onclick="soundSystem.playComplete()">🎉 完了音</button>
+            <button class="test-sound-btn" onclick="soundSystem.playNotification()">🔔 通知音</button>
+        </div>
+    </div>
+</div>
+
+<!-- スタイル（design-system.cssに追加推奨） -->
+<style>
+.sound-settings-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.sound-settings-panel h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+}
+
+.setting-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.setting-name {
+    font-weight: 500;
+    color: #555;
+}
+
+/* トグルスイッチ */
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 26px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #4CAF50;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* 音量コントロール */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-slider {
+    width: 120px;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    border: none;
+}
+
+.volume-display {
+    min-width: 40px;
+    text-align: right;
+    font-weight: 500;
+    color: #666;
+    font-size: 14px;
+}
+
+/* テストボタン */
+.test-sounds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.test-sound-btn {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.test-sound-btn:hover {
+    background: #f5f5f5;
+    border-color: #4CAF50;
+}
+
+.test-sound-btn:active {
+    transform: scale(0.95);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .sound-settings-panel {
+        padding: 15px;
+    }
+
+    .test-sounds {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- 振動API非対応の場合は振動設定を非表示 -->
+<script>
+if (!('vibrate' in navigator)) {
+    const vibrationSetting = document.getElementById('vibration-setting');
+    if (vibrationSetting) {
+        vibrationSetting.style.display = 'none';
+    }
+}
+</script>

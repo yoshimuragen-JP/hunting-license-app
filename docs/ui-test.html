@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Polish テストページ</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+    <style>
+        body {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .test-header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .test-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .test-section h2 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-gray-200);
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .code-block {
+            background: var(--color-gray-900);
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .status-ok {
+            background: var(--color-success-pale);
+            color: var(--color-success-dark);
+        }
+
+        .demo-card {
+            padding: 20px;
+            border: 2px dashed var(--color-gray-300);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <!-- ヘッダー -->
+        <div class="test-header">
+            <h1>🎨 UI/UX Polish テストページ</h1>
+            <p style="color: var(--color-text-secondary); margin-top: 10px;">
+                すべてのUI改善要素を確認できるテストページです。<br>
+                ブラウザのコンソールを開いて、JavaScriptの動作も確認してください。
+            </p>
+        </div>
+
+        <!-- 1. ボタンテスト -->
+        <div class="test-section">
+            <h2>1. ボタン<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <p>ホバー、クリック時の波紋効果、フォーカス可視化を確認</p>
+            <div class="test-grid">
+                <button class="btn btn-primary">プライマリ</button>
+                <button class="btn btn-secondary">セカンダリ</button>
+                <button class="btn btn-outline">アウトライン</button>
+                <button class="btn btn-danger">危険</button>
+                <button class="btn btn-ghost">ゴースト</button>
+                <button class="btn btn-primary" disabled>無効化</button>
+            </div>
+            <div class="code-block">
+                // クリックで波紋効果が表示されます
+            </div>
+        </div>
+
+        <!-- 2. カードテスト -->
+        <div class="test-section">
+            <h2>2. カード<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <p>ホバー時の浮き上がり、シャドウ変化を確認</p>
+            <div class="test-grid">
+                <div class="card hover-lift">
+                    <h3>標準カード</h3>
+                    <p>ホバーで浮き上がります</p>
+                </div>
+                <div class="card hover-scale">
+                    <h3>スケールカード</h3>
+                    <p>ホバーで拡大します</p>
+                </div>
+                <div class="card hover-rotate">
+                    <h3>ロテートカード</h3>
+                    <p>ホバーで回転します</p>
+                </div>
+                <div class="card hover-glow">
+                    <h3>グローカード</h3>
+                    <p>ホバーで光ります</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. トースト通知テスト -->
+        <div class="test-section">
+            <h2>3. トースト通知<span class="status-badge status-ok">✓ 新規追加</span></h2>
+            <p>右上から滑り込むアニメーション付き通知</p>
+            <div class="test-grid">
+                <button class="btn btn-primary" onclick="toast.success('成功しました！')">成功通知</button>
+                <button class="btn btn-secondary" onclick="toast.error('エラーが発生しました')">エラー通知</button>
+                <button class="btn btn-outline" onclick="toast.warning('警告メッセージ')">警告通知</button>
+                <button class="btn btn-ghost" onclick="toast.info('情報メッセージ')">情報通知</button>
+            </div>
+            <div class="code-block">
+                toast.success('成功しました！');
+                toast.error('エラーが発生しました');
+                toast.warning('警告メッセージ');
+                toast.info('情報メッセージ');
+            </div>
+        </div>
+
+        <!-- 4. ローディングテスト -->
+        <div class="test-section">
+            <h2>4. ローディング<span class="status-badge status-ok">✓ 新規追加</span></h2>
+            <p>全画面ローディングオーバーレイ</p>
+            <div class="test-grid">
+                <button class="btn btn-primary" onclick="loading.show('データを読み込み中...'); setTimeout(() => loading.hide(), 2000);">
+                    2秒間表示
+                </button>
+                <button class="btn btn-secondary" onclick="loading.show(); setTimeout(() => loading.hide(), 3000);">
+                    3秒間表示
+                </button>
+            </div>
+            <div class="code-block">
+                loading.show('メッセージ');
+                setTimeout(() => loading.hide(), 2000);
+            </div>
+        </div>
+
+        <!-- 5. プログレスバーテスト -->
+        <div class="test-section">
+            <h2>5. プログレスバー<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <p>光沢アニメーション、グラデーション効果を確認</p>
+
+            <div class="progress-label">
+                <span>標準</span>
+                <span>75%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 75%"></div>
+            </div>
+
+            <div class="progress-label" style="margin-top: 20px;">
+                <span>成功</span>
+                <span>90%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar success" style="width: 90%"></div>
+            </div>
+
+            <div class="progress-label" style="margin-top: 20px;">
+                <span>警告</span>
+                <span>50%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar warning" style="width: 50%"></div>
+            </div>
+
+            <div class="progress-label" style="margin-top: 20px;">
+                <span>エラー</span>
+                <span>25%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar error" style="width: 25%"></div>
+            </div>
+        </div>
+
+        <!-- 6. バッジテスト -->
+        <div class="test-section">
+            <h2>6. バッジ<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <p>カテゴリ別、難易度別のバッジ</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="badge badge-primary">プライマリ</span>
+                <span class="badge badge-success">成功</span>
+                <span class="badge badge-warning">警告</span>
+                <span class="badge badge-error">エラー</span>
+                <span class="badge badge-info">情報</span>
+                <span class="badge badge-category-law">法令</span>
+                <span class="badge badge-category-tool">猟具</span>
+                <span class="badge badge-category-animal">鳥獣</span>
+                <span class="badge badge-category-protection">保護管理</span>
+                <span class="badge badge-category-practical">実技</span>
+                <span class="badge badge-difficulty-easy">易しい</span>
+                <span class="badge badge-difficulty-medium">普通</span>
+                <span class="badge badge-difficulty-hard">難しい</span>
+            </div>
+        </div>
+
+        <!-- 7. アニメーションテスト -->
+        <div class="test-section">
+            <h2>7. アニメーション<span class="status-badge status-ok">✓ 15種類追加</span></h2>
+            <p>各種アニメーション効果</p>
+            <div class="test-grid">
+                <button class="btn btn-outline" onclick="animateDemo('fade-enter')">フェードイン</button>
+                <button class="btn btn-outline" onclick="animateDemo('slide-up-enter')">スライドアップ</button>
+                <button class="btn btn-outline" onclick="animateDemo('scale-in-enter')">スケールイン</button>
+                <button class="btn btn-outline" onclick="animateDemo('animate-bounce')">バウンス</button>
+                <button class="btn btn-outline" onclick="animateDemo('animate-shake')">シェイク</button>
+                <button class="btn btn-outline" onclick="animateDemo('animate-pulse')">パルス</button>
+            </div>
+            <div class="demo-card" id="animDemo" style="margin-top: 20px;">
+                <p>アニメーションデモエリア</p>
+                <p style="font-size: 48px;">🎨</p>
+            </div>
+        </div>
+
+        <!-- 8. アラートテスト -->
+        <div class="test-section">
+            <h2>8. アラート<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <div class="alert alert-success">
+                <div class="alert-title">成功</div>
+                操作が正常に完了しました。
+            </div>
+            <div class="alert alert-warning">
+                <div class="alert-title">警告</div>
+                この操作には注意が必要です。
+            </div>
+            <div class="alert alert-error">
+                <div class="alert-title">エラー</div>
+                処理中にエラーが発生しました。
+            </div>
+            <div class="alert alert-info">
+                <div class="alert-title">情報</div>
+                新しい機能が追加されました。
+            </div>
+        </div>
+
+        <!-- 9. フォームテスト -->
+        <div class="test-section">
+            <h2>9. フォーム要素<span class="status-badge status-ok">✓ 改善済み</span></h2>
+            <div class="form-group">
+                <label class="form-label">テキスト入力</label>
+                <input type="text" class="form-input" placeholder="入力してください">
+            </div>
+            <div class="form-group">
+                <label class="form-label">セレクトボックス</label>
+                <select class="form-select">
+                    <option>オプション1</option>
+                    <option>オプション2</option>
+                    <option>オプション3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">テキストエリア</label>
+                <textarea class="form-textarea" placeholder="テキストを入力してください"></textarea>
+            </div>
+        </div>
+
+        <!-- 10. レスポンシブテスト -->
+        <div class="test-section">
+            <h2>10. レスポンシブ対応<span class="status-badge status-ok">✓ 完全対応</span></h2>
+            <p>画面サイズを変更して確認してください</p>
+            <ul style="line-height: 1.8;">
+                <li>✓ モバイル（〜640px）: 1カラムレイアウト</li>
+                <li>✓ タブレット（641px〜1024px）: 2カラムレイアウト</li>
+                <li>✓ デスクトップ（1025px〜）: 3〜4カラムレイアウト</li>
+                <li>✓ タッチデバイス: 最低44pxのタップエリア</li>
+            </ul>
+        </div>
+
+        <!-- 11. アクセシビリティテスト -->
+        <div class="test-section">
+            <h2>11. アクセシビリティ<span class="status-badge status-ok">✓ 強化済み</span></h2>
+            <p>Tabキーで移動してフォーカス可視化を確認</p>
+            <ul style="line-height: 1.8;">
+                <li>✓ キーボードナビゲーション（Tab/Shift+Tab）</li>
+                <li>✓ フォーカス可視化（3pxアウトライン）</li>
+                <li>✓ Escキーでモーダルを閉じる</li>
+                <li>✓ スクリーンリーダー対応（aria属性）</li>
+                <li>✓ 高コントラストモード対応</li>
+                <li>✓ モーション減速設定の尊重</li>
+            </ul>
+            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn btn-primary" tabindex="1">ボタン1</button>
+                <button class="btn btn-secondary" tabindex="2">ボタン2</button>
+                <button class="btn btn-outline" tabindex="3">ボタン3</button>
+            </div>
+        </div>
+
+        <!-- ホームに戻る -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="btn btn-lg btn-primary">ホームに戻る</a>
+        </div>
+    </div>
+
+    <script src="ui-polish.js"></script>
+    <script>
+        // アニメーションデモ
+        function animateDemo(className) {
+            const demo = document.getElementById('animDemo');
+            demo.className = 'demo-card ' + className;
+            setTimeout(() => {
+                demo.className = 'demo-card';
+            }, 1000);
+        }
+
+        // ページ読み込み時のメッセージ
+        window.addEventListener('load', () => {
+            console.log('🎨 UI/UX Polishテストページ');
+            console.log('✅ design-system.css: 読み込み完了');
+            console.log('✅ ui-polish-additions.css: 読み込み完了');
+            console.log('✅ ui-polish.js: 読み込み完了');
+            console.log('');
+            console.log('📝 テスト用コマンド:');
+            console.log('  toast.success("テスト")');
+            console.log('  loading.show("読み込み中...")');
+            console.log('  uiPolish.scrollTo("#test")');
+
+            // 成功メッセージ
+            setTimeout(() => {
+                toast.success('UI/UX Polishテストページへようこそ！');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

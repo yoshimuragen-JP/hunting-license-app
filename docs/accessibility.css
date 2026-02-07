@@ -1,0 +1,677 @@
+/**
+ * アクセシビリティスタイル
+ *
+ * WCAG 2.1 AAレベル準拠
+ * - 十分なコントラスト比（4.5:1以上）
+ * - 大きなタップ領域（44x44px以上）
+ * - フォーカスの可視化
+ * - 拡大表示対応
+ */
+
+/* ========================================
+   スクリーンリーダー専用
+   ======================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* フォーカス時は表示 */
+.sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* ========================================
+   スキップリンク
+   ======================================== */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #2c3e50;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 10000;
+    border-radius: 0 0 4px 0;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   フォーカススタイル
+   ======================================== */
+
+/* キーボードナビゲーション時のみフォーカスを強調 */
+.keyboard-navigation *:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+/* リンク・ボタンのフォーカス */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   タップ領域の拡大
+   ======================================== */
+
+/* すべてのインタラクティブ要素を最低44x44pxに */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn,
+.choice-btn,
+.nav-link {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+}
+
+/* 小さいボタンも44px以上に */
+.btn-small {
+    min-height: 44px;
+    padding: 10px 20px;
+}
+
+/* アイコンボタン */
+.icon-btn {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================
+   ハイコントラストモード
+   ======================================== */
+
+.high-contrast {
+    /* 背景と文字のコントラストを最大化 */
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --border-color: #ffffff;
+    --link-color: #00ffff;
+    --link-hover: #ffff00;
+    --btn-primary-bg: #ffff00;
+    --btn-primary-text: #000000;
+    --btn-secondary-bg: #00ffff;
+    --btn-secondary-text: #000000;
+}
+
+.high-contrast body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.high-contrast a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+    color: var(--link-hover);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.high-contrast .btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: 2px solid var(--btn-primary-text);
+}
+
+.high-contrast .btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 2px solid var(--btn-secondary-text);
+}
+
+.high-contrast .card,
+.high-contrast .mode-card,
+.high-contrast .animal-card {
+    border: 2px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.high-contrast img {
+    filter: contrast(1.2);
+}
+
+/* ========================================
+   モーション削減
+   ======================================== */
+
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* ========================================
+   フォントサイズ調整
+   ======================================== */
+
+/* small */
+[data-font-size="small"] {
+    font-size: 14px;
+}
+
+[data-font-size="small"] h1 {
+    font-size: 2rem;
+}
+
+[data-font-size="small"] h2 {
+    font-size: 1.5rem;
+}
+
+[data-font-size="small"] h3 {
+    font-size: 1.25rem;
+}
+
+/* medium（デフォルト） */
+[data-font-size="medium"] {
+    font-size: 16px;
+}
+
+/* large */
+[data-font-size="large"] {
+    font-size: 18px;
+}
+
+[data-font-size="large"] h1 {
+    font-size: 2.5rem;
+}
+
+[data-font-size="large"] h2 {
+    font-size: 2rem;
+}
+
+[data-font-size="large"] h3 {
+    font-size: 1.5rem;
+}
+
+/* xlarge */
+[data-font-size="xlarge"] {
+    font-size: 20px;
+}
+
+[data-font-size="xlarge"] h1 {
+    font-size: 3rem;
+}
+
+[data-font-size="xlarge"] h2 {
+    font-size: 2.5rem;
+}
+
+[data-font-size="xlarge"] h3 {
+    font-size: 2rem;
+}
+
+/* ========================================
+   アクセシビリティパネル
+   ======================================== */
+
+.accessibility-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.accessibility-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-toggle-btn:focus {
+    outline: 3px solid #2980b9;
+    outline-offset: 2px;
+}
+
+.accessibility-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    max-width: 90vw;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    transition: right 0.3s;
+    overflow-y: auto;
+}
+
+.accessibility-panel.active {
+    right: 0;
+}
+
+.accessibility-panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.accessibility-panel.active ~ .accessibility-panel-overlay,
+.accessibility-panel.active .accessibility-panel-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.accessibility-panel-content {
+    position: relative;
+    z-index: 10001;
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.accessibility-panel-header {
+    padding: 24px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accessibility-panel-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.accessibility-panel-header .close-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.accessibility-panel-header .close-btn:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.accessibility-panel-body {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.accessibility-panel-footer {
+    padding: 24px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* 設定グループ */
+.setting-group {
+    margin-bottom: 32px;
+}
+
+.setting-group label,
+.setting-group > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #2c3e50;
+}
+
+.setting-description {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* ボタングループ */
+.button-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.setting-btn {
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    background: white;
+    color: #2c3e50;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.setting-btn:hover {
+    border-color: #3498db;
+    background: #ecf0f1;
+}
+
+.setting-btn.active {
+    border-color: #3498db;
+    background: #3498db;
+    color: white;
+}
+
+/* トグルラベル */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.toggle-label:hover {
+    background: #f8f9fa;
+}
+
+.toggle-label input[type="checkbox"] {
+    width: 48px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.toggle-label span {
+    font-weight: normal;
+}
+
+/* キーボードショートカット一覧 */
+.keyboard-shortcuts-list {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.keyboard-shortcuts-list summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px;
+    user-select: none;
+}
+
+.keyboard-shortcuts-list dl {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.keyboard-shortcuts-list dt {
+    font-weight: bold;
+    color: #3498db;
+    margin-top: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+.keyboard-shortcuts-list dd {
+    margin-left: 24px;
+    color: #666;
+}
+
+/* ========================================
+   レスポンシブ対応
+   ======================================== */
+
+@media (max-width: 768px) {
+    .accessibility-panel {
+        width: 100%;
+        right: -100%;
+    }
+
+    .accessibility-toggle-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* ========================================
+   印刷用スタイル
+   ======================================== */
+
+@media print {
+    .accessibility-toggle-btn,
+    .accessibility-panel,
+    .skip-link {
+        display: none;
+    }
+
+    /* 印刷時は常に高コントラスト */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+
+    /* URLを表示 */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+}
+
+/* ========================================
+   ARIA状態の視覚化（開発用）
+   ======================================== */
+
+/* aria-hidden要素を半透明に */
+[aria-hidden="true"] {
+    opacity: 0.5;
+}
+
+/* aria-disabled要素 */
+[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* aria-expanded状態 */
+[aria-expanded="false"] + * {
+    display: none;
+}
+
+/* ========================================
+   カラーコントラスト改善
+   ======================================== */
+
+/* リンクのコントラスト比を4.5:1以上に */
+a {
+    color: #0066cc; /* 十分なコントラスト */
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+    color: #004499;
+    background: rgba(0, 102, 204, 0.1);
+}
+
+/* 無効化ボタンのコントラスト */
+button:disabled,
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #e0e0e0;
+    color: #666;
+}
+
+/* エラーメッセージ */
+.error-message,
+[role="alert"] {
+    background: #e74c3c;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-left: 4px solid #c0392b;
+}
+
+/* 成功メッセージ */
+.success-message,
+[role="status"] {
+    background: #27ae60;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-left: 4px solid #229954;
+}
+
+/* 警告メッセージ */
+.warning-message {
+    background: #f39c12;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-left: 4px solid #d68910;
+}
+
+/* 情報メッセージ */
+.info-message {
+    background: #3498db;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-left: 4px solid #2980b9;
+}
+
+/* ========================================
+   ツールチップのアクセシビリティ
+   ======================================== */
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* ========================================
+   プログレスバーのアクセシビリティ
+   ======================================== */
+
+[role="progressbar"] {
+    position: relative;
+}
+
+[role="progressbar"]::after {
+    content: attr(aria-valuenow) "%";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+/* ========================================
+   モーダルのアクセシビリティ
+   ======================================== */
+
+[role="dialog"] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+[role="dialog"][aria-hidden="true"] {
+    display: none;
+}
+
+/* モーダル背景 */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}

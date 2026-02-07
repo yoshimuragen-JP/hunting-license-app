@@ -1,0 +1,864 @@
+/* 
+ * 狩猟免許試験アプリ - メインスタイルシート
+ * 欠損していたstyle.cssを生成
+ */
+
+/* 基本的なリセットとレイアウトのみ定義（design-system.cssとの重複を避ける） */
+
+:root {
+    --primary-color: #2e7d32;
+    --secondary-color: #4caf50;
+    --accent-color: #ff6f00;
+    --text-color: #333;
+    --bg-color: #f5f7fa;
+}
+
+/* 既にdesign-system.cssとmobile-optimized.cssで定義されているため、
+   ここでは最小限の追加スタイルのみ */
+
+/* PWAインストールプロンプト */
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    max-width: 400px;
+    width: 90%;
+    z-index: 9999;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.install-prompt-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.install-prompt-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.install-prompt-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.install-btn {
+    flex: 1;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.install-btn:hover {
+    background: #1b5e20;
+}
+
+.dismiss-btn {
+    flex: 1;
+    background: #e0e0e0;
+    color: #666;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dismiss-btn:hover {
+    background: #bdbdbd;
+}
+
+/* スキップリンク（アクセシビリティ） */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* 緊急修正: loading要素を強制的に非表示 */
+#loading {
+    display: none !important;
+}
+
+/* ホームへ戻るボタン */
+.back-to-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-to-home-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-4px);
+}
+
+.back-to-home-btn:active {
+    transform: translateX(-2px);
+}
+
+.back-to-home-btn:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   メインページUI改善
+   ======================================== */
+
+/* ヒーローセクション - グラデーション背景 */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 20px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    opacity: 0.95;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ボタンの改善 */
+.btn {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245,87,108,0.4);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.8);
+    transform: translateY(-3px);
+}
+
+/* 学習モードカード */
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.mode-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.mode-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-card p {
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* セクションの改善 */
+.section {
+    padding: 80px 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* おすすめの学習の流れ - ステップカード */
+.study-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.study-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%);
+    border-left: 4px solid #667eea;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.study-step:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+}
+
+.step-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #667eea;
+    min-width: 50px;
+}
+
+.step-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.step-content p {
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* 特徴アイコン */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feature-description {
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* CTA セクション */
+.cta-section {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.cta-section h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    color: white;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .mode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* ヒーロー統計情報 */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    min-width: 150px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.25);
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+/* 学習ステップのスタイル改善 */
+.flow-steps {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.08) 0%, rgba(118,75,162,0.08) 100%);
+    border-left: 5px solid #667eea;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.flow-step:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(102,126,234,0.15);
+    border-left-width: 8px;
+}
+
+.flow-step-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #667eea;
+    min-width: 60px;
+    line-height: 1;
+}
+
+.flow-step-content {
+    flex: 1;
+}
+
+.flow-step-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.flow-step-description {
+    color: #546e7a;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* 特徴セクション */
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    padding: 35px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+    border: 1px solid rgba(102,126,234,0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(102,126,234,0.2);
+    border-color: rgba(102,126,234,0.4);
+}
+
+.feature-icon-large {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #2c3e50;
+}
+
+.feature-card p {
+    color: #546e7a;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* CTAセクションの改善 */
+.cta-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 60px auto;
+    max-width: 900px;
+    box-shadow: 0 20px 60px rgba(102,126,234,0.3);
+}
+
+.cta-box h3 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 35px;
+}
+
+.cta-box .btn {
+    background: white;
+    color: #667eea;
+    font-weight: 700;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+}
+
+.cta-box .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* アニメーション効果 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* スクロールアニメーション */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ローディング改善 */
+#loading {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* モードカードアイコン */
+.mode-card-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.mode-card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.mode-card-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #546e7a;
+    margin-bottom: 20px;
+}
+
+.mode-card-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.mode-card-features li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: #546e7a;
+}
+
+.mode-card-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: 700;
+}
+
+.mode-card-featured {
+    position: relative;
+    border: 2px solid #667eea;
+    box-shadow: 0 10px 40px rgba(102,126,234,0.2);
+}
+
+.mode-card-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ボタンアウトライン */
+.btn-outline {
+    background: transparent;
+    border: 2px solid rgba(102,126,234,0.3);
+    color: #667eea;
+}
+
+.btn-outline:hover {
+    background: rgba(102,126,234,0.1);
+    border-color: #667eea;
+    transform: translateY(-3px);
+}
+
+/* ヘッダーの改善 */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ナビゲーション */
+.nav-link {
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* フッター */
+footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: 60px 20px 30px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+}
+
+/* タブレット・スマホ対応 */
+@media (max-width: 1024px) {
+    .mode-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .hero-stats {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .flow-step {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .flow-step-number {
+        margin-bottom: 10px;
+    }
+
+    .cta-box {
+        padding: 40px 25px;
+    }
+
+    .cta-box h3 {
+        font-size: 1.8rem;
+    }
+}

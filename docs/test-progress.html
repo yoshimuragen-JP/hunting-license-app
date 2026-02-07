@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進捗データテスト</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .danger {
+            background: #e74c3c;
+        }
+        .danger:hover {
+            background: #c0392b;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .stat {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #ecf0f1;
+            border-radius: 4px;
+        }
+        .stat strong {
+            display: block;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>進捗データ管理テスト</h1>
+
+    <div class="section">
+        <h2>現在のデータ</h2>
+        <div id="current-data">
+            <div class="stat">
+                <strong id="total-questions">0</strong>
+                <span>総解答数</span>
+            </div>
+            <div class="stat">
+                <strong id="correct-answers">0</strong>
+                <span>正解数</span>
+            </div>
+            <div class="stat">
+                <strong id="accuracy">0%</strong>
+                <span>正答率</span>
+            </div>
+            <div class="stat">
+                <strong id="study-time">0分</strong>
+                <span>学習時間</span>
+            </div>
+        </div>
+        <button onclick="refreshData()">更新</button>
+    </div>
+
+    <div class="section">
+        <h2>テストデータ作成</h2>
+        <button onclick="addSampleData()">サンプルデータを追加</button>
+        <button onclick="addManyQuestions()">大量データを追加（100問）</button>
+        <button class="danger" onclick="resetData()">データをリセット</button>
+    </div>
+
+    <div class="section">
+        <h2>カテゴリ別統計</h2>
+        <div id="category-stats"></div>
+    </div>
+
+    <div class="section">
+        <h2>生データ（JSON）</h2>
+        <pre id="raw-data"></pre>
+    </div>
+
+    <script>
+        // LocalStorage初期化
+        function initStorage() {
+            if (!localStorage.getItem('huntingProgress')) {
+                const initialData = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    categoryStats: {},
+                    quizHistory: [],
+                    studyTime: 0,
+                    lastStudyDate: null
+                };
+                localStorage.setItem('huntingProgress', JSON.stringify(initialData));
+            }
+        }
+
+        // データ読み込み
+        function loadData() {
+            const data = localStorage.getItem('huntingProgress');
+            return data ? JSON.parse(data) : null;
+        }
+
+        // データ保存
+        function saveData(data) {
+            localStorage.setItem('huntingProgress', JSON.stringify(data));
+        }
+
+        // 表示を更新
+        function refreshData() {
+            const data = loadData();
+            if (!data) {
+                alert('データがありません');
+                return;
+            }
+
+            // 統計表示
+            document.getElementById('total-questions').textContent = data.totalQuestions;
+            document.getElementById('correct-answers').textContent = data.correctAnswers;
+
+            const accuracy = data.totalQuestions > 0 ?
+                Math.round((data.correctAnswers / data.totalQuestions) * 100) : 0;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+
+            const hours = Math.floor(data.studyTime / 3600);
+            const minutes = Math.floor((data.studyTime % 3600) / 60);
+            document.getElementById('study-time').textContent =
+                hours > 0 ? `${hours}時間${minutes}分` : `${minutes}分`;
+
+            // カテゴリ別統計
+            const categoryStatsDiv = document.getElementById('category-stats');
+            categoryStatsDiv.innerHTML = '';
+
+            if (Object.keys(data.categoryStats).length === 0) {
+                categoryStatsDiv.innerHTML = '<p>カテゴリ別データがありません</p>';
+            } else {
+                Object.entries(data.categoryStats).forEach(([category, stats]) => {
+                    const acc = stats.total > 0 ?
+                        Math.round((stats.correct / stats.total) * 100) : 0;
+                    const div = document.createElement('div');
+                    div.className = 'stat';
+                    div.innerHTML = `
+                        <strong>${acc}%</strong>
+                        <span>${category} (${stats.correct}/${stats.total})</span>
+                    `;
+                    categoryStatsDiv.appendChild(div);
+                });
+            }
+
+            // 生データ表示
+            document.getElementById('raw-data').textContent = JSON.stringify(data, null, 2);
+        }
+
+        // サンプルデータ追加
+        function addSampleData() {
+            const data = loadData();
+
+            data.totalQuestions += 20;
+            data.correctAnswers += 14;
+            data.studyTime += 1200; // 20分
+
+            // カテゴリ別データ
+            const categories = ['法令', '猟具', '鳥獣識別', '保護管理', '実技'];
+            categories.forEach(category => {
+                if (!data.categoryStats[category]) {
+                    data.categoryStats[category] = { correct: 0, total: 0 };
+                }
+                const total = Math.floor(Math.random() * 5) + 1;
+                const correct = Math.floor(Math.random() * (total + 1));
+                data.categoryStats[category].total += total;
+                data.categoryStats[category].correct += correct;
+            });
+
+            data.lastStudyDate = new Date().toISOString();
+
+            saveData(data);
+            refreshData();
+            alert('サンプルデータを追加しました');
+        }
+
+        // 大量データ追加
+        function addManyQuestions() {
+            const data = loadData();
+
+            data.totalQuestions += 100;
+            data.correctAnswers += 75;
+            data.studyTime += 6000; // 100分
+
+            const categories = ['法令', '猟具', '鳥獣識別', '保護管理', '実技'];
+            categories.forEach(category => {
+                if (!data.categoryStats[category]) {
+                    data.categoryStats[category] = { correct: 0, total: 0 };
+                }
+                data.categoryStats[category].total += 20;
+                data.categoryStats[category].correct += 15;
+            });
+
+            data.lastStudyDate = new Date().toISOString();
+
+            saveData(data);
+            refreshData();
+            alert('100問のデータを追加しました');
+        }
+
+        // データリセット
+        function resetData() {
+            if (confirm('本当にすべてのデータをリセットしますか？')) {
+                localStorage.removeItem('huntingProgress');
+                initStorage();
+                refreshData();
+                alert('データをリセットしました');
+            }
+        }
+
+        // 初期化
+        initStorage();
+        refreshData();
+    </script>
+</body>
+</html>

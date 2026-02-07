@@ -1,0 +1,222 @@
+<!-- 共通フッター -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">狩猟免許試験 完全攻略</h3>
+                <p class="footer-description">
+                    知識ゼロから一発合格を目指す学習アプリ
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">学習メニュー</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">ホーム</a></li>
+                    <li><a href="game.html" class="footer-link">学習</a></li>
+                    <li><a href="mock-exam.html" class="footer-link">模擬試験</a></li>
+                    <li><a href="animals.html" class="footer-link">鳥獣図鑑</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">ガイド</h4>
+                <ul class="footer-links">
+                    <li><a href="practical.html" class="footer-link">実技ガイド</a></li>
+                    <li><a href="dashboard.html" class="footer-link">学習進捗</a></li>
+                    <li><a href="guide.html" class="footer-link">学習ガイド</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">情報源</h4>
+                <ul class="footer-links">
+                    <li>
+                        <a href="https://www.env.go.jp/nature/choju/index.html" class="footer-link" target="_blank" rel="noopener noreferrer">
+                            環境省 鳥獣保護管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.pref.hokkaido.lg.jp/" class="footer-link" target="_blank" rel="noopener noreferrer">
+                            各都道府県 狩猟免許情報
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-disclaimer">
+                <h4 class="disclaimer-title">免責事項</h4>
+                <p class="disclaimer-text">
+                    本アプリは狩猟免許試験の学習をサポートするツールです。
+                    掲載されている情報は参考情報であり、実際の試験内容や合否を保証するものではありません。
+                    最新の法令や試験要項は、受験される都道府県の公式情報をご確認ください。
+                </p>
+            </div>
+            <p class="footer-copyright">
+                &copy; 2026 狩猟免許試験 完全攻略. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- トップに戻るボタン -->
+<button id="back-to-top" class="back-to-top" aria-label="トップに戻る" style="display: none;">
+    <span aria-hidden="true">↑</span>
+</button>
+
+<style>
+/* フッター */
+.footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 3rem 0 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    padding: 0;
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.footer-description {
+    color: #bdc3c7;
+    line-height: 1.6;
+}
+
+.footer-heading {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-link {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+    color: #3498db;
+}
+
+.footer-bottom {
+    border-top: 1px solid #34495e;
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.footer-disclaimer {
+    background: rgba(52, 73, 94, 0.5);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.disclaimer-title {
+    color: #f39c12;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.disclaimer-text {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+/* トップに戻るボタン */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+</style>
+
+<script>
+// トップに戻るボタン
+(function() {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
+        // スクロール時の表示/非表示
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // クリックでトップへ
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+})();
+</script>

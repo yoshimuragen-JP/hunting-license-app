@@ -1,0 +1,10 @@
+PWAアイコンファイルが必要です。
+
+以下のサイズが必要:
+- icon-16x16.png
+- icon-32x32.png
+- icon-180x180.png
+- icon-192x192.png (manifest.json用)
+- icon-512x512.png (manifest.json用)
+
+デザインアセットがない場合は、シンプルな🎯絵文字ベースのアイコンを生成することを推奨。

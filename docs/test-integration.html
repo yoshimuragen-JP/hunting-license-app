@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>統合テスト - 狩猟免許試験</title>
+
+    <link rel="stylesheet" href="design-system.css">
+    <script src="js/integration.js" defer></script>
+    <script src="js/data-validator.js" defer></script>
+
+    <style>
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .test-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .test-button {
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .test-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .test-button.secondary {
+            background: #6c757d;
+        }
+
+        .test-result {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .test-result.success {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .test-result.error {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .status-badge.success {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-badge.error {
+            background: #dc3545;
+            color: white;
+        }
+
+        .status-badge.info {
+            background: #17a2b8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <div id="navigation-placeholder"></div>
+
+    <div class="container">
+        <h1 style="text-align: center; color: #667eea; margin: 2rem 0;">🧪 統合テストページ</h1>
+
+        <!-- ナビゲーションテスト -->
+        <div class="test-section">
+            <h2>1. ナビゲーション機能テスト</h2>
+            <p>各ページへのリンクが正しく機能するかテストします。</p>
+
+            <div class="test-grid">
+                <button class="test-button" onclick="AppIntegration.navigation.toHome()">
+                    🏠 ホームへ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toGame()">
+                    📚 学習へ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toMockExam()">
+                    🎯 模擬試験へ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toAnimals()">
+                    🦌 鳥獣図鑑へ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toPractical()">
+                    🔧 実技ガイドへ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toDashboard()">
+                    📊 ダッシュボードへ
+                </button>
+                <button class="test-button" onclick="AppIntegration.navigation.toGuide()">
+                    📖 学習ガイドへ
+                </button>
+            </div>
+
+            <div class="test-grid" style="margin-top: 1rem;">
+                <button class="test-button secondary" onclick="AppIntegration.navigation.toGame('法令')">
+                    📜 法令カテゴリへ
+                </button>
+                <button class="test-button secondary" onclick="AppIntegration.navigation.toAnimals('magamo')">
+                    🦆 マガモの詳細へ
+                </button>
+            </div>
+        </div>
+
+        <!-- データストレージテスト -->
+        <div class="test-section">
+            <h2>2. データストレージテスト</h2>
+            <p>LocalStorageへのデータ保存・取得をテストします。</p>
+
+            <div class="test-grid">
+                <button class="test-button" onclick="testSaveProgress()">
+                    💾 学習進捗を保存
+                </button>
+                <button class="test-button" onclick="testLoadProgress()">
+                    📂 学習進捗を読込
+                </button>
+                <button class="test-button" onclick="testSaveResult()">
+                    💾 模擬試験結果を保存
+                </button>
+                <button class="test-button" onclick="testLoadResults()">
+                    📂 模擬試験結果を読込
+                </button>
+                <button class="test-button secondary" onclick="testClearData()">
+                    🗑️ データをクリア
+                </button>
+            </div>
+
+            <div id="storage-result" class="test-result" style="display: none;"></div>
+        </div>
+
+        <!-- 統計情報テスト -->
+        <div class="test-section">
+            <h2>3. 統計情報テスト</h2>
+            <p>学習統計の計算と弱点検出をテストします。</p>
+
+            <div class="test-grid">
+                <button class="test-button" onclick="testOverallStats()">
+                    📊 総合統計を表示
+                </button>
+                <button class="test-button" onclick="testCategoryStats()">
+                    📈 カテゴリ別統計を表示
+                </button>
+                <button class="test-button" onclick="testWeakCategories()">
+                    ⚠️ 弱点カテゴリを検出
+                </button>
+            </div>
+
+            <div id="stats-result" class="test-result" style="display: none;"></div>
+        </div>
+
+        <!-- リンク生成テスト -->
+        <div class="test-section">
+            <h2>4. リンク生成テスト</h2>
+            <p>クロスリンクの生成をテストします。</p>
+
+            <div class="test-grid">
+                <button class="test-button" onclick="testAnimalLinks()">
+                    🔗 鳥獣図鑑リンク生成
+                </button>
+                <button class="test-button" onclick="testCategoryLinks()">
+                    🔗 カテゴリ学習リンク生成
+                </button>
+                <button class="test-button" onclick="testWeakCategoryLinks()">
+                    🔗 弱点カテゴリリンク生成
+                </button>
+            </div>
+
+            <div id="link-result" class="test-result" style="display: none;"></div>
+        </div>
+
+        <!-- データバリデーションテスト -->
+        <div class="test-section">
+            <h2>5. データバリデーションテスト</h2>
+            <p>JSONデータの整合性をチェックします。</p>
+
+            <button class="test-button" onclick="testValidation()">
+                🔍 バリデーションを実行
+            </button>
+
+            <div id="validation-result" class="test-result" style="display: none;"></div>
+        </div>
+
+        <!-- コンポーネントテスト -->
+        <div class="test-section">
+            <h2>6. コンポーネント読み込みテスト</h2>
+            <p>共通コンポーネントが正しく読み込まれているかチェックします。</p>
+
+            <button class="test-button" onclick="testComponents()">
+                🔧 コンポーネントチェック
+            </button>
+
+            <div id="component-result" class="test-result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <div id="footer-placeholder"></div>
+
+    <!-- コンポーネント読み込み -->
+    <script>
+        // ナビゲーション読み込み
+        fetch('components/navigation.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navigation-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Navigation load failed:', error));
+
+        // フッター読み込み
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Footer load failed:', error));
+    </script>
+
+    <!-- テスト関数 -->
+    <script>
+        function showResult(elementId, content, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `test-result ${type}`;
+            element.textContent = content;
+        }
+
+        // ストレージテスト
+        function testSaveProgress() {
+            const progress = {
+                totalQuestions: 100,
+                correctAnswers: 75,
+                categories: {
+                    '法令': { total: 30, correct: 25 },
+                    '鳥獣識別': { total: 40, correct: 28 },
+                    '猟具': { total: 30, correct: 22 }
+                },
+                studyTime: 5
+            };
+
+            AppIntegration.storage.saveProgress(progress);
+            showResult('storage-result', '✅ 学習進捗を保存しました\n' + JSON.stringify(progress, null, 2), 'success');
+        }
+
+        function testLoadProgress() {
+            const progress = AppIntegration.storage.getProgress();
+            showResult('storage-result', '📂 学習進捗を読み込みました\n' + JSON.stringify(progress, null, 2), 'info');
+        }
+
+        function testSaveResult() {
+            const result = {
+                score: 85,
+                total: 30,
+                correct: 26,
+                categories: {
+                    '法令': { correct: 9, total: 10 },
+                    '鳥獣識別': { correct: 8, total: 10 },
+                    '猟具': { correct: 9, total: 10 }
+                }
+            };
+
+            AppIntegration.storage.saveResult(result);
+            showResult('storage-result', '✅ 模擬試験結果を保存しました\n' + JSON.stringify(result, null, 2), 'success');
+        }
+
+        function testLoadResults() {
+            const results = AppIntegration.storage.getResults();
+            showResult('storage-result', `📂 模擬試験結果を読み込みました（${results.length}件）\n` + JSON.stringify(results, null, 2), 'info');
+        }
+
+        function testClearData() {
+            if (confirm('すべてのデータをクリアしますか？')) {
+                localStorage.clear();
+                showResult('storage-result', '🗑️ すべてのデータをクリアしました', 'info');
+            }
+        }
+
+        // 統計テスト
+        function testOverallStats() {
+            const stats = AppIntegration.stats.getOverallStats();
+            showResult('stats-result', '📊 総合統計\n' + JSON.stringify(stats, null, 2), 'info');
+        }
+
+        function testCategoryStats() {
+            const categories = ['法令', '鳥獣識別', '猟具', '保護管理', '実技'];
+            let result = '📈 カテゴリ別統計\n\n';
+
+            categories.forEach(cat => {
+                const stats = AppIntegration.stats.getCategoryStats(cat);
+                result += `${cat}: ${stats.correct}/${stats.total} (${stats.accuracy}%)\n`;
+            });
+
+            showResult('stats-result', result, 'info');
+        }
+
+        function testWeakCategories() {
+            const weakCategories = AppIntegration.stats.getWeakCategories();
+
+            if (weakCategories.length === 0) {
+                showResult('stats-result', '✅ 弱点カテゴリなし（すべて70%以上）', 'success');
+            } else {
+                let result = '⚠️ 弱点カテゴリ（70%未満）\n\n';
+                weakCategories.forEach(cat => {
+                    result += `${cat.name}: ${cat.accuracy}% (${cat.total}問)\n`;
+                });
+                showResult('stats-result', result, 'error');
+            }
+        }
+
+        // リンク生成テスト
+        function testAnimalLinks() {
+            const animals = ['マガモ', 'カルガモ', 'イノシシ', 'ニホンジカ'];
+            let result = '🔗 鳥獣図鑑リンク\n\n';
+
+            animals.forEach(animal => {
+                const link = AppIntegration.generateLinks.toAnimalFromQuestion(animal);
+                result += `${animal}: ${link}\n`;
+            });
+
+            showResult('link-result', result, 'info');
+        }
+
+        function testCategoryLinks() {
+            const categories = ['法令', '鳥獣識別', '猟具'];
+            let result = '🔗 カテゴリ学習リンク\n\n';
+
+            categories.forEach(cat => {
+                const link = AppIntegration.generateLinks.toCategoryStudy(cat);
+                result += `${cat}: ${link}\n`;
+            });
+
+            showResult('link-result', result, 'info');
+        }
+
+        function testWeakCategoryLinks() {
+            const weakCategories = AppIntegration.stats.getWeakCategories();
+            let result = '🔗 弱点カテゴリリンク\n\n';
+
+            if (weakCategories.length === 0) {
+                result += '弱点カテゴリなし';
+            } else {
+                weakCategories.forEach(cat => {
+                    const link = AppIntegration.generateLinks.toWeakCategory(cat.name);
+                    result += `${cat.name} (${cat.accuracy}%): ${link}\n`;
+                });
+            }
+
+            showResult('link-result', result, 'info');
+        }
+
+        // バリデーションテスト
+        async function testValidation() {
+            showResult('validation-result', '🔍 バリデーション実行中...', 'info');
+
+            try {
+                await DataValidator.validateAll();
+
+                let result = '📊 バリデーション結果\n\n';
+                result += `エラー: ${DataValidator.errors.length}件\n`;
+                result += `警告: ${DataValidator.warnings.length}件\n\n`;
+
+                if (DataValidator.errors.length > 0) {
+                    result += 'エラー一覧:\n';
+                    DataValidator.errors.forEach((err, i) => {
+                        result += `${i + 1}. ${err}\n`;
+                    });
+                }
+
+                if (DataValidator.warnings.length > 0) {
+                    result += '\n警告一覧:\n';
+                    DataValidator.warnings.forEach((warn, i) => {
+                        result += `${i + 1}. ${warn}\n`;
+                    });
+                }
+
+                const type = DataValidator.errors.length > 0 ? 'error' :
+                            DataValidator.warnings.length > 0 ? 'info' : 'success';
+
+                showResult('validation-result', result, type);
+            } catch (error) {
+                showResult('validation-result', `❌ バリデーション失敗: ${error.message}`, 'error');
+            }
+        }
+
+        // コンポーネントテスト
+        function testComponents() {
+            let result = '🔧 コンポーネントチェック\n\n';
+
+            // ナビゲーション
+            const navPlaceholder = document.getElementById('navigation-placeholder');
+            const hasNav = navPlaceholder && navPlaceholder.innerHTML.trim() !== '';
+            result += `ナビゲーション: ${hasNav ? '✅ OK' : '❌ NG'}\n`;
+
+            // フッター
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            const hasFooter = footerPlaceholder && footerPlaceholder.innerHTML.trim() !== '';
+            result += `フッター: ${hasFooter ? '✅ OK' : '❌ NG'}\n`;
+
+            // JavaScript
+            const hasIntegration = typeof AppIntegration !== 'undefined';
+            result += `integration.js: ${hasIntegration ? '✅ OK' : '❌ NG'}\n`;
+
+            const hasValidator = typeof DataValidator !== 'undefined';
+            result += `data-validator.js: ${hasValidator ? '✅ OK' : '❌ NG'}\n`;
+
+            const type = (hasNav && hasFooter && hasIntegration && hasValidator) ? 'success' : 'error';
+            showResult('component-result', result, type);
+        }
+
+        // ページ読み込み時に自動チェック
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testComponents();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

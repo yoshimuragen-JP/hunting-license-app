@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エクスポート・インポート機能テスト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .stats-display {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .stat-value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .help-text {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .success-message,
+        .error-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .test-data-section {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid #ffc107;
+        }
+
+        .test-data-section h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 エクスポート・インポート機能テスト</h1>
+
+        <!-- 現在のデータ表示 -->
+        <div class="section">
+            <h2>📊 現在の学習データ</h2>
+            <div class="stats-display" id="currentStats">
+                <p>データを読み込んでいます...</p>
+            </div>
+            <button class="btn btn-secondary" onclick="refreshStats()">
+                🔄 データを再読み込み
+            </button>
+        </div>
+
+        <!-- テストデータ作成 -->
+        <div class="section">
+            <h2>🧪 テストデータ作成</h2>
+            <p class="help-text">機能テスト用のダミーデータを作成します。</p>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="createTestData()">
+                    ✨ テストデータを作成
+                </button>
+                <button class="btn btn-secondary" onclick="addMoreData()">
+                    ➕ データを追加
+                </button>
+            </div>
+            <div class="test-data-section">
+                <h3>⚠️ 注意</h3>
+                <p>テストデータは既存のデータを上書きします。本番データがある場合は先にエクスポートしてください。</p>
+            </div>
+        </div>
+
+        <!-- エクスポート -->
+        <div class="section">
+            <h2>💾 データをエクスポート</h2>
+            <p class="help-text">現在の学習データをJSON形式でダウンロードします。</p>
+            <button class="btn btn-primary" onclick="exportProgress()">
+                📥 エクスポート実行
+            </button>
+        </div>
+
+        <!-- インポート -->
+        <div class="section">
+            <h2>📤 データをインポート</h2>
+            <p class="help-text">以前エクスポートしたJSONファイルから学習データを復元します。</p>
+            <button class="btn btn-secondary" onclick="importProgress()">
+                📂 ファイルを選択してインポート
+            </button>
+        </div>
+
+        <!-- リセット -->
+        <div class="section">
+            <h2>🗑️ データをリセット</h2>
+            <p class="help-text">全ての学習データを削除します。この操作は取り消せません。</p>
+            <button class="btn btn-danger" onclick="resetAllProgress()">
+                ⚠️ 全データをリセット
+            </button>
+        </div>
+
+        <!-- テスト結果表示エリア -->
+        <div id="messageArea"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // 統計情報を表示
+        function refreshStats() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress'));
+            const statsDiv = document.getElementById('currentStats');
+
+            if (!progress) {
+                statsDiv.innerHTML = '<p style="color: #e74c3c;">学習データがありません。テストデータを作成してください。</p>';
+                return;
+            }
+
+            const accuracy = progress.totalQuestions > 0 ?
+                ((progress.correctAnswers / progress.totalQuestions) * 100).toFixed(1) : 0;
+
+            statsDiv.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-label">総解答数</span>
+                    <span class="stat-value">${progress.totalQuestions}問</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">正解数</span>
+                    <span class="stat-value">${progress.correctAnswers}問</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">正答率</span>
+                    <span class="stat-value">${accuracy}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">学習時間</span>
+                    <span class="stat-value">${Math.floor(progress.studyTime / 60)}分</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">最終学習日</span>
+                    <span class="stat-value">${progress.lastStudyDate ? new Date(progress.lastStudyDate).toLocaleString() : '未設定'}</span>
+                </div>
+            `;
+        }
+
+        // テストデータ作成
+        function createTestData() {
+            const testData = {
+                totalQuestions: 150,
+                correctAnswers: 105,
+                studyTime: 7200, // 2時間
+                lastStudyDate: new Date().toISOString(),
+                categories: {
+                    law: { correct: 25, total: 30 },
+                    tools: { correct: 20, total: 30 },
+                    animals: { correct: 30, total: 40 },
+                    management: { correct: 15, total: 25 },
+                    practical: { correct: 15, total: 25 }
+                },
+                quizHistory: [
+                    {
+                        date: new Date(Date.now() - 86400000 * 3).toISOString(),
+                        type: 'practice',
+                        score: 65,
+                        correctCount: 13,
+                        totalQuestions: 20,
+                        timeSpent: 600
+                    },
+                    {
+                        date: new Date(Date.now() - 86400000 * 2).toISOString(),
+                        type: 'practice',
+                        score: 75,
+                        correctCount: 15,
+                        totalQuestions: 20,
+                        timeSpent: 550
+                    },
+                    {
+                        date: new Date(Date.now() - 86400000).toISOString(),
+                        type: 'mock_exam',
+                        score: 73,
+                        correctCount: 22,
+                        totalQuestions: 30,
+                        timeSpent: 1800
+                    }
+                ],
+                gameStats: {
+                    totalGames: 5,
+                    highScore: 2500,
+                    averageScore: 1800,
+                    maxCombo: 15
+                },
+                examHistory: []
+            };
+
+            localStorage.setItem('huntingProgress', JSON.stringify(testData));
+            showMessage('✅ テストデータを作成しました', 'success');
+            refreshStats();
+        }
+
+        // データを追加
+        function addMoreData() {
+            const progress = JSON.parse(localStorage.getItem('huntingProgress'));
+            if (!progress) {
+                showMessage('❌ データが存在しません。先にテストデータを作成してください', 'error');
+                return;
+            }
+
+            progress.totalQuestions += 20;
+            progress.correctAnswers += 14;
+            progress.studyTime += 600;
+            progress.lastStudyDate = new Date().toISOString();
+
+            localStorage.setItem('huntingProgress', JSON.stringify(progress));
+            showMessage('✅ データを追加しました', 'success');
+            refreshStats();
+        }
+
+        // メッセージ表示
+        function showMessage(message, type) {
+            const messageArea = document.getElementById('messageArea');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+            messageDiv.textContent = message;
+
+            messageArea.innerHTML = '';
+            messageArea.appendChild(messageDiv);
+
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+
+        // エクスポート機能（app.jsから直接呼び出し）
+        function exportProgress() {
+            if (window.huntingLicenseApp && window.huntingLicenseApp.exportProgress) {
+                window.huntingLicenseApp.exportProgress();
+            } else {
+                showMessage('❌ エクスポート機能が読み込まれていません', 'error');
+            }
+        }
+
+        // インポート機能（app.jsから直接呼び出し）
+        function importProgress() {
+            if (window.huntingLicenseApp && window.huntingLicenseApp.importProgress) {
+                window.huntingLicenseApp.importProgress();
+            } else {
+                showMessage('❌ インポート機能が読み込まれていません', 'error');
+            }
+        }
+
+        // リセット機能（app.jsから直接呼び出し）
+        function resetAllProgress() {
+            if (window.huntingLicenseApp && window.huntingLicenseApp.resetAllProgress) {
+                window.huntingLicenseApp.resetAllProgress();
+            } else {
+                showMessage('❌ リセット機能が読み込まれていません', 'error');
+            }
+        }
+
+        // ページ読み込み時に統計を表示
+        window.addEventListener('DOMContentLoaded', () => {
+            refreshStats();
+            console.log('✅ テストページ読み込み完了');
+            console.log('huntingLicenseApp:', window.huntingLicenseApp);
+        });
+    </script>
+</body>
+</html>

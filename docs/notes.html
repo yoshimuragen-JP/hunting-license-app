@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="狩猟免許試験の学習ノート - 自分専用の参考書を作成">
+    <meta name="keywords" content="狩猟免許,学習ノート,メモ,暗記カード,苦手リスト">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="狩猟免許 学習ノート">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>学習ノート | 狩猟免許試験 完全攻略</title>
+    
+    <!-- 共通UIスタイル -->
+    <link rel="stylesheet" href="common-ui.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="ui-polish-additions.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-optimized.css">
+    <link rel="stylesheet" href="accessibility.css">
+    <link rel="stylesheet" href="ux-enhancements.css">
+</head>
+<body>
+    <!-- ローディングスクリーン -->
+    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+        <div style="text-align: center; color: white;">
+            <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 1.5s infinite;">📝</div>
+            <div style="font-size: 1.5rem; margin-bottom: 10px;">学習ノート読み込み中...</div>
+            <div style="font-size: 1rem; opacity: 0.8;">お待ちください</div>
+        </div>
+    </div>
+
+    <!-- 戻るボタン（Quality Guardian統一） -->
+    <div class="back-to-home-wrapper">
+        <button class="btn-back-home" onclick="window.location.href='index.html'" aria-label="トップページに戻る" tabindex="1">
+            トップページ
+        </button>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon" role="img" aria-label="狩猟免許">🎯</span>
+                    <span class="logo-text">狩猟免許 学習ノート</span>
+                </h1>
+                <nav class="header-nav" role="navigation" aria-label="メインナビゲーション">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">ホーム</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main" role="main">
+        <div class="container">
+            <!-- タブメニュー -->
+            <div class="tabs" role="tablist" aria-label="ノート機能">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-notes" data-tab="notes">
+                    📝 ノート
+                </button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-weak" data-tab="weak">
+                    ⚠️ 苦手リスト
+                </button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-flashcards" data-tab="flashcards">
+                    🎴 暗記カード
+                </button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-export" data-tab="export">
+                    💾 バックアップ
+                </button>
+            </div>
+
+            <!-- ノートパネル -->
+            <div id="panel-notes" class="panel active" role="tabpanel" aria-labelledby="tab-notes">
+                <div class="panel-header">
+                    <h2>📝 学習ノート</h2>
+                    <p class="panel-description">カテゴリごとに自分だけのまとめを作成しましょう</p>
+                </div>
+
+                <div class="notes-controls">
+                    <div class="form-group">
+                        <label for="note-category">カテゴリ選択</label>
+                        <select id="note-category" class="form-select">
+                            <option value="law">法令</option>
+                            <option value="guns">猟具</option>
+                            <option value="animals">鳥獣</option>
+                            <option value="management">保護管理</option>
+                            <option value="practical">実技</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-search">ノート検索</label>
+                        <input type="text" id="note-search" class="form-input" placeholder="キーワードで検索...">
+                    </div>
+                </div>
+
+                <div class="note-editor">
+                    <div class="form-group">
+                        <label for="note-title">タイトル</label>
+                        <input type="text" id="note-title" class="form-input" placeholder="例：銃の種類と特徴">
+                    </div>
+                    <div class="form-group">
+                        <label for="note-content">内容</label>
+                        <textarea id="note-content" class="form-textarea" rows="10" placeholder="自由に書いてください..."></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id="save-note" class="button button-primary">保存</button>
+                        <button id="clear-note" class="button button-secondary">クリア</button>
+                    </div>
+                </div>
+
+                <div class="notes-list" id="notes-list">
+                    <!-- ノート一覧が表示される -->
+                </div>
+            </div>
+
+            <!-- 苦手リストパネル -->
+            <div id="panel-weak" class="panel" role="tabpanel" aria-labelledby="tab-weak">
+                <div class="panel-header">
+                    <h2>⚠️ 苦手リスト</h2>
+                    <p class="panel-description">何度も間違える問題を集中的に復習</p>
+                </div>
+
+                <div class="weak-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="weak-count">0</div>
+                        <div class="stat-label">苦手問題</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="conquered-count">0</div>
+                        <div class="stat-label">克服した問題</div>
+                    </div>
+                </div>
+
+                <div class="weak-list" id="weak-list">
+                    <!-- 苦手問題が表示される -->
+                </div>
+            </div>
+
+            <!-- 暗記カードパネル -->
+            <div id="panel-flashcards" class="panel" role="tabpanel" aria-labelledby="tab-flashcards">
+                <div class="panel-header">
+                    <h2>🎴 暗記カード</h2>
+                    <p class="panel-description">自分だけのフラッシュカードを作成</p>
+                </div>
+
+                <div class="flashcard-editor">
+                    <div class="form-group">
+                        <label for="flashcard-category">カテゴリ</label>
+                        <select id="flashcard-category" class="form-select">
+                            <option value="law">法令</option>
+                            <option value="guns">猟具</option>
+                            <option value="animals">鳥獣</option>
+                            <option value="management">保護管理</option>
+                            <option value="practical">実技</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="flashcard-front">表（質問）</label>
+                        <input type="text" id="flashcard-front" class="form-input" placeholder="例：散弾銃の有効射程は？">
+                    </div>
+                    <div class="form-group">
+                        <label for="flashcard-back">裏（答え）</label>
+                        <input type="text" id="flashcard-back" class="form-input" placeholder="例：約50m">
+                    </div>
+                    <div class="button-group">
+                        <button id="save-flashcard" class="button button-primary">カード追加</button>
+                        <button id="clear-flashcard" class="button button-secondary">クリア</button>
+                    </div>
+                </div>
+
+                <div class="flashcards-count">
+                    <p>登録済みカード: <strong id="flashcards-total">0</strong> 枚</p>
+                </div>
+
+                <div class="flashcards-viewer" id="flashcards-viewer">
+                    <div class="flashcard-controls">
+                        <button id="prev-flashcard" class="button button-icon" aria-label="前のカード">
+                            ← 前
+                        </button>
+                        <span id="flashcard-position">0 / 0</span>
+                        <button id="next-flashcard" class="button button-icon" aria-label="次のカード">
+                            次 →
+                        </button>
+                    </div>
+                    <div class="flashcard-container" id="flashcard-container">
+                        <div class="flashcard" id="current-flashcard">
+                            <div class="flashcard-front">
+                                <p>カードを追加してください</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard-hint">
+                        <p>カードをクリックで裏返し</p>
+                    </div>
+                </div>
+
+                <div class="flashcards-list" id="flashcards-list">
+                    <!-- 暗記カード一覧 -->
+                </div>
+            </div>
+
+            <!-- バックアップパネル -->
+            <div id="panel-export" class="panel" role="tabpanel" aria-labelledby="tab-export">
+                <div class="panel-header">
+                    <h2>💾 バックアップ</h2>
+                    <p class="panel-description">ノートと暗記カードをバックアップ・復元</p>
+                </div>
+
+                <div class="export-section">
+                    <h3>📤 エクスポート</h3>
+                    <p>現在のノートと暗記カードをJSONファイルとしてダウンロードします。</p>
+                    <div class="button-group">
+                        <button id="export-notes" class="button button-primary">ノートをエクスポート</button>
+                        <button id="export-flashcards" class="button button-primary">暗記カードをエクスポート</button>
+                        <button id="export-all" class="button button-success">すべてエクスポート</button>
+                    </div>
+                </div>
+
+                <div class="import-section">
+                    <h3>📥 インポート</h3>
+                    <p>以前エクスポートしたファイルを読み込みます。</p>
+                    <div class="form-group">
+                        <label for="import-file" class="button button-secondary">
+                            ファイルを選択
+                            <input type="file" id="import-file" accept=".json" style="display: none;">
+                        </label>
+                        <span id="import-filename"></span>
+                    </div>
+                    <button id="import-data" class="button button-primary" disabled>インポート実行</button>
+                </div>
+
+                <div class="print-section">
+                    <h3>🖨️ 印刷用フォーマット</h3>
+                    <p>ノートを印刷しやすい形式で表示します。</p>
+                    <button id="print-notes" class="button button-secondary">印刷用ページを開く</button>
+                </div>
+
+                <div class="data-management">
+                    <h3>🗑️ データ管理</h3>
+                    <p class="warning">⚠️ 注意：削除したデータは復元できません</p>
+                    <div class="button-group">
+                        <button id="clear-notes" class="button button-danger">ノートをすべて削除</button>
+                        <button id="clear-flashcards" class="button button-danger">暗記カードをすべて削除</button>
+                        <button id="clear-all-data" class="button button-danger-outline">すべてのデータを削除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 狩猟免許試験 完全攻略システム |
+                <a href="index.html">ホームに戻る</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="ux-enhancements.js"></script>
+    <script src="notes.js"></script>
+    <script src="accessibility.js"></script>
+    <script src="mobile-utils.js"></script>
+
+    <script>
+        // ローディングスクリーン非表示
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s';
+                    setTimeout(() => loadingScreen.style.display = 'none', 500);
+                }
+            }, 300);
+        });
+    </script>
+    <script src="ui-polish.js"></script>
+    <script src="global-navigation.js"></script>
+</body>
+</html>

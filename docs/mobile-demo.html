@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta name="theme-color" content="#2c3e50">
+  <title>モバイル機能デモ | 狩猟免許試験</title>
+  <link rel="stylesheet" href="mobile-optimized.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .demo-section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .demo-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+
+    .demo-description {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-bottom: 16px;
+    }
+
+    .demo-button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 4px;
+    }
+
+    .demo-button:active {
+      transform: scale(0.97);
+    }
+
+    .swipe-area {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .device-info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .device-info-table td {
+      padding: 8px;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    .device-info-table td:first-child {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .status-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .status-online {
+      background: #2ecc71;
+    }
+
+    .status-offline {
+      background: #e74c3c;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .metric-card {
+      background: #ecf0f1;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: #7f8c8d;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #2c3e50;">📱 モバイル機能デモ</h1>
+
+  <!-- デバイス情報 -->
+  <div class="demo-section">
+    <div class="demo-title">🔍 デバイス情報</div>
+    <table class="device-info-table" id="device-info">
+      <tr>
+        <td>読み込み中...</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ネットワーク状態 -->
+  <div class="demo-section">
+    <div class="demo-title">🌐 ネットワーク状態</div>
+    <p>
+      <span class="status-indicator" id="network-status"></span>
+      <span id="network-text">確認中...</span>
+    </p>
+    <button class="demo-button" onclick="testNetworkStatus()">状態を確認</button>
+  </div>
+
+  <!-- バイブレーション -->
+  <div class="demo-section">
+    <div class="demo-title">📳 バイブレーション</div>
+    <div class="demo-description">タップすると振動します（対応端末のみ）</div>
+    <button class="demo-button" onclick="testVibrate(50)">短い振動</button>
+    <button class="demo-button" onclick="testVibrate(100)">中程度</button>
+    <button class="demo-button" onclick="testVibrate(200)">長い振動</button>
+    <button class="demo-button" onclick="testVibratePattern()">パターン振動</button>
+  </div>
+
+  <!-- スワイプジェスチャー -->
+  <div class="demo-section">
+    <div class="demo-title">👆 スワイプジェスチャー</div>
+    <div class="demo-description">下のエリアをスワイプしてください</div>
+    <div class="swipe-area swipeable" id="swipe-area">
+      スワイプしてね！
+    </div>
+    <p id="swipe-result" style="text-align: center; margin-top: 12px; color: #7f8c8d;">
+      結果がここに表示されます
+    </p>
+  </div>
+
+  <!-- スナックバー -->
+  <div class="demo-section">
+    <div class="demo-title">💬 スナックバー（通知）</div>
+    <div class="demo-description">画面下部に通知を表示</div>
+    <button class="demo-button" onclick="showSnackbar('✅ 成功しました')">成功メッセージ</button>
+    <button class="demo-button" onclick="showSnackbar('❌ エラーが発生しました')">エラーメッセージ</button>
+    <button class="demo-button" onclick="showSnackbar('ℹ️ 情報メッセージです')">情報メッセージ</button>
+  </div>
+
+  <!-- パフォーマンス -->
+  <div class="demo-section">
+    <div class="demo-title">📊 パフォーマンス計測</div>
+    <div class="metrics-grid" id="performance-metrics">
+      <div class="metric-card">
+        <div class="metric-value">--</div>
+        <div class="metric-label">DOM読み込み</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">--</div>
+        <div class="metric-label">完全読み込み</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">--</div>
+        <div class="metric-label">First Paint</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">--</div>
+        <div class="metric-label">FCP</div>
+      </div>
+    </div>
+    <button class="demo-button" onclick="measurePerformance()" style="margin-top: 12px;">計測する</button>
+  </div>
+
+  <!-- PWA状態 -->
+  <div class="demo-section">
+    <div class="demo-title">🚀 PWA状態</div>
+    <table class="device-info-table" id="pwa-status">
+      <tr>
+        <td>Service Worker</td>
+        <td id="sw-status">確認中...</td>
+      </tr>
+      <tr>
+        <td>スタンドアロンモード</td>
+        <td id="standalone-status">確認中...</td>
+      </tr>
+      <tr>
+        <td>インストール済み</td>
+        <td id="installed-status">確認中...</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- バッテリー情報 -->
+  <div class="demo-section">
+    <div class="demo-title">🔋 バッテリー情報</div>
+    <div class="demo-description">対応端末のみ表示</div>
+    <table class="device-info-table" id="battery-info">
+      <tr>
+        <td>確認中...</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Scripts -->
+  <script src="mobile-utils.js"></script>
+  <script>
+    // デバイス情報を表示
+    function displayDeviceInfo() {
+      const info = window.MobileUtils.getDeviceInfo();
+      const table = document.getElementById('device-info');
+
+      table.innerHTML = `
+        <tr>
+          <td>モバイル</td>
+          <td>${info.isMobile ? '✅ はい' : '❌ いいえ'}</td>
+        </tr>
+        <tr>
+          <td>iOS</td>
+          <td>${info.isIOS ? '✅ はい' : '❌ いいえ'}</td>
+        </tr>
+        <tr>
+          <td>Android</td>
+          <td>${info.isAndroid ? '✅ はい' : '❌ いいえ'}</td>
+        </tr>
+        <tr>
+          <td>スタンドアロン</td>
+          <td>${info.isStandalone ? '✅ はい' : '❌ いいえ'}</td>
+        </tr>
+        <tr>
+          <td>画面幅</td>
+          <td>${info.screenWidth}px</td>
+        </tr>
+        <tr>
+          <td>画面高さ</td>
+          <td>${info.screenHeight}px</td>
+        </tr>
+        <tr>
+          <td>Pixel Ratio</td>
+          <td>${info.pixelRatio}</td>
+        </tr>
+        <tr>
+          <td>タッチサポート</td>
+          <td>${info.touchSupport ? '✅ 対応' : '❌ 非対応'}</td>
+        </tr>
+      `;
+    }
+
+    // ネットワーク状態を表示
+    function testNetworkStatus() {
+      const isOnline = navigator.onLine;
+      const statusIndicator = document.getElementById('network-status');
+      const statusText = document.getElementById('network-text');
+
+      if (isOnline) {
+        statusIndicator.className = 'status-indicator status-online';
+        statusText.textContent = 'オンライン';
+      } else {
+        statusIndicator.className = 'status-indicator status-offline';
+        statusText.textContent = 'オフライン';
+      }
+    }
+
+    // バイブレーションテスト
+    function testVibrate(duration) {
+      window.MobileUtils.vibrate(duration);
+      showSnackbar(`${duration}msの振動を実行`);
+    }
+
+    function testVibratePattern() {
+      window.MobileUtils.vibrate([100, 50, 100, 50, 200]);
+      showSnackbar('パターン振動を実行');
+    }
+
+    // スワイプジェスチャー
+    const swipeArea = document.getElementById('swipe-area');
+    const swipeResult = document.getElementById('swipe-result');
+
+    new window.MobileUtils.SwipeGesture(swipeArea, {
+      onSwipeLeft: () => {
+        swipeResult.textContent = '⬅️ 左にスワイプ';
+        window.MobileUtils.vibrate(30);
+      },
+      onSwipeRight: () => {
+        swipeResult.textContent = '➡️ 右にスワイプ';
+        window.MobileUtils.vibrate(30);
+      },
+      onSwipeUp: () => {
+        swipeResult.textContent = '⬆️ 上にスワイプ';
+        window.MobileUtils.vibrate(30);
+      },
+      onSwipeDown: () => {
+        swipeResult.textContent = '⬇️ 下にスワイプ';
+        window.MobileUtils.vibrate(30);
+      }
+    });
+
+    // パフォーマンス計測
+    function measurePerformance() {
+      const monitor = new window.MobileUtils.PerformanceMonitor();
+      const metrics = monitor.measurePageLoad();
+
+      const metricsGrid = document.getElementById('performance-metrics');
+      metricsGrid.innerHTML = `
+        <div class="metric-card">
+          <div class="metric-value">${metrics.domContentLoaded || '--'}ms</div>
+          <div class="metric-label">DOM読み込み</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">${metrics.loadComplete || '--'}ms</div>
+          <div class="metric-label">完全読み込み</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">${metrics.firstPaint || '--'}ms</div>
+          <div class="metric-label">First Paint</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">${metrics.firstContentfulPaint || '--'}ms</div>
+          <div class="metric-label">FCP</div>
+        </div>
+      `;
+
+      showSnackbar('✅ パフォーマンスを計測しました');
+    }
+
+    // PWA状態を表示
+    async function displayPWAStatus() {
+      const swStatus = document.getElementById('sw-status');
+      const standaloneStatus = document.getElementById('standalone-status');
+      const installedStatus = document.getElementById('installed-status');
+
+      // Service Worker
+      if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.getRegistration();
+        swStatus.textContent = registration ? '✅ 登録済み' : '❌ 未登録';
+      } else {
+        swStatus.textContent = '❌ 非対応';
+      }
+
+      // スタンドアロンモード
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      standaloneStatus.textContent = isStandalone ? '✅ はい' : '❌ いいえ';
+
+      // インストール済み（推測）
+      installedStatus.textContent = isStandalone ? '✅ はい' : '❓ 不明';
+    }
+
+    // バッテリー情報を表示
+    async function displayBatteryInfo() {
+      const table = document.getElementById('battery-info');
+
+      if ('getBattery' in navigator) {
+        try {
+          const battery = await navigator.getBattery();
+
+          table.innerHTML = `
+            <tr>
+              <td>バッテリー残量</td>
+              <td>${Math.round(battery.level * 100)}%</td>
+            </tr>
+            <tr>
+              <td>充電中</td>
+              <td>${battery.charging ? '✅ はい' : '❌ いいえ'}</td>
+            </tr>
+            <tr>
+              <td>充電時間</td>
+              <td>${battery.chargingTime === Infinity ? '不明' : battery.chargingTime + '秒'}</td>
+            </tr>
+            <tr>
+              <td>放電時間</td>
+              <td>${battery.dischargingTime === Infinity ? '不明' : battery.dischargingTime + '秒'}</td>
+            </tr>
+          `;
+        } catch (error) {
+          table.innerHTML = '<tr><td colspan="2">取得失敗</td></tr>';
+        }
+      } else {
+        table.innerHTML = '<tr><td colspan="2">❌ 非対応</td></tr>';
+      }
+    }
+
+    // 初期化
+    window.addEventListener('load', () => {
+      displayDeviceInfo();
+      testNetworkStatus();
+      displayPWAStatus();
+      displayBatteryInfo();
+      measurePerformance();
+    });
+
+    // ネットワーク状態の監視
+    window.addEventListener('online', testNetworkStatus);
+    window.addEventListener('offline', testNetworkStatus);
+  </script>
+</body>
+</html>

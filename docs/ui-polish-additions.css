@@ -1,0 +1,612 @@
+/**
+ * UI/UX Polish Additions
+ * 全ページ共通のUI改善用追加スタイル
+ */
+
+/* ===================================
+   1. 通知・トースト
+   =================================== */
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: var(--z-tooltip, 1070);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  pointer-events: auto;
+  animation: toastSlideIn 0.3s ease-out;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast.toast-success {
+  border-left: 4px solid var(--color-success, #16a34a);
+}
+
+.toast.toast-error {
+  border-left: 4px solid var(--color-error, #dc2626);
+}
+
+.toast.toast-warning {
+  border-left: 4px solid var(--color-warning, #ea580c);
+}
+
+.toast.toast-info {
+  border-left: 4px solid var(--color-info, #0284c7);
+}
+
+.toast-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.toast-content {
+  flex: 1;
+}
+
+.toast-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #262626;
+}
+
+.toast-message {
+  font-size: 14px;
+  color: #525252;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #737373;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.toast-close:hover {
+  background-color: #f5f5f5;
+}
+
+/* ===================================
+   2. ツールチップ
+   =================================== */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::before,
+.tooltip::after {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background-color: #262626;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: var(--z-tooltip, 1070);
+}
+
+.tooltip::after {
+  content: '';
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #262626;
+  z-index: var(--z-tooltip, 1070);
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===================================
+   3. ローディングオーバーレイ
+   =================================== */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal, 1050);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: white;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===================================
+   4. 空の状態（Empty State）
+   =================================== */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #737373;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #525252;
+  margin-bottom: 10px;
+}
+
+.empty-state-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.empty-state-action {
+  margin-top: 24px;
+}
+
+/* ===================================
+   5. コンテキストメニュー
+   =================================== */
+
+.context-menu {
+  position: fixed;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 8px 0;
+  min-width: 200px;
+  z-index: var(--z-popover, 1060);
+  animation: scaleIn 0.15s ease-out;
+}
+
+.context-menu-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #262626;
+}
+
+.context-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.context-menu-item-icon {
+  font-size: 18px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin: 8px 0;
+}
+
+/* ===================================
+   6. ドロップダウン
+   =================================== */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dropdown-toggle:hover {
+  border-color: var(--color-primary, #2d7a4f);
+  background-color: #fafafa;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  min-width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: var(--z-dropdown, 1000);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s;
+}
+
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  font-size: 14px;
+  color: #262626;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.active {
+  background-color: var(--color-primary-pale, #e8f5ee);
+  color: var(--color-primary, #2d7a4f);
+  font-weight: 500;
+}
+
+/* ===================================
+   7. タブ
+   =================================== */
+
+.tabs {
+  border-bottom: 2px solid #e5e5e5;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #737373;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary, #2d7a4f);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.tab:hover {
+  color: #525252;
+}
+
+.tab.active {
+  color: var(--color-primary, #2d7a4f);
+}
+
+.tab.active::after {
+  transform: scaleX(1);
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ===================================
+   8. アコーディオン
+   =================================== */
+
+.accordion-item {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.accordion-header:hover {
+  background-color: #fafafa;
+}
+
+.accordion-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.accordion-icon {
+  font-size: 20px;
+  color: #737373;
+  transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 1000px;
+}
+
+.accordion-body {
+  padding: 20px;
+  color: #525252;
+  line-height: 1.6;
+}
+
+/* ===================================
+   9. ページネーション
+   =================================== */
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.pagination-item {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  color: #525252;
+  background: white;
+}
+
+.pagination-item:hover {
+  border-color: var(--color-primary, #2d7a4f);
+  background-color: var(--color-primary-pale, #e8f5ee);
+  color: var(--color-primary, #2d7a4f);
+}
+
+.pagination-item.active {
+  background-color: var(--color-primary, #2d7a4f);
+  color: white;
+  border-color: var(--color-primary, #2d7a4f);
+}
+
+.pagination-item.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-item.disabled:hover {
+  border-color: #e5e5e5;
+  background-color: white;
+  color: #525252;
+}
+
+/* ===================================
+   10. スムーズスクロール
+   =================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: var(--color-primary, #2d7a4f);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  z-index: var(--z-fixed, 1030);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   11. レスポンシブ調整
+   =================================== */
+
+@media (max-width: 768px) {
+  .toast-container {
+    left: 20px;
+    right: 20px;
+  }
+
+  .toast {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .dropdown-menu {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ===================================
+   12. アクセシビリティ強化
+   =================================== */
+
+/* キーボードフォーカス強調 */
+.toast-close:focus-visible,
+.dropdown-toggle:focus-visible,
+.tab:focus-visible,
+.accordion-header:focus-visible,
+.pagination-item:focus-visible,
+.scroll-to-top:focus-visible {
+  outline: 3px solid var(--color-primary, #2d7a4f);
+  outline-offset: 2px;
+}
+
+/* タッチデバイス最適化 */
+@media (hover: none) and (pointer: coarse) {
+  .dropdown-item,
+  .context-menu-item,
+  .accordion-header,
+  .pagination-item {
+    min-height: 44px;
+  }
+}
+
+/* モーション減速設定の尊重 */
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .dropdown-menu,
+  .tab-content,
+  .accordion-content,
+  .scroll-to-top {
+    animation: none !important;
+    transition: none !important;
+  }
+}
